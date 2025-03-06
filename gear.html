@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear - Pathfinder 2e Character Sheet</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Your existing CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(212, 201, 45, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .inventory-column {
+            flex: 1;
+
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 23px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #f5c782;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9900a;
+            color: white;
+            font-size:18px;
+        }
+        .equip-input {
+            width: 100%;
+            padding: 5px;
+            background: #f4f4f4;
+            border: none;
+            text-align: center;
+        }
+        .wear-btn {
+            padding: 5px 10px;
+            background-color: #e9900a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .wear-btn:hover {
+            background-color: #f7a935;
+        }
+        .equipment-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top:22px;
+        }
+        .equipment-column h2 {
+            text-align: center;
+            width: 100%;
+        }
+        .equip-slot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .equip-slot label {
+            width: 120px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .equip-slot input {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .nav-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(212, 201, 45, 0.5);
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            flex: 1;
+            width: 140px;
+            height: 90px;
+        }
+
+        .image-container {
+            position: relative; /* Ensures the text can be positioned relative to this container */
+            display: inline-block; /* Ensures the container wraps around the image */
+            margin-left: 100px;
+            margin-top: -40px;
+        }
+
+        .base-image {
+            width: 200px;
+            height: 120px;
+            margin-bottom: 15px;
+        }
+
+        .overlay-text {
+            position: absolute; /* Positions the text absolutely within the container */
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-left: -50px;
+            margin-top: -10px;
+        }
+        /* New CSS for layout adjustment */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1400px;
+        }
+        .remove-btn {
+            padding: 5px 10px;
+            background-color: #e9900a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .remove-btn:hover {
+            background-color: #f7a935;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <div class="input-row">
+                <div class="inventory-column">
+                    <h2>Inventory</h2>
+                    <table id="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Category</th>
+                                <th>Attunement</th>
+                                <th>Action</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="equipment-column">
+                    <h2>Equipment</h2>
+                    <div class="equip-slot" style="margin-top:-11px;">
+                        <label>WEAPON1: </label>
+                        <input type="text" id="weapon1" class="equip-input" style="font-size: 22px; background-color: #AEA1EC;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('weapon1')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>WEAPON2: </label>
+                        <input type="text" id="weapon2" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('weapon2')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>ARMOR: </label>
+                        <input type="text" id="armor" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('armor')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>SHIELD: </label>
+                        <input type="text" id="shield" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('shield')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>RING: </label>
+                        <input type="text" id="ring" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('ring')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>AMULET: </label>
+                        <input type="text" id="amulet" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('amulet')">UNEQUIP</button>
+                    </div>
+                    <div class="equip-slot">
+                        <label>CLOAK: </label>
+                        <input type="text" id="cloak" class="equip-input" style="font-size: 22px;" readonly>
+                        <button class="remove-btn" onclick="unequipItem('cloak')">UNEQUIP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-column">
+            <div class="image-container">
+                <img src="/images/next.png" alt="Next page arrow" class="base-image">
+                <a href="index.html" class="overlay-text">Character</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const Inventory = [
+            { name: "Warhammer", description: "A heavy melee weapon.", quantity: 1, category: "Weapon", attunement: "No" },
+            { name: "Shield + 1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "Yes" },
+            { name: "Plate Armor", description: "Heavy armor providing high defense.", quantity: 1, category: "Armor", attunement: "No" },
+            { name: "Ring of Spell Storing", description: "Stores spells for later use.", quantity: 1, category: "Ring", attunement: "Yes" },
+            { name: "Headband of Intellect", description: "Boosts intelligence.", quantity: 1, category: "Headwear", attunement: "Yes" },
+            { name: "Amulet", description: "A holy symbol with utility effects.", quantity: 1, category: "Amulet", attunement: "No" },
+            { name: "Heavy Crossbow", description: "A ranged weapon with long-range capabilities.", quantity: 1, category: "Weapon", attunement: "No" },
+            { name: "Spell Scroll (Level 1)", description: "A scroll containing a single-use spell.", quantity: 1, category: "Consumable", attunement: "No" }
+        ];
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "", attuned3: "" }));
+
+        // Function to remove an item from the inventory
+        function removeItem(itemName) {
+            // Retrieve the inventory from localStorage
+            let inventory = JSON.parse(localStorage.getItem("inventoryItems")) || [];
+
+            // Retrieve character stats and attuned items
+            const charStats = JSON.parse(localStorage.getItem("dndCharacterStats")) || {};
+            const attunedItems = JSON.parse(localStorage.getItem("attunedItems")) || { attuned1: "", attuned2: "", attuned3: "" };
+
+            // Check if the item is equipped and unequip it
+            for (const slot in charStats) {
+                if (charStats[slot] === itemName) {
+                    charStats[slot] = ""; // Unequip the item
+                }
+            }
+
+            // Check if the item is attuned and remove it from attunement
+            for (const key in attunedItems) {
+                if (attunedItems[key] === itemName) {
+                    attunedItems[key] = ""; // Clear the attunement slot
+                }
+            }
+
+            // Filter out the item to be removed from the inventory
+            inventory = inventory.filter(item => item.name !== itemName);
+
+            // Update localStorage
+            localStorage.setItem("inventoryItems", JSON.stringify(inventory));
+            localStorage.setItem("dndCharacterStats", JSON.stringify(charStats));
+            localStorage.setItem("attunedItems", JSON.stringify(attunedItems));
+
+            // Repopulate the table and update the equipment display
+            populateInventoryTable();
+            updateEquipmentDisplay();
+        }
+
+        function populateInventoryTable() {
+            const inventory = JSON.parse(localStorage.getItem("inventoryItems")) || [];
+            if (!localStorage.getItem("attunedItems")) {
+                localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "", attuned3: "" }));
+            }
+
+            const tableBody = document.querySelector("#inventory-table tbody");
+            tableBody.innerHTML = ""; // Clear the table before repopulating
+
+            inventory.forEach(item => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.category}</td>
+                    <td>${item.attunement}</td>
+                    <td>
+                        ${["Weapon", "Armor", "Shield", "Ring", "Amulet", "Cloak"].includes(item.category) ? 
+                        `<button class="wear-btn" onclick="equipItem('${item.name}', '${item.category}', '${item.attunement}')">WEAR</button>` : ""}
+                    </td>
+                    <td>
+                        <button class="remove-btn" onclick="removeItem('${item.name}')">REMOVE</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Add "ADD ITEM" row
+            const addRow = document.createElement("tr");
+            addRow.innerHTML = `
+                <td colspan="7" style="text-align: center;">
+                    <button class="add-item-btn" onclick="addItem()">ADD ITEM</button>
+                </td>
+            `;
+            tableBody.appendChild(addRow);
+        }
+
+        function addItem() {
+            const name = prompt("Enter item name:");
+            if (!name) return;
+
+            const description = prompt("Enter item description:") || "No description";
+            const quantity = parseInt(prompt("Enter item quantity:"), 10) || 1;
+            const category = prompt("Enter item category (Weapon, Armor, Shield, Ring, Amulet, Cloak, etc.):") || "Misc";
+            const attunement = prompt("Does this item require attunement? (Yes/No):") || "No";
+
+            const newItem = { name, description, quantity, category, attunement };
+            
+            // Update inventory in localStorage
+            const inventory = JSON.parse(localStorage.getItem("inventoryItems")) || [];
+            inventory.push(newItem);
+            localStorage.setItem("inventoryItems", JSON.stringify(inventory));
+
+            // Refresh table
+            populateInventoryTable();
+        }
+
+
+        function unequipItem(slot) {
+            const charStats = JSON.parse(localStorage.getItem("dndCharacterStats")) || {};
+            const attunedItems = JSON.parse(localStorage.getItem("attunedItems")) || { attuned1: "", attuned2: "", attuned3: "" };
+
+            if (charStats[slot]) {
+                // Check if the item being removed is attuned
+                const itemName = charStats[slot];
+                for (const key in attunedItems) {
+                    if (attunedItems[key] === itemName) {
+                        attunedItems[key] = ""; // Clear the attunement slot
+                    }
+                }
+
+                // Remove the item from charStats
+                charStats[slot] = ""; // Set the value of the slot to an empty string
+
+                // Update localStorage
+                localStorage.setItem("dndCharacterStats", JSON.stringify(charStats));
+                localStorage.setItem("attunedItems", JSON.stringify(attunedItems));
+
+                // Refresh the display
+                updateEquipmentDisplay();
+            }
+        }
+
+        function equipItem(name, category, attunement) {
+            const charStats = JSON.parse(localStorage.getItem("dndCharacterStats")) || {};
+            const attunedItems = JSON.parse(localStorage.getItem("attunedItems")) || { attuned1: "", attuned2: "", attuned3: "" };
+
+            // Check if the item is already equipped in charStats
+            const isAlreadyEquipped = Object.values(charStats).includes(name);
+            if (isAlreadyEquipped) {
+                alert("This item is already equipped.");
+                return; // Exit the function if the item is already equipped
+            }
+
+            // Check if the item is already attuned
+            const isAlreadyAttuned = Object.values(attunedItems).includes(name);
+            if (isAlreadyAttuned) {
+                alert("This item is already attuned.");
+                return; // Exit the function if the item is already attuned
+            }
+
+            // Equip the item based on its category
+            if (category === "Weapon") {
+                let choice = prompt("Choose: 1 for Main Hand, 2 for Off Hand");
+                if (choice === "1") charStats.weapon1 = name;
+                else if (choice === "2") charStats.weapon2 = name;
+            } else if (category === "Armor") charStats.armor = name;
+            else if (category === "Shield") charStats.shield = name;
+            else if (category === "Ring") charStats.ring = name;
+            else if (category === "Amulet") charStats.amulet = name;
+            else if (category === "Cloak") charStats.cloak = name;
+
+            // Attunement logic
+            if (attunement === "Yes") {
+                const attunedSlots = Object.values(attunedItems).filter(slot => slot !== "").length;
+                if (attunedSlots < 3) {
+                    // Find the first empty attunement slot and assign the item
+                    for (let i = 1; i <= 3; i++) {
+                        if (attunedItems[`attuned${i}`] === "") {
+                            attunedItems[`attuned${i}`] = name;
+                            break;
+                        }
+                    }
+                } else {
+                    alert("You cannot attune to more than 3 items.");
+                    return; // Exit the function if attunement limit is reached
+                }
+            }
+
+            // Save updated data to localStorage
+            localStorage.setItem("dndCharacterStats", JSON.stringify(charStats));
+            localStorage.setItem("attunedItems", JSON.stringify(attunedItems));
+            updateEquipmentDisplay();
+        }
+
+
+        function updateEquipmentDisplay() {
+            const charStats = JSON.parse(localStorage.getItem("dndCharacterStats")) || {};
+            const attunedItems = JSON.parse(localStorage.getItem("attunedItems")) || {};
+
+            const slots = ["weapon1", "weapon2", "armor", "shield", "ring", "amulet", "cloak"];
+
+            slots.forEach(slot => {
+                const inputField = document.querySelector(`#${slot}`);
+                const equippedItem = charStats[slot] || "";
+
+                inputField.value = equippedItem;
+
+                // Ensure the equipped item is non-empty before checking attunement
+                if (equippedItem && Object.values(attunedItems).includes(equippedItem)) {
+                    inputField.style.backgroundColor = "#D88BD8"; // Purple for attuned items
+                } else {
+                    inputField.style.backgroundColor = "white"; // White for non-attuned or empty slots
+                }
+            });
+        }
+
+        populateInventoryTable();
+        updateEquipmentDisplay();
+    </script>
+</body>
+</html>

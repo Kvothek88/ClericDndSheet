@@ -1,0 +1,440 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+    background: url('/images/papyrus.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    background: rgba(212, 201, 45, 0.5);
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+
+.small-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    background: rgba(237, 185, 14, 0.5);
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.hp-container {
+    display: flex;
+    flex-direction: row;
+    background: rgba(231, 150, 11, 0.833);
+    margin-left: 3px;
+    background: rgba(231, 150, 11, 0.833);
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    margin-right: 25px;
+    margin-left: 35px;
+}
+
+.saves-container {
+    margin-left: 10px;
+    background: rgba(231, 150, 11, 0.833);
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.smaller-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3px;
+    background: rgba(231, 150, 11, 0.833);
+    padding: 7px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+}
+.smaller-container button {
+    padding: 5px 10px;
+    background-color: #d27606;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    width:60px;
+    height:36px;
+    margin-left:10px
+}
+
+.smaller-container button:hover {
+    background-color: #a55c05;
+}
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.image-next-container {
+    position: relative;
+    width: 165px;
+    height: 136px;
+}
+
+.image-next-container img {
+    width: 165px;
+    height: 136px;
+    object-fit: cover;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.base-image {
+    width: 260px;
+    height: 260px;
+    border-radius: 60%;
+}
+
+.portrait-image {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 380px;
+    height: 380px;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    /* overflow-x: auto;
+    width:100% */
+}
+
+.input-with-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-text {
+    font-size: 26px;
+    color: #000000;
+}
+
+.span-div {
+    font-size: 26px;
+    color: #000000;
+    margin-top: 30px;
+}
+
+.input-column {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.input-box {
+    margin: 10px 0;
+}
+
+label {
+    font-size: 23px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+
+.main-input {
+    font-size: 22px;
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.input-box {
+    margin: 10px 0;
+}
+
+.mid-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.mid-box label {
+    justify-content: center;
+    width:120px;
+    font-size: 24px;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.mid-box input[type="text"] {
+    width: 55px;
+    height: 45px;
+    padding: 5px;
+    text-align: center;
+    font-size: 26px;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.ability-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 27px;
+}
+
+.ability-input label {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ability-input input[type="text"]:first-of-type {
+    width: 67px;
+    height: 76px;
+    font-size: 32px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.nested-input {
+    position: absolute;
+    bottom: -15px;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f9f9f9;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.base-input {
+    width: 50px;
+    height: 40px;
+    font-size: 26px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.mid-input {
+    width: 40px;
+    height: 30px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.base-input-2 {
+    width: 65px;
+    height: 55px;
+    font-size: 26px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.mid-input-2 {
+    width: 55px;
+    height: 40px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.skill-base-input {
+    width: 40px;
+    height: 35px;
+    font-size: 23px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.skill-mid-input {
+    width: 35px;
+    height: 25px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.mid-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-options {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    ;
+}
+
+.custom-radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prof-container {
+    display: flex;
+    flex-direction: column;
+    background: rgba(231, 150, 11, 0.833);
+    background: rgba(231, 150, 11, 0.833);
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+}
+
+.new-container {
+    display: flex;
+    flex-direction: row; /* Changed from column to row */
+    background: rgba(237, 185, 14, 0.5);
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+.spell-section {
+    margin-bottom: 20px;
+}
+
+.spell-section button {
+    padding: 5px 10px;
+    background-color: #d27606;
+    color: white;
+
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.spell-section button:hover {
+    background-color: #a55c05;
+}
+
+/* Style for the spell slot squares */
+.spell-section input[readonly] {
+    background-color: white;
+    border: 2px solid #d27606;
+    font-family: monospace;
+}
+
+/* When a slot is used (you'll need JavaScript to toggle this class) */
+.spell-section input[readonly].used {
+    background-color: black;
+    color: white;
+}
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toast {
+    background: white;
+    font-size:20px;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 10px;
+    min-width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.3s ease-in-out;
+    white-space: pre;
+}
+
+.toast.success {
+    border-left: 4px solid #4CAF50;
+}
+
+.toast.error {
+    border-left: 4px solid #f44336;
+}
+
+.toast.info {
+    border-left: 4px solid #2196F3;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

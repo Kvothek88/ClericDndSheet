@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder 2e Character Sheet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="input-row">
+        <div class="container">
+            <div class="input-row">
+                <div class="image-container">
+                    <img src="/images/radni.jpg" alt="Character Image" class="base-image">
+
+                    <img src="/images/portrait.png" alt="Portrait" class="portrait-image">
+                </div>
+                <div class="input-column">
+                    <div class="input-box">
+                        <label for="character-name">Character Name</label>
+                        <input type="text" class="main-input" id="character-name" placeholder="Character Name">
+                    </div>
+                    <div class="input-box">
+                        <label for="race">Race</label>
+                        <input type="text" class="main-input" id="race" placeholder="Race">
+                    </div>
+                    <div class="input-box">
+                        <label for="background">Background</label>
+                        <input type="text" class="main-input" id="background" placeholder="Background">
+                    </div>
+                    <div class="input-box">
+                        <label for="religion">Religion</label>
+                        <input type="text" class="main-input" id="religion" placeholder="Religion">
+                    </div>
+                </div>
+                <div class="input-column">
+                    <div class="input-box">
+                        <label for="class1">Class</label>
+                        <input type="text" class="main-input" id="dndclass" placeholder="Class">
+                    </div>
+                    <div class="input-box">
+                        <label for="domain">Domain</label>
+                        <input type="text" class="main-input" id="domain" placeholder="Domain">
+                    </div>
+                    <div class="input-box">
+                        <label for="size">Size</label>
+                        <input type="text" class="main-input" id="size" placeholder="Size">
+                    </div>
+                    <div class="input-box">
+                        <label for="alignment">Alignment</label>
+                        <input type="text" class="main-input" id="alignment" placeholder="Alignment">
+                    </div>
+                </div>
+                <div class="input-column">
+                    <div class="input-box">
+                        <label for="level">Level</label>
+                        <input type="text" class="main-input" style="width:50px; text-align: center;" id="level">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="input-row">
+                <div class="input-column">
+                    <button
+                        id="attack-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        ATTACK
+                    </button>
+                    <button
+                        id="spell-attack-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        SPELL ATTACK
+                    </button>
+                    <button 
+                        id="weapon-damage-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        WEAPON DAMAGE
+                    </button>
+                    <button 
+                        id="divine-strike-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        DIVINE STRIKE
+                    </button>
+                    <button 
+                        id="heal-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        HEAL
+                    </button>
+                </div>
+                
+                <div class="input-column">
+                    <button 
+                        id="damage-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        HARM
+                    </button>
+                    <button 
+                        id="long-rest-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        LONG REST
+                    </button>
+                    <button 
+                        id="short-rest-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        SHORT REST
+                    </button>
+                    <button
+                        id="initiative-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        INITIATIVE
+                    </button>
+                    <button 
+                        id="twilight-sanctuary-button"
+                        style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-bottom:15px; margin-top:10px; font-size:17px; cursor: pointer;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        TWILIGHT SANCTUARY
+                    </button>
+                </div>  
+                <div>
+                    <input id="attack-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                    <input id="attack-crit" style="font-size:20px; cursor:pointer; width:30px;  margin-top:10px; text-align:left; display:none;">
+                    <input id="spell-attack-tracker" style="font-size:20px; cursor:pointer; width:30px;  margin-top:10px; text-align:left; display:none;">
+                    <input id="spell-attack-crit" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                    <input id="guidance-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                    <input id="bless-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                    <input id="defender-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                </div> 
+                
+                <div class="input-column">
+                    <button id="adv-button" style="margin-top:10px; background-color: #d27606; color:white; border-radius: 4px; width:50px; height:35px;">ADV</button>
+                    <input type="text" id="adv" style="margin-top:7px; border-radius: 4px; width:44px; height:33px; text-align: center; border-radius:4px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);">
+                    <button id="dis-button" style="margin-top:17px; background-color: #d27606; color:white; border-radius: 4px; width:50px; height:35px;">DIS</button>
+                    <input type="text" id="dis" style="margin-top:7px; border-radius: 4px; width:44px; height:33px; text-align: center; border-radius:4px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);">
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="image-next-container">
+                <img src="/images/next.png" alt="Next page arrow" class="base-image">
+                <a href="spells.html" class="overlay-text">Spells</a>
+            </div>
+
+            <div class="image-next-container">
+                <img src="/images/next.png" alt="Next page arrow" class="base-image">
+                <a href="gear.html" class="overlay-text">Gear</a>
+            </div>
+
+            <div class="image-next-container">
+                <img src="/images/next.png" alt="Next page arrow" class="base-image">
+                <a href="features.html" class="overlay-text">Features</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-row" style="align-items: flex-start;">
+        <div class="input-column">
+            <div class="container">
+
+                <div class="input-row" style="margin-bottom: 20px; padding:0px;">
+
+                    <div class="input-column">
+                        <label for="classdc"
+                            style="width:360px; margin-left:20px; font-size: 26px; text-align: center; background-color: rgb(210, 118, 6);">HP</label>
+                        <div class="hp-container" style="padding:10px; width:340px; margin-bottom: 30px; margin-right:20px; margin-left:20px;">
+                            <div class="mid-box" style="padding:0px; margin-right:-10px;">
+                                <label for="level">MAX HP</label>
+                                <input type="text" id="max-hp">
+                            </div>
+            
+                            <div class="mid-box" style="padding:0px; margin-right:-10px;">
+                                <label for="level">CUR HP</label>
+                                <input type="text" id="cur-hp">
+                            </div>
+            
+                            <div class="mid-box" style="padding:0px;">
+                                <label for="level">TEMP</label>
+                                <input type="text" id="temp-hp">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="input-column">
+                        <label for="classdc"
+                            style="font-size: 26px; text-align: center; background-color: rgb(210, 118, 6);">AC</label>
+                        <div class="smaller-container" style="padding:10px">
+                            <div class="input-with-text">
+                                <div class="mid-input-container">
+                                    <label for="actotal" style="font-size: 20px; text-align: center;">TOTAL</label>
+                                    <input type="text" class="base-input-2" id="ac-total">
+                                </div>
+                                <div class="span-div">
+                                    <span class="input-text">=10+</span>
+                                </div>
+                                <div class="mid-input-container">
+                                    <label for="ackey" style="font-size: 20px; text-align: center; margin-left:-4px;">DEX</label>
+                                    <input type="text" class="mid-input-2" id="ac-dex" style="margin-right:5px;">
+                                </div>
+                                <div class="mid-input-container">
+                                    <label for="acarmor" style="font-size: 20px; text-align: center;">ARMOR</label>
+                                    <input type="text" class="mid-input-2" id="ac-armor" style="margin-right:5px;">
+                                </div>
+                                <div class="mid-input-container">
+                                    <label for="acshield" style="font-size: 20px; text-align: center;">SHIELD</label>
+                                    <input type="text" class="mid-input-2" id="ac-shield" style="margin-right:5px;">
+                                </div>
+                                <div class="mid-input-container">
+                                    <label for="acitem" style="font-size: 20px; text-align: center;">ITEM</label>
+                                    <input type="text" class="mid-input-2" id="ac-item" style="margin-right:5px;">
+                                </div>
+                                <div class="mid-input-container">
+                                    <label for="acother" style="font-size: 20px; text-align: center;">OTHER</label>
+                                    <input type="text" class="mid-input-2" id="ac-other" style="margin-right:5px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="input-row">
+                    <div class="input-column">
+
+                        <!-- Ability Input: Strength -->
+                        <div class="ability-input">
+                            <label for="strength" style="margin-bottom: -10px;">STR</label>
+                            <input type="text" id="strength-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="strength">
+                        </div>
+                        <!-- Ability Input: Dexterity -->
+                        <div class="ability-input">
+                            <label for="dexterity" style="margin-bottom: -10px;">DEX</label>
+                            <input type="text" id="dexterity-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="dexterity">
+                        </div>
+                        <!-- Ability Input: Constitution -->
+                        <div class="ability-input">
+                            <label for="constitution" style="margin-bottom: -10px">CON</label>
+                            <input type="text" id="constitution-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="constitution">
+                        </div>
+                        <!-- Ability Input: Intelligence -->
+                        <div class="ability-input">
+                            <label for="intelligence" style="margin-bottom: -10px">INT</label>
+                            <input type="text" id="intelligence-modifier" readonly
+                            style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="intelligence">
+                        </div>
+                        <!-- Ability Input: Wisdom -->
+                        <div class="ability-input">
+                            <label for="wisdom" style="margin-bottom: -10px">WIS</label>
+                            <input type="text" id="wisdom-modifier" readonly
+                            style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="wisdom">
+                        </div>
+                        <!-- Ability Input: Charisma -->
+                        <div class="ability-input">
+                            <label for="charisma" style="margin-bottom: -10px">CHA</label>
+                            <input type="text" id="charisma-modifier" readonly
+                            style="caret-color: transparent; cursor:pointer"
+                                onmouseover="this.style.backgroundColor='lightgray';"
+                                onmouseout="this.style.backgroundColor='';"
+                                onfocus="this.style.backgroundColor='lightgray';"
+                                onblur="this.style.backgroundColor='';"
+                            >
+                            <input type="text" class="nested-input" id="charisma">
+                        </div>
+                    </div>
+
+                    <div class="input-column">
+
+                        <div class="small-container" style="width:470px; align-items:center;">
+                            <div class="input-row">
+                                <div class="hp-container" style="margin-bottom: 5px; margin-right:20px; margin-left:20px;">
+                                    <div class="mid-box" style="width:100px; margin-bottom:10px; padding:0px;">
+                                        <label for="level" style="white-space: nowrap;">PROF</label>
+                                        <input type="text" id="profbonus">
+                                    </div>
+                                </div>
+                    
+                                <div class="hp-container" style="margin-bottom:5px; margin-right:20px; margin-left:20px;"">
+                                    <div class="mid-box" style="margin-bottom:10px; margin-right:7px; margin-left:7px; padding:0px;">
+                                        <label for="level">INITIATIVE</label>
+                                        <input type="text" id="initiative">
+                                    </div>
+                                </div>
+
+                                <div class="hp-container" style="margin-bottom:5px; margin-right:20px; margin-left:20px;"">
+                                    <div class="mid-box" style="width:90px; margin-bottom:10px; margin-right:7px; margin-left:7px; padding:0px;">
+                                        <label for="level">SPEED</label>
+                                        <input type="text" id="speed">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="small-container" style="align-items:center;">
+                            <div class="input-column">
+                                <label for="classdc"
+                                    style="font-size: 26px; width:445px; text-align: center; background-color: rgb(210, 118, 6);">ATTACK
+                                    </label>
+                                <div class="smaller-container" style="width:430px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 11px;">TOTAL</label>
+                                            <input type="text" style="margin-left:8px" class="base-input" id="attacktotal">
+                                        </div>
+
+
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 9px;">KEY</label>
+                                            <input type="text" style="margin-left:8px" class="mid-input" id="attackability">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 9px;">PROF</label>
+                                            <input type="text" style="margin-left:8px" class="mid-input" id="attackprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 9px;">ITEM</label>
+                                            <input type="text" style="margin-left:8px" class="mid-input" id="attackitem">
+                                        </div>
+
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 5px;">DAMAGE</label>
+                                            <input type="text" class="base-input" style="width:140px; margin-left:5px;" id="damage">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-container" style="align-items:center;">
+                            <div class="input-column">
+                                <label for="classdc"
+                                    style="font-size: 26px; width:355px; text-align: center; background-color: rgb(210, 118, 6);"> SPELL ATTACK
+                                    </label>
+                                <div class="smaller-container" style="width:340px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 20px;">TOTAL</label>
+                                            <input type="text" style="margin-left:17px" class="base-input" id="spellattacktotal">
+                                        </div>
+
+
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">KEY</label>
+                                            <input type="text" style="margin-left:9px" class="mid-input" id="spellattackability">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:11px" class="mid-input" id="spellattackprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 10px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px" class="mid-input" id="spellattackitem">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-container" style="align-items:center;">
+                            <div class="input-column">
+                                <label for="classdc"
+                                    style="font-size: 26px; width:355px; text-align: center; background-color: rgb(210, 118, 6);"> SPELL SAVE DC
+                                    </label>
+                                <div class="smaller-container" style="width:340px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 20px;">TOTAL</label>
+                                            <input type="text" style="margin-left:17px" class="base-input" id="spelldctotal">
+                                        </div>
+                                        <div class="span-div">
+                                            <span class="input-text">=8+</span>
+                                        </div>
+
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 4px;">KEY</label>
+                                            <input type="text" style="margin-left:4px" class="mid-input" id="spelldcability">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:9px" class="mid-input" id="spelldcprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 10px;">ITEM</label>
+                                            <input type="text" style="margin-left:11px" class="mid-input" id="spelldcitem">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="small-container" style="align-items:center;">
+                            <div
+                                style="font-size: 26px; width:380px; text-align: center; font-weight: bold; background-color: rgb(210, 118, 6); margin-bottom: 5px;">
+                                <span>SAVING THROWS</span>
+                            </div>
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">STRENGTH</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="strengthsavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">STR</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="strengthsavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="strengthsaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="strengthsaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="strengthsavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">DEXTERITY</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="dexteritysavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">DEX</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="dexteritysavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="dexteritysaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="dexteritysaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="dexteritysavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">CONSTITUTION</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="constitutionsavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">CON</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="constitutionsavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="constitutionsaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="constitutionsaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="constitutionsavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">INTELLIGENCE</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="intelligencesavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">INT</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="intelligencesavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="intelligencesaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="intelligencesaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="intelligencesavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">WISDOM</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="wisdomsavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">WIS</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="wisdomsavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="wisdomsaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="wisdomsaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="wisdomsavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-column">
+                                <label for="classdc" style="font-size: 24px; text-align: center;">CHARISMA</label>
+                                <div class="smaller-container" style="width:365px;">
+                                    <div class="input-with-text">
+                                        <div class="mid-input-container">
+                                            <label for="total" style="font-size: 20px; text-align: center; margin-left: 13px;">TOTAL</label>
+                                            <input type="text" style="margin-left:10px;" class="base-input" id="charismasavetotal">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="key" style="font-size: 20px; text-align: center; margin-left: 12px;">WIS</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="charismasavekey">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">PROF</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="charismasaveprof">
+                                        </div>
+                                        <div class="mid-input-container">
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 12px;">ITEM</label>
+                                            <input type="text" style="margin-left:10px;" class="mid-input" id="charismasaveitem">
+                                        </div>
+                                        <div>
+                                            <label for="prof" style="font-size: 20px; text-align: center; margin-left: 7px;">SAVE</label>
+                                            <button id="charismasavecheck">SAVE</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="input-column">
+                        <div class="small-container">
+                            <label for="skills"
+                                style="font-size: 26px; text-align: center; background-color: rgb(210, 118, 6);">SKILLS</label>
+                            <div id="skills-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="container" id="celestial" style="display:none;">
+                <div class="input-column">
+                    <label for="classdc"
+                        style="font-size: 26px; text-align: center; background-color: rgb(210, 118, 6); width:918px; margin-left:45px;">CELESTIAL</label>
+                    <div class="input-row">
+                        <div class="hp-container" style="width:550px; margin-left:45px;">
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="strength" style="margin-bottom: -10px;">STR</label>
+                                <input type="text" id="celestial-strength-modifier" readonly
+                                    style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-strength">
+                            </div>
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="dexterity" style="margin-bottom: -10px;">DEX</label>
+                                <input type="text" id="celestial-dexterity-modifier" readonly
+                                    style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-dexterity">
+                            </div>
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="constitution" style="margin-bottom: -10px">CON</label>
+                                <input type="text" id="celestial-constitution-modifier" readonly
+                                    style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-constitution">
+                            </div>
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="intelligence" style="margin-bottom: -10px">INT</label>
+                                <input type="text" id="celestial-intelligence-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-intelligence">
+                            </div>
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="wisdom" style="margin-bottom: -10px">WIS</label>
+                                <input type="text" id="celestial-wisdom-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-wisdom">
+                            </div>
+                            <div class="ability-input" style="margin-left:15px">
+                                <label for="charisma" style="margin-bottom: -10px">CHA</label>
+                                <input type="text" id="celestial-charisma-modifier" readonly
+                                style="caret-color: transparent; cursor:pointer"
+                                    onmouseover="this.style.backgroundColor='lightgray';"
+                                    onmouseout="this.style.backgroundColor='';"
+                                    onfocus="this.style.backgroundColor='lightgray';"
+                                    onblur="this.style.backgroundColor='';"
+                                >
+                                <input type="text" class="nested-input" id="celestial-charisma">
+                            </div>
+                        </div>
+                    
+
+                        <div class="hp-container" style="margin-left:-10px;">
+                            <div class="mid-box" style="padding:0px; margin-right:-10px;">
+                                <label for="level">MAX HP</label>
+                                <input type="text" id="celestial-max-hp">
+                            </div>
+            
+                            <div class="mid-box" style="padding:0px; margin-right:-10px;">
+                                <label for="level">CUR HP</label>
+                                <input type="text" id="celestial-cur-hp">
+                            </div>
+            
+                            <div class="mid-box" style="padding:0px;">
+                                <label for="level">TEMP</label>
+                                <input type="text" id="celestial-temp-hp">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hp-container" style="width:440px; align-items:center; margin-left:45px; margin-top:15px;">
+                        <div class="input-row">
+
+                            <div class="mid-box" style="width:100px; margin-bottom:10px; margin-left:7px; padding:0px;">
+                                <label for="level" style="white-space: nowrap;">AC</label>
+                                <input type="text" id="celestial-ac">
+                            </div>
+                        
+            
+                            <div class="mid-box" style="margin-bottom:10px; margin-right:7px; padding:0px;">
+                                <label for="level">FLY</label>
+                                <input type="text" id="celestial-fly">
+                            </div>
+                        
+
+                            <div class="mid-box" style="width:90px; margin-bottom:10px; margin-right:7px; padding:0px;">
+                                <label for="level">SPEED</label>
+                                <input type="text" id="celestial-speed">
+                            </div>
+
+                            <div class="mid-box" style="width:90px; margin-bottom:10px; margin-right:7px; margin-left:14px; padding:0px;">
+                                <label for="level">LEVEL</label>
+                                <input type="text" id="celestial-level">
+                            </div>
+
+                            <div class="hp-container" style="width:450px; height:120px; margin-left:20px; padding:0px;">
+                                <button
+                                    id="radiant-bow"
+                                    style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-left:22px; margin-bottom:15px; margin-top:30px; font-size:17px; cursor: pointer;"
+                                    onmouseover="this.style.backgroundColor='#b25d04'"
+                                    onmouseout="this.style.backgroundColor='#d27606'">
+                                    RADIANT BOW
+                                </button>
+                                <button
+                                    id="radiant-mace"
+                                    style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-left:22px; margin-bottom:15px; margin-top:30px; font-size:17px; cursor: pointer;"
+                                    onmouseover="this.style.backgroundColor='#b25d04'"
+                                    onmouseout="this.style.backgroundColor='#d27606'">
+                                    RADIANT MACE
+                                </button>
+                                <button
+                                    id="healing-touch"
+                                    style="background-color: #d27606; width:120px; height:60px; border-radius: 4px; color: white; margin-left:22px; margin-bottom:15px; margin-top:30px; font-size:17px; cursor: pointer;"
+                                    onmouseover="this.style.backgroundColor='#b25d04'"
+                                    onmouseout="this.style.backgroundColor='#d27606'">
+                                    HEALING TOUCH
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+            <label style="font-size: 26px; width: 100%; text-align: center; background-color: rgb(210, 118, 6); display: block;">SPELLS</label>
+            
+            <!-- Cantrips Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 0px 0px;  text-align:center;">CANTRIPS</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guidance</td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidance-cast">CAST</button></td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidance-end">CEASE</button></td>
+                            <td class="guidance-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidance-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Sacred Flame</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">DEX <span class="saveDC"></span></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sacred-flame-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Thaumaturgy</td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">30 ft</td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px;">-</td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="thaumaturgy-cast">CAST</button></td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="thaumaturgy-end">CEASE</button></td>
+                            <td class="thaumaturgy-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Control</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Toll the Dead</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="toll-the-dead-effect">EFFECT</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Level 1 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0;  text-align:center;">LEVEL 1</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px;">Slots:</span>
+                    <input id="level1slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level1slot2" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level1slot3" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level1slot4" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel1">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt</td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingbolt-cast">CAST</button></td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingbolt-end">CEASE</button></td>
+                            <td class="guidingbolt-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guiding-bolt-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Bless</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bless-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Shield of Faith</td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="shieldoffaith-cast">CAST</button></td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="shieldoffaith-end">CEASE</button></td>
+                            <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">+2 AC</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewounds-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="cure-wounds-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Fairie Fire</td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">DEX <span class="saveDC"></span></td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="fairiefire-cast">CAST</button></td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="fairiefire-end">CEASE</button></td>
+                            <td class="fairiefire-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Invisible</td>
+                        </tr>
+                        <tr>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Sleep</td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">90 ft</td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sleep-cast">CAST</button></td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sleep-end">CEASE</button></td>
+                            <td class="sleep-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Unconsious</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Level 2 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0;  text-align:center;">LEVEL 2</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px;">Slots:</span>
+                    <input id="level2slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level2slot2" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level2slot3" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel2">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Moonbeam</td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-cast">CAST</button></td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-end">CEASE</button></td>
+                            <td class="moonbeam-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">See Invisibility</td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self</td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="seeinvisibility-cast">CAST</button></td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="seeinvisibility-end">CEASE</button></td>
+                            <td class="seeinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Detection</td>
+                        </tr>
+                        <tr>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spiritual Weapon</td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweapon-cast">CAST</button></td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweapon-cast">CEASE</button></td>
+                            <td class="spiritualweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritual-weapon-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds (Level 2)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel2-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="cure-wounds-level2-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt (Level 2)</td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel2-cast">CAST</button></td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel2-end">CEASE</button></td>
+                            <td class="guidingboltlevel2-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guiding-bolt-level2-effect">EFFECT</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Level 3 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0; text-align:center;">LEVEL 3</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px;">Slots:</span>
+                    <input id="level3slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level3slot2" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level3slot3" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel3">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Aura of Vitality</td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/30 ft</td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraofvitality-cast">CAST</button></td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraofvitality-end">CEASE</button></td>
+                            <td class="auraofvitality-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="aura-of-vitality-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Bestow Curse</td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bestowcurse-cast">CAST</button></td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bestowcurse-end">CEASE</button></td>
+                            <td class="bestowcurse-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Debuff</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Dispel Magic</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dispelmagic-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Control</td>
+                        </tr>
+                        <tr>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Leomund's Tiny Hut</td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Minute</td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self</td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="leomunds-cast">CAST</button></td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="leomunds-end">CEASE</button></td>
+                            <td class="leomunds-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Utility</td>
+                        </tr>
+                        <tr>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spirit Guardians</td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/15 ft</td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardians-cast">CAST</button></td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardians-end">CEASE</button></td>
+                            <td class="spiritguardians-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spirit-guardians-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds (Level 3)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel3-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="cure-wounds-level3-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt (Level 3)</td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel3-cast">CAST</button></td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel3-end">CEASE</button></td>
+                            <td class="guidingboltlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guiding-bolt-level3-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spiritual Weapon (Level 3)</td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel3-cast">CAST</button></td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel3-end">CEASE</button></td>
+                            <td class="spiritualweaponlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritual-weapon-level3-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Moonbeam (Level 3)</td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel3-cast">CAST</button></td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel3-end">CEASE</button></td>
+                            <td class="moonbeamlevel3-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-level3-effect">EFFECT</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Level 4 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0;  text-align:center;">LEVEL 4</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px;">Slots:</span>
+                    <input id="level4slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level4slot2" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level4slot3" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel4">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Aura of Life</td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/30 ft</td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraoflife-cast">CAST</button></td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraoflife-end">CEASE</button></td>
+                            <td class="auraoflife-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Revive</td>
+                        </tr>
+                        <tr>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Aura of Purity</td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/30 ft</td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraofpurity-cast">CAST</button></td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="auraofpurity-end">CEASE</button></td>
+                            <td class="auraofpurity-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Buff</td>
+                        </tr>
+                        <tr>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Death Ward</td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="deathward-cast">CAST</button></td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="deathward-end">CEASE</button></td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Buff</td>
+                        </tr>
+                        <tr>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Greater Invisibility</td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="greaterinvisibility-cast">CAST</button></td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="greaterinvisibility-end">CEASE</button></td>
+                            <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Invisible</td>
+                        </tr>
+                        <tr>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guardian of Faith</td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">30 ft</td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">DEX <span class="saveDC"></span></td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guardianoffaith-cast">CAST</button></td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guardianoffaith-end">CEASE</button></td>
+                            <td class="guardianoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">20 Damage</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Dispel Magic (Level 4)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dispelmagiclevel4-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Control</td>
+                        </tr>
+                        <tr>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spirit Guardians (Level 4)</td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/15 ft</td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel4-cast">CAST</button></td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel4-end">CEASE</button></td>
+                            <td class="spiritguardianslevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spirit-guardians-level4-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds (Level 4)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel4-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="cure-wounds-level4-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt (Level 4)</td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel4-cast">CAST</button></td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel4-end">CEASE</button></td>
+                            <td class="guidingboltlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guiding-bolt-level4-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spiritual Weapon (Level 4)</td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel4-cast">CAST</button></td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel4-end">CEASE</button></td>
+                            <td class="spiritualweaponlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritual-weapon-level4-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Moonbeam (Level 4)</td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel4-cast">CAST</button></td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel4-end">CEASE</button></td>
+                            <td class="moonbeamlevel4-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-level4-effect">EFFECT</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Level 5 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0;  text-align:center;">LEVEL 5</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px;">Slots:</span>
+                    <input id="level5slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel5">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Circle of Power</td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self</td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="circleofpower-cast">CAST</button></td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="circleofpower-end">CEASE</button></td>
+                            <td class="circleofpower-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Buff</td>
+                        </tr>
+                        <tr>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Dawn</td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dawn-cast">CAST</button></td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dawn-end">CEASE</button></td>
+                            <td class="dawn-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dawn">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Holy Weapon</td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="holyweapon-cast">CAST</button></td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="holyweapon-end">CEASE</button></td>
+                            <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">2d8</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Mass Cure Wounds</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="masscurewounds-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="mass-cure-wounds-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Mislead</td>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self</td>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="mislead-row"style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="mislead-cast">CAST</button></td>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="mislead-end">CEASE</button></td>
+                            <td class="mislead-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Deception</td>
+                        </tr>
+                        <tr>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Summon Celestial</td>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">90 ft</td>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td class="summoncelestial-row"style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="summoncelestial-cast">CAST</button></td>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="summoncelestial-end">CEASE</button></td>
+                            <td class="summoncelestial-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Summoning</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Dispel Magic (Level 5)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dispelmagiclevel5-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Control</td>
+                        </tr>
+                        <tr>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spirit Guardians (Level 5)</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/15 ft</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel5-cast">CAST</button></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel5-end">CEASE</button></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spirit-guardians-level5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds (Level 5)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel5-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="cure-wounds-level5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt (Level 5)</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel5-cast">CAST</button></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel5-end">CEASE</button></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guiding-bolt-level5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spiritual Weapon (Level 5)</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel5-cast">CAST</button></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel5-end">CEASE</button></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritual-weapon-level5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Moonbeam (Level 5)</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button  class="moonbeamlevel5-cast">CAST</button></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button  class="moonbeamlevel5-end">CEASE</button></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeam-level5-effect">EFFECT</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="spells.js"></script>
+    <script type="module" src="actions.js"></script>
+</body>
+
+</html>

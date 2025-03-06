@@ -181,7 +181,7 @@
                     <h2>Equipment</h2>
                     <div class="equip-slot" style="margin-top:-11px;">
                         <label>WEAPON1: </label>
-                        <input type="text" id="weapon1" class="equip-input" style="font-size: 22px; background-color: #AEA1EC;" readonly>
+                        <input type="text" id="weapon1" class="equip-input" style="font-size: 22px;" readonly>
                         <button class="remove-btn" onclick="unequipItem('weapon1')">UNEQUIP</button>
                     </div>
                     <div class="equip-slot">
@@ -228,7 +228,7 @@
     <script>
         const Inventory = [
             { name: "Warhammer", description: "A heavy melee weapon.", quantity: 1, category: "Weapon", attunement: "No" },
-            { name: "Shield + 1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "Yes" },
+            { name: "Shield +1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "Yes" },
             { name: "Plate Armor", description: "Heavy armor providing high defense.", quantity: 1, category: "Armor", attunement: "No" },
             { name: "Ring of Spell Storing", description: "Stores spells for later use.", quantity: 1, category: "Ring", attunement: "Yes" },
             { name: "Headband of Intellect", description: "Boosts intelligence.", quantity: 1, category: "Headwear", attunement: "Yes" },
@@ -236,8 +236,8 @@
             { name: "Heavy Crossbow", description: "A ranged weapon with long-range capabilities.", quantity: 1, category: "Weapon", attunement: "No" },
             { name: "Spell Scroll (Level 1)", description: "A scroll containing a single-use spell.", quantity: 1, category: "Consumable", attunement: "No" }
         ];
-        localStorage.getItem("attunedItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
-        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "", attuned3: "" }));
+        localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "Shield +1", attuned2: "Ring of Spell Storing", attuned3: "" }));
 
         // Function to remove an item from the inventory
         function removeItem(itemName) {

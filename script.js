@@ -102,7 +102,7 @@ function debounce(func, delay) {
     weapon2: "",
     armor: "Plate Armor",
     shield: "Shield +1",
-    ring: "",
+    ring: "Ring of Spell Storing",
     amulet: "",
     cloak: "",
     curHP: "84",

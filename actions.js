@@ -1,31 +1,3 @@
-const abilities = [
-    { inputId: 'strength', modifierId: 'strength-modifier', key: 'STR' },
-    { inputId: 'dexterity', modifierId: 'dexterity-modifier', key: 'DEX' },
-    { inputId: 'constitution', modifierId: 'constitution-modifier', key: 'CON' },
-    { inputId: 'intelligence', modifierId: 'intelligence-modifier', key: 'INT' },
-    { inputId: 'wisdom', modifierId: 'wisdom-modifier', key: 'WIS' },
-    { inputId: 'charisma', modifierId: 'charisma-modifier', key: 'CHA' }
-];
-
-const skillsWithKeyAbilities = [
-    { name: "Acrobatics", keyAbility: "DEX" },
-    { name: "Animal Handling", keyAbility: "WIS" },
-    { name: "Arcana", keyAbility: "INT" },
-    { name: "Athletics", keyAbility: "STR" },
-    { name: "Deception", keyAbility: "CHA" },
-    { name: "History", keyAbility: "INT" },
-    { name: "Insight", keyAbility: "WIS" },
-    { name: "Intimidation", keyAbility: "CHA" },
-    { name: "Investigation", keyAbility: "INT" },
-    { name: "Medicine", keyAbility: "WIS" },
-    { name: "Nature", keyAbility: "INT" },
-    { name: "Perception", keyAbility: "WIS" },
-    { name: "Performance", keyAbility: "CHA" },
-    { name: "Religion", keyAbility: "INT" },
-    { name: "Sleight Of Hand", keyAbility: "DEX" },
-    { name: "Stealth", keyAbility: "DEX" },
-    { name: "Survival", keyAbility: "WIS" }
-];
 
 const resilience = [
     { name: "fire", resistance: false, vulnerability: false },

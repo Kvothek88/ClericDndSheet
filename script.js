@@ -623,6 +623,4 @@ window.onload = function() {
     updateSheet();
 };
 
-export default {updateSheet, updateAbilityModifiers, updateArmorModifiers, updateAttackModifiers, updateDC, updateHpMax, updateInitiative,
-                updateProfBonus, updateSavesModifiers, updateSkillModifiers, updateSpellAttack, updateSpellAttackModifiers};
 

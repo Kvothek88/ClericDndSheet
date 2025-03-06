@@ -1,5 +1,3 @@
-import sheet from './script.js';
-
 document.addEventListener('DOMContentLoaded', function () {
 
     function diceThrow(diceNumber, diceType, name, modifier=false, blessedStrikes=false, spellAttack=false) {

@@ -124,8 +124,8 @@ body {
 .input-row {
     display: flex;
     flex-direction: row;
-    /* overflow-x: auto;
-    width:100% */
+    overflow-x: auto;
+    width:100%
 }
 
 .input-with-text {

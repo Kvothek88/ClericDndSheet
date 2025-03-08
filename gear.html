@@ -237,7 +237,7 @@
             { name: "Spell Scroll (Level 1)", description: "A scroll containing a single-use spell.", quantity: 1, category: "Consumable", attunement: "No" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
-        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "Shield +1", attuned2: "Ring of Spell Storing", attuned3: "" }));
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "Shield + 1", attuned2: "Ring of Spell Storing", attuned3: "" }));
 
         // Function to remove an item from the inventory
         function removeItem(itemName) {

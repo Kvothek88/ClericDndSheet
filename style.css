@@ -336,7 +336,7 @@ label {
 
 .new-container {
     display: flex;
-    flex-direction: row; /* Changed from column to row */
+    flex-direction: row;
     background: rgba(237, 185, 14, 0.5);
     padding: 10px;
     border-radius: 30px;
@@ -363,14 +363,12 @@ label {
     background-color: #a55c05;
 }
 
-/* Style for the spell slot squares */
 .spell-section input[readonly] {
     background-color: white;
     border: 2px solid #d27606;
     font-family: monospace;
 }
 
-/* When a slot is used (you'll need JavaScript to toggle this class) */
 .spell-section input[readonly].used {
     background-color: black;
     color: white;

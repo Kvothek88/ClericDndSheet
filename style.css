@@ -375,8 +375,8 @@ label {
 }
 .toast-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 5vh;  /* Uses viewport height */
+    right: 5vw; /* Uses viewport width */
     z-index: 1000;
 }
 

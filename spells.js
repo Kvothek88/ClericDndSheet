@@ -180,6 +180,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function flameStrike(level) {
+        let result = 0;
+        let fireResult = 0;
+        let radiantResult = 0;
+        const radiantRolls = [];
+        const fireRolls = [];
+
+        for (let i = 0; i < level; i++) {
+            const fireRoll = Math.floor(Math.random() * 6) + 1;
+            const radiantRoll = Math.floor(Math.random() * 6) + 1;
+            fireResult += fireRoll;
+            radiantResult += radiantRoll;
+            result += fireRoll + radiantRoll;
+            radiantRolls.push(radiantRoll);
+            fireRolls.push(fireRoll);
+        }
+
+        const sound = new Audio('sounds/dice.mp3');
+        sound.play();
+
+        const fireRollsString = fireRolls.join(' + ');
+        const radiantRollsString = radiantRolls.join(' + ');
+        showToast(`Flame Strike (Level ${level}): ${level*2}d6 = ${level}d6 Fire + ${level}d6 Radiant = ${fireRollsString} + ${radiantRollsString} = ${fireResult} Fire + ${radiantResult} Radiant = ${result}  `, 'success');
+    }
+
     function buffEffects(spell){
         const guidanceTracker = document.getElementById('guidance-tracker');
         const blessTracker = document.getElementById('bless-tracker');
@@ -284,8 +309,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const spiritGuardiansLevel5Effect = document.querySelector('.spirit-guardians-level5-effect');
         spiritGuardiansLevel5Effect.addEventListener('click', () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'));
 
-        const dawn = document.querySelector('.dawn');
-        dawn.addEventListener('click', () => diceThrow(4, 10, 'Dawn'));
+        const flamestrike = document.querySelector('.flamestrike');
+        flamestrike.addEventListener('click', () => flameStrike(5));
 
         const massCureWoundsEffect = document.querySelector('.mass-cure-wounds-effect');
         massCureWoundsEffect.addEventListener('click', () => massCureWounds(5));
@@ -327,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4},
         {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4},
         {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5},
-        {name: 'dawn', active: false, concentration: true, duration: true, level: 5},
+        {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5},
         {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5},
         {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5},
         {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5},

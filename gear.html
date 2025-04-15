@@ -228,7 +228,7 @@
     <script>
         const Inventory = [
             { name: "Warhammer", description: "A heavy melee weapon.", quantity: 1, category: "Weapon", attunement: "No" },
-            { name: "Shield + 1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "Yes" },
+            { name: "Shield + 1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "No" },
             { name: "Plate Armor", description: "Heavy armor providing high defense.", quantity: 1, category: "Armor", attunement: "No" },
             { name: "Ring of Spell Storing", description: "Stores spells for later use.", quantity: 1, category: "Ring", attunement: "Yes" },
             { name: "Headband of Intellect", description: "Boosts intelligence.", quantity: 1, category: "Headwear", attunement: "Yes" },
@@ -237,7 +237,7 @@
             { name: "Spell Scroll (Level 1)", description: "A scroll containing a single-use spell.", quantity: 1, category: "Consumable", attunement: "No" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
-        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "Shield + 1", attuned2: "Ring of Spell Storing", attuned3: "" }));
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "Ring of Spell Storing", attuned3: "" }));
 
         // Function to remove an item from the inventory
         function removeItem(itemName) {
@@ -293,7 +293,7 @@
                     <td>${item.category}</td>
                     <td>${item.attunement}</td>
                     <td>
-                        ${["Weapon", "Armor", "Shield", "Ring", "Amulet", "Cloak"].includes(item.category) ? 
+                        ${["Weapon", "Armor", "Shield", "Ring", "Amulet", "Cloak", "Headwear", "Armsgear"].includes(item.category) ? 
                         `<button class="wear-btn" onclick="equipItem('${item.name}', '${item.category}', '${item.attunement}')">WEAR</button>` : ""}
                     </td>
                     <td>
@@ -387,6 +387,8 @@
             else if (category === "Ring") charStats.ring = name;
             else if (category === "Amulet") charStats.amulet = name;
             else if (category === "Cloak") charStats.cloak = name;
+            else if (category === "Headwear") charStats.headwear = name;
+            else if (category === "Armsgear") charStats.armsgear = name;
 
             // Attunement logic
             if (attunement === "Yes") {
@@ -416,7 +418,7 @@
             const charStats = JSON.parse(localStorage.getItem("dndCharacterStats")) || {};
             const attunedItems = JSON.parse(localStorage.getItem("attunedItems")) || {};
 
-            const slots = ["weapon1", "weapon2", "armor", "shield", "ring", "amulet", "cloak"];
+            const slots = ["weapon1", "weapon2", "armor", "shield", "ring", "amulet", "cloak", "headwear", "armsgear"];
 
             slots.forEach(slot => {
                 const inputField = document.querySelector(`#${slot}`);

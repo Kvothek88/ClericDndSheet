@@ -242,9 +242,15 @@
             { name: "Plate Armor", description: "Heavy armor providing high defense.", quantity: 1, category: "Armor", attunement: "No" },
             { name: "Ring of Spell Storing", description: "Stores spells for later use.", quantity: 1, category: "Ring", attunement: "Yes" },
             { name: "Headband of Intellect", description: "Boosts intelligence.", quantity: 1, category: "Headwear", attunement: "Yes" },
-            { name: "Holy Symbol", description: "A holy symbol with utility effects.", quantity: 1, category: "Holy Symbol", attunement: "No" },
+            { name: "Holy Symbol", description: "Symbol used as spellcasting focus", quantity: 1, category: "Holy Symbol", attunement: "No" },
             { name: "Heavy Crossbow", description: "A ranged weapon with long-range capabilities.", quantity: 1, category: "Weapon", attunement: "No" },
-            { name: "Spell Scroll (Level 1)", description: "A scroll containing a single-use spell.", quantity: 1, category: "Consumable", attunement: "No" }
+            { name: "Spell Scroll of Inflict Wounds", description: "-", quantity: 1, category: "Scroll", attunement: "No" },
+            { name: "Spell Scroll of Daylight", description: "-", quantity: 1, category: "Scroll", attunement: "No" },
+            { name: "Spell Scroll of Crown of Madness", description: "-", quantity: 1, category: "Scroll", attunement: "No" },
+            { name: "Spell Scroll of Vampiric Touch", description: "-", quantity: 1, category: "Scroll", attunement: "No" },
+            { name: "Potion of Greater Healing", description: "Healing Potion", quantity: 2, category: "Potion", attunement: "No" },
+            { name: "Potion of Healing", description: "Healing Potion", quantity: 1, category: "Potion", attunement: "No" },
+            { name: "Necklace of Prayer Beads", description: "Bless x1, Cure Wounds x2, Greater Restoration x2, Guardian of Faith x1", quantity: 1, category: "Amulet", attunement: "Yes" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
         localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "Ring of Spell Storing", attuned3: "" }));

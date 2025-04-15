@@ -105,6 +105,8 @@ function debounce(func, delay) {
     ring: "Ring of Spell Storing",
     amulet: "",
     cloak: "",
+    headwear: "",
+    armsgear: "",
     curHP: "84",
     tempHP: null,
     level: "9",

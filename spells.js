@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function flamestrike(level) {
+    function flameStrike(level) {
         let result = 0;
         let fireResult = 0;
         let radiantResult = 0;
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
         spiritGuardiansLevel5Effect.addEventListener('click', () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'));
 
         const flamestrike = document.querySelector('.flamestrike');
-        flamestrike.addEventListener('click', () => flamestrike(5));
+        flamestrike.addEventListener('click', () => flameStrike(5));
 
         const massCureWoundsEffect = document.querySelector('.mass-cure-wounds-effect');
         massCureWoundsEffect.addEventListener('click', () => massCureWounds(5));

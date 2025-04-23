@@ -84,7 +84,7 @@ const magicalItems = [
   
   // Rings
   { 
-    "name": "Ring of Spell Focus +1", 
+    "name": "Ring of Spell Focus + 1", 
     "type": "ring", 
     "spellSaveDC": 1,
     "spellAttack": 1,
@@ -391,7 +391,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
       }
     }
   }
-  
+  console.log(totalBonus);
   return totalBonus;
 };
 

@@ -193,7 +193,7 @@ const characterStats = {
     celestialLevel: "5",
     defenderTracker: ""
 };
-console.log("New test");
+
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }

@@ -197,9 +197,9 @@ const characterStats = {
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }
-console.log("test");
-let isUpdatingProgrammatically = false;
 
+let isUpdatingProgrammatically = false;
+console.log("test");
 function attachInputListener(inputElementId, statKey) {
     const inputElement = document.getElementById(inputElementId);
 
@@ -397,7 +397,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
       }
     }
   }
-  
+  console.log("Total Bonus:" + totalBonus);
   return totalBonus;
 };
 

@@ -84,7 +84,7 @@ const magicalItems = [
   
   // Rings
   { 
-    "name": "Ring of Spell Focus + 1", 
+    "name": "Ring of Spell Storing", 
     "type": "ring", 
     "spellSaveDC": 1,
     "spellAttack": 1,

@@ -393,18 +393,29 @@
                 return; // Exit the function if the item is already attuned
             }
 
+            let slotToUpdate = "";
             // Equip the item based on its category
             if (category === "Weapon") {
                 let choice = prompt("Choose: 1 for Main Hand, 2 for Off Hand");
-                if (choice === "1") charStats.weapon1 = name;
-                else if (choice === "2") charStats.weapon2 = name;
-            } else if (category === "Armor") charStats.armor = name;
-            else if (category === "Shield") charStats.shield = name;
-            else if (category === "Ring") charStats.ring = name;
-            else if (category === "Amulet") charStats.amulet = name;
-            else if (category === "Cloak") charStats.cloak = name;
-            else if (category === "Headwear") charStats.headwear = name;
-            else if (category === "Armsgear") charStats.armsgear = name;
+                if (choice === "1") slotToUpdate = name;
+                else if (choice === "2") slotToUpdate = name;
+            } else if (category === "Armor") slotToUpdate = name;
+            else if (category === "Shield") slotToUpdate = name;
+            else if (category === "Ring") slotToUpdate = name;
+            else if (category === "Amulet") slotToUpdate = name;
+            else if (category === "Cloak") slotToUpdate = name;
+            else if (category === "Headwear") slotToUpdate = name;
+            else if (category === "Armsgear") slotToUpdate = name;
+
+            // If there's an existing item in the slot, unequip it first
+            if (slotToUpdate && charStats[slotToUpdate] && charStats[slotToUpdate] !== "") {
+                unequipItem(slotToUpdate);
+            }
+            
+            // Equip the new item
+            if (slotToUpdate) {
+                charStats[slotToUpdate] = name;
+            }
 
             // Attunement logic
             if (attunement === "Yes") {

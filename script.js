@@ -397,7 +397,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
       }
     }
   }
-  console.log("Total Bonus:" + totalBonus);
+  console.log("Total Bonus: " + totalBonus);
   return totalBonus;
 };
 

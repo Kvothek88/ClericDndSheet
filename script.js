@@ -6,7 +6,7 @@ const abilities = [
     { inputId: 'wisdom', modifierId: 'wisdom-modifier', key: 'WIS' },
     { inputId: 'charisma', modifierId: 'charisma-modifier', key: 'CHA' }
 ];
-console.log("test");
+
 const skillsWithKeyAbilities = [
     { name: "Acrobatics", keyAbility: "DEX" },
     { name: "Animal Handling", keyAbility: "WIS" },
@@ -99,6 +99,13 @@ const magicalItems = [
     "spellAttack": 0,
     "other": ["Fire spells deal +1d6 damage"] 
   },
+  { 
+    "name": "Headband of Intellect", 
+    "type": "headwear", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": [] 
+  },
   
   // Weapons
   {
@@ -118,7 +125,7 @@ function debounce(func, delay) {
     }
 }
 
-  const characterStats = {
+const characterStats = {
     name: "Radni Embermane",
     dndClass: "Cleric",
     race:"Hill Dwarf",
@@ -190,7 +197,7 @@ function debounce(func, delay) {
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }
-
+console.log("test");
 let isUpdatingProgrammatically = false;
 
 function attachInputListener(inputElementId, statKey) {

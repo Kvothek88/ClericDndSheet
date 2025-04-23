@@ -187,7 +187,7 @@ function debounce(func, delay) {
     defenderTracker: ""
   };
 
-
+console.log("test");
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }
@@ -420,7 +420,7 @@ const updateSpellAttackModifiers = () =>
         console.error("Wisdom modifier element not found");
         return;
     }
-    console.log(itemBonus);
+    
     const abilityModifier = wisdomModifierElement.value;
 
     spellAttackKeyInput.value = abilityModifier || '0';

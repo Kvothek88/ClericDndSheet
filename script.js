@@ -86,8 +86,8 @@ const magicalItems = [
   { 
     "name": "Ring of Spell Storing", 
     "type": "ring", 
-    "spellSaveDC": 1,
-    "spellAttack": 1,
+    "spellSaveDC": 0,
+    "spellAttack": 0,
     "other": [] 
   },
   

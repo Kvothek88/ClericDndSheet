@@ -6,7 +6,7 @@ const abilities = [
     { inputId: 'wisdom', modifierId: 'wisdom-modifier', key: 'WIS' },
     { inputId: 'charisma', modifierId: 'charisma-modifier', key: 'CHA' }
 ];
-
+console.log("test");
 const skillsWithKeyAbilities = [
     { name: "Acrobatics", keyAbility: "DEX" },
     { name: "Animal Handling", keyAbility: "WIS" },
@@ -187,7 +187,6 @@ function debounce(func, delay) {
     defenderTracker: ""
   };
 
-console.log("test");
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }

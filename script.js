@@ -418,7 +418,7 @@ const updateSpellAttackModifiers = () =>
 
     const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
     spellAttackItemInput.value = itemBonus;
-    console.log("Spell Attack: " + spellAttackItemInput.value);
+    
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
     if (!wisdomModifierElement)
@@ -431,7 +431,6 @@ const updateSpellAttackModifiers = () =>
 
     spellAttackKeyInput.value = abilityModifier || '0';
     spellAttackProfInput.value = profInput.value || '0';
-    spellAttackItemInput.value = 0;
     spellAttackTotalInput.value = parseInt(spellAttackKeyInput.value) + parseInt(spellAttackProfInput.value)  + parseInt(spellAttackItemInput.value);
 };
 
@@ -452,7 +451,7 @@ const updateSpellSaveDC = () =>
 
         const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
         spellDCItemInput.value = itemBonus;
-        console.log("Spell Save DC: " + spellDCItemInput.value);
+
         const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
         if (!wisdomModifierElement)
@@ -465,7 +464,7 @@ const updateSpellSaveDC = () =>
 
         spellDCKeyInput.value = abilityModifier || '0';
         spellDCProfInput.value = profInput.value || '0';
-        spellDCItemInput.value = 0;
+
         spellDCTotalInput.value =8 + parseInt(spellDCKeyInput.value) + parseInt(spellDCProfInput.value)  + parseInt(spellDCItemInput.value);
     };
 

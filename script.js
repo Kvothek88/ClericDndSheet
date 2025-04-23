@@ -49,6 +49,67 @@ const shields = [
     { "name": "Shield + 3", "armor": 5 }
 ];
 
+const magicalItems = [
+  // Amulets
+  { 
+    "name": "Amulet of the Devout + 1", 
+    "type": "amulet", 
+    "spellSaveDC": 1,
+    "spellAttack": 1,
+    "other": [] 
+  },
+  { 
+    "name": "Amulet of the Devout + 2", 
+    "type": "amulet", 
+    "spellSaveDC": 2,
+    "spellAttack": 2,
+    "other": [] 
+  },
+  { 
+    "name": "Amulet of the Devout + 3", 
+    "type": "amulet", 
+    "spellSaveDC": 3,
+    "spellAttack": 3,
+    "other": [] 
+  },
+  
+  // Cloaks
+  { 
+    "name": "Cloak of Protection", 
+    "type": "cloak", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": ["savingThrows +1", "AC +1"] 
+  },
+  
+  // Rings
+  { 
+    "name": "Ring of Spell Focus +1", 
+    "type": "ring", 
+    "spellSaveDC": 1,
+    "spellAttack": 1,
+    "other": [] 
+  },
+  
+  // Headwear
+  { 
+    "name": "Helm of Brilliance", 
+    "type": "headwear", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": ["Fire spells deal +1d6 damage"] 
+  },
+  
+  // Weapons
+  {
+    "name": "Staff of Power", 
+    "type": "weapon", 
+    "spellSaveDC": 2,
+    "spellAttack": 2,
+    "other": ["Various spell abilities"] 
+  }
+];
+
 function debounce(func, delay) {
     let timer;
     return function(...args) {

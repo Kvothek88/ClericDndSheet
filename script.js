@@ -389,7 +389,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
   
   for (const slot of itemSlots) {
     const itemName = characterStats[slot];
-    if (itemName) {
+    if (itemName && itemName !== "") {
       // Find the item in our magicalItems collection
       const item = magicalItems.find(item => item.name === itemName);
       if (item && item[bonusType] !== undefined) {

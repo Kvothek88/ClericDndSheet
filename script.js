@@ -410,7 +410,7 @@ const updateSpellAttackModifiers = () =>
         return;
     }
 
-    const itemBonus = calculateItemBonus(characterStats, "spellSaveDC");
+    const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
     spellAttackItemInput.value = itemBonus;
     
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
@@ -444,7 +444,7 @@ const updateSpellSaveDC = () =>
             return;
         }
 
-          const itemBonus = calculateItemBonus(characterStats, "spellSaveDC");
+          const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
           spellDCItemInput.value = itemBonus;
         
         const wisdomModifierElement = document.getElementById("wisdom-modifier");

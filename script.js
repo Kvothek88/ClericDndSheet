@@ -192,14 +192,14 @@ const characterStats = {
     celestialSpeed: "30ft",
     celestialLevel: "5",
     defenderTracker: ""
-  };
-
+};
+console.log("New test");
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }
 
 let isUpdatingProgrammatically = false;
-console.log("test");
+
 function attachInputListener(inputElementId, statKey) {
     const inputElement = document.getElementById(inputElementId);
 
@@ -397,7 +397,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
       }
     }
   }
-  console.log("Total Bonus: " + totalBonus);
+  
   return totalBonus;
 };
 
@@ -418,7 +418,7 @@ const updateSpellAttackModifiers = () =>
 
     const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
     spellAttackItemInput.value = itemBonus;
-    
+    console.log("Spell Attack: " + spellAttackItemInput.value);
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
     if (!wisdomModifierElement)
@@ -450,9 +450,9 @@ const updateSpellSaveDC = () =>
             return;
         }
 
-          const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
-          spellDCItemInput.value = itemBonus;
-        
+        const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
+        spellDCItemInput.value = itemBonus;
+        console.log("Spell Save DC: " + spellDCItemInput.value);
         const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
         if (!wisdomModifierElement)

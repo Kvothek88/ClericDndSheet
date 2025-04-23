@@ -408,12 +408,12 @@
             else if (category === "Armsgear") slotToUpdate = "armsgear";
 
             // If there's an existing item in the slot, unequip it first
-            if (slotToUpdate && charStats[slotToUpdate] && charStats[slotToUpdate] !== "") {
+            if (slotToUpdate && charStats[slotToUpdate] !== "") {
                 unequipItem(slotToUpdate);
             }
             
             // Equip the new item
-            if (slotToUpdate) {
+            if (slotToUpdate){
                 charStats[slotToUpdate] = name;
             }
 

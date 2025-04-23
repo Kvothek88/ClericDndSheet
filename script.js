@@ -391,7 +391,7 @@ const calculateItemBonus = (characterStats, bonusType) => {
       }
     }
   }
-  console.log(totalBonus);
+  
   return totalBonus;
 };
 
@@ -420,7 +420,7 @@ const updateSpellAttackModifiers = () =>
         console.error("Wisdom modifier element not found");
         return;
     }
-
+    console.log(itemBonus);
     const abilityModifier = wisdomModifierElement.value;
 
     spellAttackKeyInput.value = abilityModifier || '0';

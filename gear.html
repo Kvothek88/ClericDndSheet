@@ -250,7 +250,8 @@
             { name: "Spell Scroll of Vampiric Touch", description: "-", quantity: 1, category: "Scroll", attunement: "No" },
             { name: "Potion of Greater Healing", description: "Healing Potion", quantity: 2, category: "Potion", attunement: "No" },
             { name: "Potion of Healing", description: "Healing Potion", quantity: 1, category: "Potion", attunement: "No" },
-            { name: "Necklace of Prayer Beads", description: "Bless x1, Cure Wounds x2, Greater Restoration x2, Guardian of Faith x1", quantity: 1, category: "Amulet", attunement: "Yes" }
+            { name: "Necklace of Prayer Beads", description: "Bless x1, Cure Wounds x2, Greater Restoration x2, Guardian of Faith x1", quantity: 1, category: "Amulet", attunement: "Yes" },
+            { name: "Amulet of the Devout + 1", description: "Spell Attack & Spell Save DC + 1. One free Channel Divinity per Long Rest", quantity: 1, category: "Amulet", attunement: "Yes" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
         localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "Ring of Spell Storing", attuned3: "" }));
@@ -393,18 +394,30 @@
                 return; // Exit the function if the item is already attuned
             }
 
+            let slotToUpdate = "";
             // Equip the item based on its category
             if (category === "Weapon") {
                 let choice = prompt("Choose: 1 for Main Hand, 2 for Off Hand");
-                if (choice === "1") charStats.weapon1 = name;
-                else if (choice === "2") charStats.weapon2 = name;
-            } else if (category === "Armor") charStats.armor = name;
-            else if (category === "Shield") charStats.shield = name;
-            else if (category === "Ring") charStats.ring = name;
-            else if (category === "Amulet") charStats.amulet = name;
-            else if (category === "Cloak") charStats.cloak = name;
-            else if (category === "Headwear") charStats.headwear = name;
-            else if (category === "Armsgear") charStats.armsgear = name;
+                if (choice === "1") slotToUpdate = "weapon1";
+                else if (choice === "2") slotToUpdate = "weapon2";
+            } else if (category === "Armor") slotToUpdate = "armor";
+            else if (category === "Shield") slotToUpdate = "shield";
+            else if (category === "Ring") slotToUpdate = "ring";
+            else if (category === "Amulet") slotToUpdate = "amulet";
+            else if (category === "Cloak") slotToUpdate = "cloak";
+            else if (category === "Headwear") slotToUpdate = "headwear";
+            else if (category === "Armsgear") slotToUpdate = "armsgear";
+
+            // If there's an existing item in the slot, unequip it first
+            if (slotToUpdate && charStats[slotToUpdate] !== "") {
+                alert("An item of this type already equiped. Unequip it first");
+                return;
+            }
+            
+            // Equip the new item
+            if (slotToUpdate){
+                charStats[slotToUpdate] = name;
+            }
 
             // Attunement logic
             if (attunement === "Yes") {

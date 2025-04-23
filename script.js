@@ -49,6 +49,74 @@ const shields = [
     { "name": "Shield + 3", "armor": 5 }
 ];
 
+const magicalItems = [
+  // Amulets
+  { 
+    "name": "Amulet of the Devout + 1", 
+    "type": "amulet", 
+    "spellSaveDC": 1,
+    "spellAttack": 1,
+    "other": [] 
+  },
+  { 
+    "name": "Amulet of the Devout + 2", 
+    "type": "amulet", 
+    "spellSaveDC": 2,
+    "spellAttack": 2,
+    "other": [] 
+  },
+  { 
+    "name": "Amulet of the Devout + 3", 
+    "type": "amulet", 
+    "spellSaveDC": 3,
+    "spellAttack": 3,
+    "other": [] 
+  },
+  
+  // Cloaks
+  { 
+    "name": "Cloak of Protection", 
+    "type": "cloak", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": ["savingThrows +1", "AC +1"] 
+  },
+  
+  // Rings
+  { 
+    "name": "Ring of Spell Storing", 
+    "type": "ring", 
+    "spellSaveDC": 1,
+    "spellAttack": 1,
+    "other": [] 
+  },
+  
+  // Headwear
+  { 
+    "name": "Helm of Brilliance", 
+    "type": "headwear", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": ["Fire spells deal +1d6 damage"] 
+  },
+  { 
+    "name": "Headband of Intellect", 
+    "type": "headwear", 
+    "spellSaveDC": 0,
+    "spellAttack": 0,
+    "other": [] 
+  },
+  
+  // Weapons
+  {
+    "name": "Staff of Power", 
+    "type": "weapon", 
+    "spellSaveDC": 2,
+    "spellAttack": 2,
+    "other": ["Various spell abilities"] 
+  }
+];
+
 function debounce(func, delay) {
     let timer;
     return function(...args) {
@@ -314,6 +382,26 @@ const updateAttackModifiers = () =>
     attackTotalInput.value = parseInt(attackKeyInput.value) + parseInt(attackProfInput.value)  + parseInt(attackItemInput.value);
 };
 
+const calculateItemBonus = (characterStats, bonusType) => {
+  let totalBonus = 0;
+  
+  // Check each equipment slot for items that might affect the specified bonus type
+  const itemSlots = ['amulet', 'cloak', 'ring', 'headwear', 'weapon1', 'weapon2', 'armor', 'shield'];
+  
+  for (const slot of itemSlots) {
+    const itemName = characterStats[slot];
+    if (itemName && itemName !== "") {
+      // Find the item in our magicalItems collection
+      const item = magicalItems.find(item => item.name === itemName);
+      if (item && item[bonusType] !== undefined) {
+        totalBonus += item[bonusType];
+      }
+    }
+  }
+  
+  return totalBonus;
+};
+
 const updateSpellAttackModifiers = () =>
 {
     const spellAttackKeyInput = document.getElementById("spellattackability");
@@ -329,7 +417,8 @@ const updateSpellAttackModifiers = () =>
         return;
     }
 
-    spellAttackItemInput.value = 0;
+    const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
+    spellAttackItemInput.value = itemBonus;
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
     if (!wisdomModifierElement)
@@ -342,7 +431,7 @@ const updateSpellAttackModifiers = () =>
 
     spellAttackKeyInput.value = abilityModifier || '0';
     spellAttackProfInput.value = profInput.value || '0';
-    spellAttackItemInput.value = 0;
+    
     spellAttackTotalInput.value = parseInt(spellAttackKeyInput.value) + parseInt(spellAttackProfInput.value)  + parseInt(spellAttackItemInput.value);
 };
 
@@ -361,7 +450,8 @@ const updateSpellSaveDC = () =>
             return;
         }
 
-        spellDCItemInput.value = 0;
+        const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
+        spellDCItemInput.value = itemBonus;
         const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
         if (!wisdomModifierElement)
@@ -374,7 +464,7 @@ const updateSpellSaveDC = () =>
 
         spellDCKeyInput.value = abilityModifier || '0';
         spellDCProfInput.value = profInput.value || '0';
-        spellDCItemInput.value = 0;
+        
         spellDCTotalInput.value =8 + parseInt(spellDCKeyInput.value) + parseInt(spellDCProfInput.value)  + parseInt(spellDCItemInput.value);
     };
 

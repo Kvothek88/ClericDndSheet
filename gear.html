@@ -407,11 +407,11 @@
             else if (category === "Cloak") slotToUpdate = "cloak";
             else if (category === "Headwear") slotToUpdate = "headwear";
             else if (category === "Armsgear") slotToUpdate = "armsgear";
-            console.log("New Test");
+            
             // If there's an existing item in the slot, unequip it first
             if (slotToUpdate && charStats[slotToUpdate] !== "") {
-                unequipItem(slotToUpdate);
-                console.log("Condition met");
+                alert("An item of this type already equiped. Unequip it first");
+                return;
             }
             
             // Equip the new item

@@ -314,6 +314,26 @@ const updateAttackModifiers = () =>
     attackTotalInput.value = parseInt(attackKeyInput.value) + parseInt(attackProfInput.value)  + parseInt(attackItemInput.value);
 };
 
+const calculateItemBonus = (characterStats, bonusType) => {
+  let totalBonus = 0;
+  
+  // Check each equipment slot for items that might affect the specified bonus type
+  const itemSlots = ['amulet', 'cloak', 'ring', 'headwear', 'weapon1', 'weapon2', 'armor', 'shield'];
+  
+  for (const slot of itemSlots) {
+    const itemName = characterStats[slot];
+    if (itemName) {
+      // Find the item in our magicalItems collection
+      const item = magicalItems.find(item => item.name === itemName);
+      if (item && item[bonusType] !== undefined) {
+        totalBonus += item[bonusType];
+      }
+    }
+  }
+  
+  return totalBonus;
+};
+
 const updateSpellAttackModifiers = () =>
 {
     const spellAttackKeyInput = document.getElementById("spellattackability");
@@ -329,7 +349,9 @@ const updateSpellAttackModifiers = () =>
         return;
     }
 
-    spellAttackItemInput.value = 0;
+    const itemBonus = calculateItemBonus(characterStats, "spellSaveDC");
+    spellAttackItemInput.value = itemBonus;
+    
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
     if (!wisdomModifierElement)
@@ -361,7 +383,9 @@ const updateSpellSaveDC = () =>
             return;
         }
 
-        spellDCItemInput.value = 0;
+          const itemBonus = calculateItemBonus(characterStats, "spellSaveDC");
+          spellDCItemInput.value = itemBonus;
+        
         const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
         if (!wisdomModifierElement)

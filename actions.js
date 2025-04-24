@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         savedStats['curHP'] = currentHP;
-        savedStats.['tempHP'] = tempHP;
+        savedStats['tempHP'] = tempHP;
         localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
     }
 

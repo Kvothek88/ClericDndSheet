@@ -251,7 +251,8 @@
             { name: "Potion of Greater Healing", description: "Healing Potion", quantity: 2, category: "Potion", attunement: "No" },
             { name: "Potion of Healing", description: "Healing Potion", quantity: 1, category: "Potion", attunement: "No" },
             { name: "Necklace of Prayer Beads", description: "Bless x1, Cure Wounds x2, Greater Restoration x2, Guardian of Faith x1", quantity: 1, category: "Amulet", attunement: "Yes" },
-            { name: "Amulet of the Devout + 1", description: "Spell Attack & Spell Save DC + 1. One free Channel Divinity per Long Rest", quantity: 1, category: "Amulet", attunement: "Yes" }
+            { name: "Amulet of the Devout + 1", description: "Spell Attack & Spell Save DC + 1. One free Channel Divinity per Long Rest", quantity: 1, category: "Amulet", attunement: "Yes" },
+            { name: "Reliquary", description: "Holy Reliquary containing the remains of a renowned Selunite", quantity: 1, category: "Material Component", attunement: "No" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
         localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "Ring of Spell Storing", attuned3: "" }));

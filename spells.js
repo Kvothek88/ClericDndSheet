@@ -322,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'guidance', active: false, concentration: true, duration: true, level: 0},
         {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0},
         {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1},
+        {name: 'bless', active: false, concentration: true, duration: true, level: 1},
         {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1},
         {name: 'curewounds', active: false, concentration: false, duration: false, level: 1},
         {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1},
@@ -718,16 +719,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        if (name==="guidance"){
-            const guidanceTracker = document.getElementById('guidance-tracker');
-            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
-            if (choice==1)
-                guidanceTracker.value = "🔲";
-        }
-
         applyNonDamageEffects(name);
         
         if (spellToUpdate.concentration === true) {
+            // Toggle off Guidance and Bless
+            const guidanceTracker = document.getElementById('guidance-tracker');
+            guidanceTracker.value = "";
+    
+            const blessTracker = document.getElementById('bless-tracker');
+            blessTracker.value = "";
+            
             // First deactivate all concentration spells
             storedSpells = storedSpells.map(spell => {
                 if (spell.concentration && spell.active) {
@@ -735,6 +736,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 return spell;
             });
+        }
+
+        if (name==="guidance"){
+            const guidanceTracker = document.getElementById('guidance-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice==1)
+                guidanceTracker.value = "🔲";
+        }
+
+        if (name==="bless"){
+            const blessTracker = document.getElementById('bless-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice==1)
+                blessTracker.value = "🔲";
         }
         
         // Then activate the new spell
@@ -761,6 +776,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const guidanceTracker = document.getElementById('guidance-tracker');
         guidanceTracker.value = "";
+
+        const blessTracker = document.getElementById('bless-tracker');
+        blessTracker.value = "";
 
         removeNonDamageEffects(name);
         localStorage.setItem("spells", JSON.stringify(storedSpells));

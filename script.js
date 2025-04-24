@@ -311,7 +311,9 @@ const updateAbilityModifiers = () =>
 
         if (ability.inputId == "intelligence"){
             if (savedStats.headwear == "Headband of Intellect"){
-                abilityInput.value = 19;
+                if (savedStats.intelligence < 20){
+                    abilityInput.value = 19;
+                }
             } else {
                 savedStats.intelligence = 10;
                 localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 

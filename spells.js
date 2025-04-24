@@ -719,6 +719,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        applyNonDamageEffects(name);
+        
+        if (spellToUpdate.concentration === true) {
+            // Toggle off Guidance and Bless
+            const guidanceTracker = document.getElementById('guidance-tracker');
+            guidanceTracker.value = "";
+    
+            const blessTracker = document.getElementById('bless-tracker');
+            blessTracker.value = "";
+            // First deactivate all concentration spells
+            storedSpells = storedSpells.map(spell => {
+                if (spell.concentration && spell.active) {
+                    return { ...spell, active: false };
+                }
+                return spell;
+            });
+        }
+
         if (name==="guidance"){
             const guidanceTracker = document.getElementById('guidance-tracker');
             const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
@@ -731,18 +749,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
             if (choice==1)
                 blessTracker.value = "🔲";
-        }
-
-        applyNonDamageEffects(name);
-        
-        if (spellToUpdate.concentration === true) {
-            // First deactivate all concentration spells
-            storedSpells = storedSpells.map(spell => {
-                if (spell.concentration && spell.active) {
-                    return { ...spell, active: false };
-                }
-                return spell;
-            });
         }
         
         // Then activate the new spell
@@ -778,13 +784,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSpellStatus(storedSpells);
     }
     
-    function ceaseAllConcentrationSpells() {
-        const guidanceTracker = document.getElementById('guidance-tracker');
-        guidanceTracker.value = "";
-
-        const blessTracker = document.getElementById('bless-tracker');
-        blessTracker.value = "";
-        
+    function ceaseAllConcentrationSpells() {        
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         storedSpells = storedSpells.map(spell => {
             if (spell.concentration && spell.active) {

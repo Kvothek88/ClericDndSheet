@@ -725,6 +725,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 guidanceTracker.value = "🔲";
         }
 
+        if (name==="bless"){
+            const blessTracker = document.getElementById('bless-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice==1)
+                blessTracker.value = "🔲";
+        }
+
         applyNonDamageEffects(name);
         
         if (spellToUpdate.concentration === true) {

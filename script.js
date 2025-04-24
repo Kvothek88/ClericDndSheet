@@ -314,6 +314,7 @@ const updateAbilityModifiers = () =>
                 abilityInput.value = 19;
             } else {
                 savedStats.intelligence = 10;
+                localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
             }
         }
         

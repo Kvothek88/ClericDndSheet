@@ -779,6 +779,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function ceaseAllConcentrationSpells() {
+        const guidanceTracker = document.getElementById('guidance-tracker');
+        guidanceTracker.value = "";
+
+        const blessTracker = document.getElementById('bless-tracker');
+        blessTracker.value = "";
+        
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         storedSpells = storedSpells.map(spell => {
             if (spell.concentration && spell.active) {

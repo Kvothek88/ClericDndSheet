@@ -322,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'guidance', active: false, concentration: true, duration: true, level: 0},
         {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0},
         {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1},
+        {name: 'bless', active: false, concentration: true, duration: true, level: 1},
         {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1},
         {name: 'curewounds', active: false, concentration: false, duration: false, level: 1},
         {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1},

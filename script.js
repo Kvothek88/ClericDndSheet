@@ -56,21 +56,30 @@ const magicalItems = [
     "type": "amulet", 
     "spellSaveDC": 1,
     "spellAttack": 1,
-    "other": [] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   { 
     "name": "Amulet of the Devout + 2", 
     "type": "amulet", 
     "spellSaveDC": 2,
     "spellAttack": 2,
-    "other": [] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   { 
     "name": "Amulet of the Devout + 3", 
     "type": "amulet", 
     "spellSaveDC": 3,
     "spellAttack": 3,
-    "other": [] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   
   // Cloaks
@@ -79,7 +88,10 @@ const magicalItems = [
     "type": "cloak", 
     "spellSaveDC": 0,
     "spellAttack": 0,
-    "other": ["savingThrows +1", "AC +1"] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   
   // Rings
@@ -88,7 +100,10 @@ const magicalItems = [
     "type": "ring", 
     "spellSaveDC": 0,
     "spellAttack": 0,
-    "other": [] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   
   // Headwear
@@ -97,14 +112,20 @@ const magicalItems = [
     "type": "headwear", 
     "spellSaveDC": 0,
     "spellAttack": 0,
-    "other": ["Fire spells deal +1d6 damage"] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   { 
     "name": "Headband of Intellect", 
     "type": "headwear", 
     "spellSaveDC": 0,
     "spellAttack": 0,
-    "other": [] 
+    "armorClass": 0,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   },
   
   // Weapons
@@ -113,7 +134,10 @@ const magicalItems = [
     "type": "weapon", 
     "spellSaveDC": 2,
     "spellAttack": 2,
-    "other": ["Various spell abilities"] 
+    "armorClass": 2,
+    "saves": 0,
+    "abilities": 0,
+    "skills": [] 
   }
 ];
 

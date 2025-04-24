@@ -309,10 +309,12 @@ const updateAbilityModifiers = () =>
     {
         const abilityInput = document.getElementById(ability.inputId);
 
-        if (ability.inputId == "intelligence" && savedStats.headwear == "Headband of Intellect"){
-            abilityInput.value = 19;
-        } else {
-            abilityInput.value = 10;
+        if (ability.inputId == "intelligence"){
+            if (savedStats.headwear == "Headband of Intellect"){
+                abilityInput.value = 19;
+            } else {
+                abilityInput.value = 10;
+            }
         }
         
         const abilityModifier = document.getElementById(ability.modifierId);

@@ -313,7 +313,7 @@ const updateAbilityModifiers = () =>
             if (savedStats.headwear == "Headband of Intellect"){
                 abilityInput.value = 19;
             } else {
-                abilityInput.value = 10;
+                savedStats.intelligence = 10;
             }
         }
         

@@ -770,6 +770,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const guidanceTracker = document.getElementById('guidance-tracker');
         guidanceTracker.value = "";
 
+        const blessTracker = document.getElementById('bless-tracker');
+        blessTracker.value = "";
+
         removeNonDamageEffects(name);
         localStorage.setItem("spells", JSON.stringify(storedSpells));
         updateSpellStatus(storedSpells);

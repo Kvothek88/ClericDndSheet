@@ -204,7 +204,7 @@ const characterStats = {
     level: "9",
     speed: "25",
     hitDice: 9,
-    celestialCurHP: null,
+    celestialCurHP: 40,
     celestialTempHP: null,
     celestialStrength: 16,
     celestialDexterity: 14,

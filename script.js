@@ -195,7 +195,7 @@ const characterStats = {
     armor: "Plate Armor",
     shield: "Shield + 1",
     ring: "Ring of Spell Storing",
-    amulet: "Amulet of te Devout + 1",
+    amulet: "Amulet of the Devout + 1",
     cloak: "",
     headwear: "Headband of Intellect",
     armsgear: "",

@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
             blessRoll = Math.floor(Math.random() * 4) + 1;
         }
             
-        result = roll + plus;
+        result = roll + plus + blessRoll;
 
         if (blessRoll != 0){
             blessString1 = "+1d4";

@@ -255,7 +255,7 @@
             { name: "Reliquary", description: "Holy Reliquary containing the remains of a renowned Selunite", quantity: 1, category: "Material Component", attunement: "No" }
         ];
         localStorage.getItem("inventoryItems") ?? localStorage.setItem("inventoryItems", JSON.stringify(Inventory));
-        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "", attuned2: "Ring of Spell Storing", attuned3: "" }));
+        localStorage.getItem("attunedItems") ?? localStorage.setItem("attunedItems", JSON.stringify({ attuned1: "Headband of Intellect", attuned2: "Ring of Spell Storing", attuned3: "Amulet of the Devout + 1" }));
 
         // Function to remove an item from the inventory
         function removeItem(itemName) {

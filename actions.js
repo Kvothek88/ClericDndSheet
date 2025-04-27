@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const roll = d20Throw("Attack",attackMod);
         if (roll == 20){
             attackCrit.value = "🔲";
-            showToast("Ctitical Hit!",'success');
+            showToast("Critical Hit!",'success');
         }
         else
             attackCrit.value = "";
@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const roll = d20Throw("Spell Attack",spellAttackMod);
         if (roll == 20){
             spellAttackCrit.value = "🔲";
-            showToast("Ctitical Hit!",'success');
+            showToast("Critical Hit!",'success');
         } else {
             spellAttackCrit.value = "";
         }

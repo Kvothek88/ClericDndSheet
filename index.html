@@ -147,6 +147,7 @@
                     <input id="guidance-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
                     <input id="bless-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
                     <input id="defender-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
+                    <input id="deathward-tracker" style="font-size:20px; cursor:pointer; width:30px; margin-top:10px; text-align:left; display:none;">
                 </div> 
                 
                 <div class="input-column">
@@ -162,6 +163,12 @@
                         DIS
                     </button>
                     <input type="text" id="dis" style="margin-top:7px; border-radius: 4px; width:44px; height:33px; text-align: center; border-radius:4px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);">
+                    <button id="crit-button" style="margin-top:17px; background-color: #d27606; color:white; border-radius: 4px; width:50px; height:35px;"
+                        onmouseover="this.style.backgroundColor='#b25d04'"
+                        onmouseout="this.style.backgroundColor='#d27606'">
+                        CRIT
+                    </button>
+                    <input type="text" id="crit" style="margin-top:7px; border-radius: 4px; width:44px; height:33px; text-align: center; border-radius:4px; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);">
                 </div>
 
             </div>
@@ -628,6 +635,20 @@
                             </div>
                             
                         </div>
+
+                        <div class="small-container" style="align-items:center;">
+                            <div
+                                style="font-size: 26px; width:513px; text-align: center; font-weight: bold; background-color: rgb(210, 118, 6); margin-bottom: 15px;">
+                                <span>CONDITIONS</span>
+                            </div>
+
+                            <div class="conditions-grid" id="conditions-container"> </div>
+                        </div>
+
+
+
+                        
+
                     </div>
 
                     <div class="input-column">
@@ -1161,7 +1182,7 @@
                             <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="deathward-cast">CAST</button></td>
                             <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="deathward-end">CEASE</button></td>
-                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Buff</td>
+                            <td class="deathward-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="deathward-effect">EFFECT</button></td>
                         </tr>
                         <tr>
                             <td class="greaterinvisibility-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Greater Invisibility</td>
@@ -1378,8 +1399,8 @@
     <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
-    <script src="spells.js"></script>
-    <script src="actions.js"></script>
+    <script src="spells.js" type="module"></script>
+    <script src="actions.js" type="module"></script>
 </body>
 
 </html>

@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toast.remove();
         });
     }
-
+    
     const conditions = [
         'blinded',
         'charmed',

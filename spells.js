@@ -1,3 +1,5 @@
+import { loadSavedConditions, saveConditions, toggleCondition } from './actions.js';
+
 export function spellCease(name,level) {
     let storedSpells = JSON.parse(localStorage.getItem("spells"));
     storedSpells = storedSpells.map(spell => {
@@ -101,10 +103,18 @@ function applyNonDamageEffects(name){
         stats.acother = "2";
         localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
     }
+
     if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
         const advantage = document.getElementById('adv');
         advantage.value = "🔲";
     }
+
+    if (name=='greaterinvisibility'){
+        const invisibleBox = document.getElementById('toggle-invisible');
+        if (!invisibleBox.checked)
+            toggleCondition('invisible');
+    }
+
     if (name=='summoncelestial'){
         const celestial = document.getElementById('celestial');
         let stats = savedStats ? JSON.parse(savedStats) : {};
@@ -131,10 +141,18 @@ export function removeNonDamageEffects(name){
         stats.acother = 0;
         localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
     }
+
     if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
         const advantage = document.getElementById('adv');
         advantage.value = "";
     }
+
+    if (name=='greaterinvisibility'){
+        const invisibleBox = document.getElementById('toggle-invisible');
+        if (invisibleBox.checked)
+            toggleCondition('invisible');
+    }
+
     if (name=='summoncelestial'){
         let stats = savedStats ? JSON.parse(savedStats) : {};
         const celestial = document.getElementById('celestial');

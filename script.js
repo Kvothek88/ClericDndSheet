@@ -27,6 +27,23 @@ const skillsWithKeyAbilities = [
     { name: "Survival", keyAbility: "WIS" }
 ];
 
+const conditions = [
+    'blinded',
+    'charmed',
+    'deafened',
+    'frightened',
+    'grappled',
+    'incapacitated',
+    'invisible',
+    'paralyzed',
+    'petrified',
+    'poisoned',
+    'prone',
+    'restrained',
+    'stunned',
+    'unconscious'
+];
+
 const armors = [
     { "name": "Padded Armor", "dex-mod": Number.MAX_SAFE_INTEGER, "armor": 1 },
     { "name": "Leather Armor", "dex-mod": Number.MAX_SAFE_INTEGER, "armor": 1 },
@@ -134,7 +151,7 @@ const magicalItems = [
     "type": "weapon", 
     "spellSaveDC": 2,
     "spellAttack": 2,
-    "armorClass": 2,
+    "armorClass": 0,
     "saves": 0,
     "abilities": 0,
     "skills": [] 
@@ -149,7 +166,7 @@ function debounce(func, delay) {
     }
 }
 
-  const characterStats = {
+const characterStats = {
     name: "Radni Embermane",
     dndClass: "Cleric",
     race:"Hill Dwarf",
@@ -195,16 +212,16 @@ function debounce(func, delay) {
     armor: "Plate Armor",
     shield: "Shield + 1",
     ring: "Ring of Spell Storing",
-    amulet: "",
+    amulet: "Amulet of the Devout + 1",
     cloak: "",
-    headwear: "",
+    headwear: "Headband of Intellect",
     armsgear: "",
     curHP: "84",
     tempHP: null,
     level: "9",
     speed: "25",
     hitDice: 9,
-    celestialCurHP: null,
+    celestialCurHP: 40,
     celestialTempHP: null,
     celestialStrength: 16,
     celestialDexterity: 14,
@@ -216,8 +233,7 @@ function debounce(func, delay) {
     celestialSpeed: "30ft",
     celestialLevel: "5",
     defenderTracker: ""
-  };
-
+};
 
 if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
@@ -323,6 +339,7 @@ const updateAbilityModifiers = () =>
         
         const abilityModifier = document.getElementById(ability.modifierId);
         const abilityValue = parseInt(abilityInput.value, 10);
+
         if (!isNaN(abilityValue))
         {
             let modifier = Math.floor((abilityValue - 10) / 2);
@@ -455,6 +472,7 @@ const updateSpellAttackModifiers = () =>
 
     const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
     spellAttackItemInput.value = itemBonus;
+    
     const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
     if (!wisdomModifierElement)
@@ -462,12 +480,11 @@ const updateSpellAttackModifiers = () =>
         console.error("Wisdom modifier element not found");
         return;
     }
-
+    
     const abilityModifier = wisdomModifierElement.value;
 
     spellAttackKeyInput.value = abilityModifier || '0';
     spellAttackProfInput.value = profInput.value || '0';
-    
     spellAttackTotalInput.value = parseInt(spellAttackKeyInput.value) + parseInt(spellAttackProfInput.value)  + parseInt(spellAttackItemInput.value);
 };
 
@@ -488,6 +505,7 @@ const updateSpellSaveDC = () =>
 
         const itemBonus = calculateItemBonus(savedStats, "spellSaveDC");
         spellDCItemInput.value = itemBonus;
+
         const wisdomModifierElement = document.getElementById("wisdom-modifier");
 
         if (!wisdomModifierElement)
@@ -500,7 +518,7 @@ const updateSpellSaveDC = () =>
 
         spellDCKeyInput.value = abilityModifier || '0';
         spellDCProfInput.value = profInput.value || '0';
-        
+
         spellDCTotalInput.value =8 + parseInt(spellDCKeyInput.value) + parseInt(spellDCProfInput.value)  + parseInt(spellDCItemInput.value);
     };
 
@@ -591,11 +609,24 @@ const updateHpMax = () =>
     const level = document.getElementById("level").value;
     const conModifier = document.getElementById("constitution-modifier").value;
     const maxHPInput = document.getElementById("max-hp");
-    const maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
+    const curHPInput = document.getElementById("cur-hp");
+    const exhaustionInput = document.getElementById('exhaustion-level');
+    let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
+
+    if (exhaustionInput.value >= 4){
+        maxHP /= 2;
+    }
+
     if (level === "" || level === null || conModifier === "" || conModifier === null)
         maxHPInput.value = "";
-    else
+    else{
         maxHPInput.value = maxHP;
+        if (curHPInput.value > maxHPInput.value){
+            curHPInput.value = maxHP;
+            savedStats.curHP = maxHP;
+            localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+        }
+    }
 };
 
 const updateCelestial = () => {
@@ -638,6 +669,36 @@ const updateCelestialAbilityModifiers = () =>
     });
 }
 
+const updateSpeed = () => 
+{
+    const speedInput = document.getElementById('speed');
+    const conditionBoxesMap = {};
+    const exhaustionInput = document.getElementById('exhaustion-level');
+    const speedBase = 25;
+
+    conditions.forEach(condition => {
+        const conditionBox = document.getElementById(`toggle-${condition}`);
+        conditionBoxesMap[condition] = conditionBox;
+    })
+
+    if (conditionBoxesMap['grappled'].checked || conditionBoxesMap['paralyzed'].checked || conditionBoxesMap['petrified'].checked
+        || conditionBoxesMap['restrained'].checked || conditionBoxesMap['stunned'].checked || conditionBoxesMap['unconscious'].checked
+        || exhaustionInput.value >= 5
+    ){
+        speedInput.value = 0;
+        savedStats.speed = 0;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    } else if (Number(exhaustionInput.value) >= 2){
+        speedInput.value = Math.floor((speedBase/5)/2)*5;
+        savedStats.speed = Math.floor((speedBase/5)/2)*5;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    } else {
+        speedInput.value = speedBase;
+        savedStats.speed = speedBase;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    }
+}
+
 const updateSheet = () =>
 {
     updateAbilityModifiers();
@@ -654,6 +715,7 @@ const updateSheet = () =>
     updateSavesModifiers();
     updateCelestial();
     updateCelestialAbilityModifiers();
+    updateSpeed();
 }
 
 document.addEventListener('DOMContentLoaded', function ()
@@ -743,12 +805,31 @@ document.addEventListener('DOMContentLoaded', function ()
     summonCelestialRows.forEach(row => {
         observer.observe(row, { attributes: true, attributeFilter: ['style'] });
     });
-
-
 });
 
 window.onload = function() {
     updateSheet();
+    document.getElementById('exhaustion-level').addEventListener('change', () => {
+        updateHpMax();
+        updateSpeed();
+    })
+    document.getElementById('toggle-grappled').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-paralyzed').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-petrified').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-restrained').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-stunned').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-unconscious').addEventListener('change', () => {
+        updateSpeed();
+    })
+
 };
-
-

@@ -790,15 +790,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        applyNonDamageEffects(name);
-        
         if (spellToUpdate.concentration === true) {
-            // Toggle off Guidance and Bless
+            // Deactivate Concentration spell effects
             const guidanceTracker = document.getElementById('guidance-tracker');
             guidanceTracker.value = "";
     
             const blessTracker = document.getElementById('bless-tracker');
             blessTracker.value = "";
+
+            removeNonDamageEffects('greaterinvisibility');
+            removeNonDamageEffects('summoncelestial');
 
             // First deactivate all concentration spells
             storedSpells = storedSpells.map(spell => {
@@ -808,6 +809,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return spell;
             });
         }
+
+        applyNonDamageEffects(name);
 
         if (name==="guidance"){
             const guidanceTracker = document.getElementById('guidance-tracker');

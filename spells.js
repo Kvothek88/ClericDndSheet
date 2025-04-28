@@ -1,3 +1,169 @@
+import { loadSavedConditions, saveConditions, toggleCondition } from './actions.js';
+
+export function spellCease(name,level) {
+    let storedSpells = JSON.parse(localStorage.getItem("spells"));
+    storedSpells = storedSpells.map(spell => {
+        if (spell.name === name) {
+            return { ...spell, active: false };
+        }
+        return spell;
+    });
+
+    const guidanceTracker = document.getElementById('guidance-tracker');
+    guidanceTracker.value = "";
+
+    const blessTracker = document.getElementById('bless-tracker');
+    blessTracker.value = "";
+
+    const deathwardTracker = document.getElementById('deathward-tracker');
+    deathwardTracker.value = "";
+
+    removeNonDamageEffects(name);
+    localStorage.setItem("spells", JSON.stringify(storedSpells));
+    updateSpellStatus(storedSpells);
+}
+
+export function updateSpellStatus(spellsStatus) {
+    const rowsList = [];
+
+    spellsStatus.forEach(spell => {
+        const spellRow = document.querySelectorAll(`.${spell.name}-row`);
+        rowsList.push(spellRow);
+    });
+
+    const storedSpells = JSON.parse(localStorage.getItem("spells"));
+    
+    for (let i = 0 ; i < rowsList.length; i++) {
+        const spellToUpdate = storedSpells[i];
+        if (spellToUpdate.concentration===true){
+            if (spellToUpdate.active) {
+                rowsList[i].forEach(row => {
+                    row.style.backgroundColor = '#B266FF';
+                });
+            } else {
+                rowsList[i].forEach(row => {
+                    row.style.backgroundColor = '';
+                });
+            }
+        } else if (spellToUpdate.duration===true) {
+            if (spellToUpdate.active) {
+                rowsList[i].forEach(row => {
+                    row.style.backgroundColor = '#66FFB2';
+                });
+            } else {
+                rowsList[i].forEach(row => {
+                    row.style.backgroundColor = '';
+                });
+            }
+        }
+    }
+    updateSpellSlotsStatus();
+}
+
+function updateSpellSlotsStatus(){
+    const storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
+    const level1slot1 = document.getElementById('level1slot1');
+    const level1slot2 = document.getElementById('level1slot2');
+    const level1slot3 = document.getElementById('level1slot3');
+    const level1slot4 = document.getElementById('level1slot4');
+    const level2slot1 = document.getElementById('level2slot1');
+    const level2slot2 = document.getElementById('level2slot2');
+    const level2slot3 = document.getElementById('level2slot3');
+    const level3slot1 = document.getElementById('level3slot1');
+    const level3slot2 = document.getElementById('level3slot2');
+    const level3slot3 = document.getElementById('level3slot3');
+    const level4slot1 = document.getElementById('level4slot1');
+    const level4slot2 = document.getElementById('level4slot2');
+    const level4slot3 = document.getElementById('level4slot3');
+    const level5slot1 = document.getElementById('level5slot1');
+
+    level1slot1.value = storedSlots.level1slot1;
+    level1slot2.value = storedSlots.level1slot2;
+    level1slot3.value = storedSlots.level1slot3;
+    level1slot4.value = storedSlots.level1slot4;
+    level2slot1.value = storedSlots.level2slot1;
+    level2slot2.value = storedSlots.level2slot2;
+    level2slot3.value = storedSlots.level2slot3;
+    level3slot1.value = storedSlots.level3slot1;
+    level3slot2.value = storedSlots.level3slot2;
+    level3slot3.value = storedSlots.level3slot3;
+    level4slot1.value = storedSlots.level4slot1;
+    level4slot2.value = storedSlots.level4slot2;
+    level4slot3.value = storedSlots.level4slot3;
+    level5slot1.value = storedSlots.level5slot1;
+}
+
+
+
+function applyNonDamageEffects(name){
+    let savedStats = localStorage.getItem('dndCharacterStats');
+    if (name=='shieldoffaith'){
+        let stats = savedStats ? JSON.parse(savedStats) : {};
+
+        stats.acother = "2";
+        localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
+    }
+
+    if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
+        const advantage = document.getElementById('adv');
+        advantage.value = "🔲";
+    }
+
+    if (name=='greaterinvisibility'){
+        const invisibleBox = document.getElementById('toggle-invisible');
+        if (!invisibleBox.checked)
+            toggleCondition('invisible');
+    }
+
+    if (name=='summoncelestial'){
+        const celestial = document.getElementById('celestial');
+        let stats = savedStats ? JSON.parse(savedStats) : {};
+        celestial.style.display = 'block';
+        const choice = parseInt(prompt("Enter 1 if Avenger or 2 if Defender"));
+        if (choice != 1 && choice != 2){
+            showToast("Wrong choice", 'error');
+            return;
+        }
+        if (choice == 2){
+            const defenderTracker = document.getElementById('defender-tracker');
+            stats.defenderTracker = "🔲";
+            defenderTracker.value = "🔲";
+            localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
+        }
+    }
+}
+
+export function removeNonDamageEffects(name){
+    let savedStats = localStorage.getItem('dndCharacterStats');
+    if (name=='shieldoffaith'){
+        let stats = savedStats ? JSON.parse(savedStats) : {};
+
+        stats.acother = 0;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
+    }
+
+    if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
+        const advantage = document.getElementById('adv');
+        advantage.value = "";
+    }
+
+    if (name=='greaterinvisibility'){
+        const invisibleBox = document.getElementById('toggle-invisible');
+        if (invisibleBox.checked)
+            toggleCondition('invisible');
+    }
+
+    if (name=='summoncelestial'){
+        let stats = savedStats ? JSON.parse(savedStats) : {};
+        const celestial = document.getElementById('celestial');
+        const defenderTracker = document.getElementById('defender-tracker');
+        celestial.style.display = 'none';
+        stats.defenderTracker = "";
+        defenderTracker.value = "";
+        localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     function diceThrow(diceNumber, diceType, name, modifier=false, blessedStrikes=false, spellAttack=false) {
@@ -8,10 +174,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let blessedStrikesRoll = 0;
         const spellAttackTracker = document.getElementById('spell-attack-tracker');
         const spellAttackCrit = document.getElementById('spell-attack-crit');
+        const critical = document.getElementById('crit');
         let crit = 1;
 
         if (spellAttack){
-            if (spellAttackTracker.value !== ""){
+            if (critical.value !== ""){
+                crit = 2;
+            } else if (spellAttackTracker.value !== "")
+            {
                 if (spellAttackCrit.value !== ""){
                     crit = 2;
                 }
@@ -208,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function buffEffects(spell){
         const guidanceTracker = document.getElementById('guidance-tracker');
         const blessTracker = document.getElementById('bless-tracker');
+        const deathwardTracker = document.getElementById('deathward-tracker');
 
         if (spell === "guidance"){
             if (guidanceTracker.value == ""){
@@ -226,6 +397,16 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 blessTracker.value = "";
                 showToast("Bless: Inactive", 'success');
+            }
+        }
+
+        if (spell === "deathward"){
+            if (deathwardTracker.value == ""){
+                deathwardTracker.value = "🔲";
+                showToast("Death Ward: Active", 'success');
+            } else {
+                deathwardTracker.value = "";
+                showToast("Death Ward: Inactive", 'success');
             }
         }
     }
@@ -269,6 +450,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const cureWoundsLevel4Effect = document.querySelector('.cure-wounds-level4-effect');
         cureWoundsLevel4Effect.addEventListener('click', () => cureWounds(4));
+
+        const deathwardEffect = document.querySelector('.deathward-effect');
+        deathwardEffect.addEventListener('click', () => buffEffects("deathward"));
 
         const cureWoundsLevel5Effect = document.querySelector('.cure-wounds-level5-effect');
         cureWoundsLevel5Effect.addEventListener('click', () => cureWounds(5));
@@ -385,128 +569,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     localStorage.getItem("spellSlots") ?? localStorage.setItem("spellSlots", JSON.stringify(spellSlots));
 
-    function updateSpellSlotsStatus(){
-        const storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
-        const level1slot1 = document.getElementById('level1slot1');
-        const level1slot2 = document.getElementById('level1slot2');
-        const level1slot3 = document.getElementById('level1slot3');
-        const level1slot4 = document.getElementById('level1slot4');
-        const level2slot1 = document.getElementById('level2slot1');
-        const level2slot2 = document.getElementById('level2slot2');
-        const level2slot3 = document.getElementById('level2slot3');
-        const level3slot1 = document.getElementById('level3slot1');
-        const level3slot2 = document.getElementById('level3slot2');
-        const level3slot3 = document.getElementById('level3slot3');
-        const level4slot1 = document.getElementById('level4slot1');
-        const level4slot2 = document.getElementById('level4slot2');
-        const level4slot3 = document.getElementById('level4slot3');
-        const level5slot1 = document.getElementById('level5slot1');
-
-        level1slot1.value = storedSlots.level1slot1;
-        level1slot2.value = storedSlots.level1slot2;
-        level1slot3.value = storedSlots.level1slot3;
-        level1slot4.value = storedSlots.level1slot4;
-        level2slot1.value = storedSlots.level2slot1;
-        level2slot2.value = storedSlots.level2slot2;
-        level2slot3.value = storedSlots.level2slot3;
-        level3slot1.value = storedSlots.level3slot1;
-        level3slot2.value = storedSlots.level3slot2;
-        level3slot3.value = storedSlots.level3slot3;
-        level4slot1.value = storedSlots.level4slot1;
-        level4slot2.value = storedSlots.level4slot2;
-        level4slot3.value = storedSlots.level4slot3;
-        level5slot1.value = storedSlots.level5slot1;
-    }
-
-    function updateSpellStatus(spellsStatus) {
-        const rowsList = [];
-
-        spellsStatus.forEach(spell => {
-            const spellRow = document.querySelectorAll(`.${spell.name}-row`);
-            rowsList.push(spellRow);
-        });
-
-        const storedSpells = JSON.parse(localStorage.getItem("spells"));
-        
-        for (let i = 0 ; i < rowsList.length; i++) {
-            const spellToUpdate = storedSpells[i];
-            if (spellToUpdate.concentration===true){
-                if (spellToUpdate.active) {
-                    rowsList[i].forEach(row => {
-                        row.style.backgroundColor = '#B266FF';
-                    });
-                } else {
-                    rowsList[i].forEach(row => {
-                        row.style.backgroundColor = '';
-                    });
-                }
-            } else if (spellToUpdate.duration===true) {
-                if (spellToUpdate.active) {
-                    rowsList[i].forEach(row => {
-                        row.style.backgroundColor = '#66FFB2';
-                    });
-                } else {
-                    rowsList[i].forEach(row => {
-                        row.style.backgroundColor = '';
-                    });
-                }
-            }
-        }
-        updateSpellSlotsStatus();
-    }
-
-    function applyNonDamageEffects(name){
-        let savedStats = localStorage.getItem('dndCharacterStats');
-        if (name=='shieldoffaith'){
-            let stats = savedStats ? JSON.parse(savedStats) : {};
-
-            stats.acother = "2";
-            localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
-        }
-        if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
-            const advantage = document.getElementById('adv');
-            advantage.value = "🔲";
-        }
-        if (name=='summoncelestial'){
-            const celestial = document.getElementById('celestial');
-            let stats = savedStats ? JSON.parse(savedStats) : {};
-            celestial.style.display = 'block';
-            const choice = parseInt(prompt("Enter 1 if Avenger or 2 if Defender"));
-            if (choice != 1 && choice != 2){
-                showToast("Wrong choice", 'error');
-                return;
-            }
-            if (choice == 2){
-                const defenderTracker = document.getElementById('defender-tracker');
-                stats.defenderTracker = "🔲";
-                defenderTracker.value = "🔲";
-                localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
-            }
-        }
-    }
-
-    function removeNonDamageEffects(name){
-        let savedStats = localStorage.getItem('dndCharacterStats');
-        if (name=='shieldoffaith'){
-            let stats = savedStats ? JSON.parse(savedStats) : {};
-
-            stats.acother = 0;
-            localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
-        }
-        if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
-            const advantage = document.getElementById('adv');
-            advantage.value = "";
-        }
-        if (name=='summoncelestial'){
-            let stats = savedStats ? JSON.parse(savedStats) : {};
-            const celestial = document.getElementById('celestial');
-            const defenderTracker = document.getElementById('defender-tracker');
-            celestial.style.display = 'none';
-            stats.defenderTracker = "";
-            defenderTracker.value = "";
-            localStorage.setItem('dndCharacterStats', JSON.stringify(stats));
-        }
-    }
+    
 
     function emptySlot(level) {
         let storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
@@ -615,6 +678,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         let storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
         const spellToUpdate = storedSpells.find(spell => spell.name === name);
+        const incapacitatedBox = document.getElementById('toggle-incapacitated');
+
+        if (incapacitatedBox.checked){
+            showToast("You are incapacitated!",'info');
+            return;
+        }
 
         const level1slot1 = document.getElementById('level1slot1');
         const level1slot2 = document.getElementById('level1slot2');
@@ -728,6 +797,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
             const blessTracker = document.getElementById('bless-tracker');
             blessTracker.value = "";
+
             // First deactivate all concentration spells
             storedSpells = storedSpells.map(spell => {
                 if (spell.concentration && spell.active) {
@@ -750,6 +820,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (choice==1)
                 blessTracker.value = "🔲";
         }
+
+        if (name==="deathward"){
+            const deathwardTracker = document.getElementById('deathward-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice==1)
+                deathwardTracker.value = "🔲";
+        }
         
         // Then activate the new spell
         storedSpells = storedSpells.map(spell => {
@@ -764,27 +841,9 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSpellStatus(storedSpells);
     }
     
-    function spellCease(name,level) {
-        let storedSpells = JSON.parse(localStorage.getItem("spells"));
-        storedSpells = storedSpells.map(spell => {
-            if (spell.name === name) {
-                return { ...spell, active: false };
-            }
-            return spell;
-        });
 
-        const guidanceTracker = document.getElementById('guidance-tracker');
-        guidanceTracker.value = "";
-
-        const blessTracker = document.getElementById('bless-tracker');
-        blessTracker.value = "";
-
-        removeNonDamageEffects(name);
-        localStorage.setItem("spells", JSON.stringify(storedSpells));
-        updateSpellStatus(storedSpells);
-    }
     
-    function ceaseAllConcentrationSpells() {        
+    function ceaseAllConcentrationSpells() {
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         storedSpells = storedSpells.map(spell => {
             if (spell.concentration && spell.active) {

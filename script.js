@@ -27,6 +27,23 @@ const skillsWithKeyAbilities = [
     { name: "Survival", keyAbility: "WIS" }
 ];
 
+const conditions = [
+    'blinded',
+    'charmed',
+    'deafened',
+    'frightened',
+    'grappled',
+    'incapacitated',
+    'invisible',
+    'paralyzed',
+    'petrified',
+    'poisoned',
+    'prone',
+    'restrained',
+    'stunned',
+    'unconscious'
+];
+
 const armors = [
     { "name": "Padded Armor", "dex-mod": Number.MAX_SAFE_INTEGER, "armor": 1 },
     { "name": "Leather Armor", "dex-mod": Number.MAX_SAFE_INTEGER, "armor": 1 },
@@ -592,11 +609,24 @@ const updateHpMax = () =>
     const level = document.getElementById("level").value;
     const conModifier = document.getElementById("constitution-modifier").value;
     const maxHPInput = document.getElementById("max-hp");
-    const maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
+    const curHPInput = document.getElementById("cur-hp");
+    const exhaustionInput = document.getElementById('exhaustion-level');
+    let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
+
+    if (exhaustionInput.value >= 4){
+        maxHP /= 2;
+    }
+
     if (level === "" || level === null || conModifier === "" || conModifier === null)
         maxHPInput.value = "";
-    else
+    else{
         maxHPInput.value = maxHP;
+        if (curHPInput.value > maxHPInput.value){
+            curHPInput.value = maxHP;
+            savedStats.curHP = maxHP;
+            localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+        }
+    }
 };
 
 const updateCelestial = () => {
@@ -639,6 +669,36 @@ const updateCelestialAbilityModifiers = () =>
     });
 }
 
+const updateSpeed = () => 
+{
+    const speedInput = document.getElementById('speed');
+    const conditionBoxesMap = {};
+    const exhaustionInput = document.getElementById('exhaustion-level');
+    const speedBase = 25;
+
+    conditions.forEach(condition => {
+        const conditionBox = document.getElementById(`toggle-${condition}`);
+        conditionBoxesMap[condition] = conditionBox;
+    })
+
+    if (conditionBoxesMap['grappled'].checked || conditionBoxesMap['paralyzed'].checked || conditionBoxesMap['petrified'].checked
+        || conditionBoxesMap['restrained'].checked || conditionBoxesMap['stunned'].checked || conditionBoxesMap['unconscious'].checked
+        || exhaustionInput.value >= 5
+    ){
+        speedInput.value = 0;
+        savedStats.speed = 0;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    } else if (Number(exhaustionInput.value) >= 2){
+        speedInput.value = Math.floor((speedBase/5)/2)*5;
+        savedStats.speed = Math.floor((speedBase/5)/2)*5;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    } else {
+        speedInput.value = speedBase;
+        savedStats.speed = speedBase;
+        localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+    }
+}
+
 const updateSheet = () =>
 {
     updateAbilityModifiers();
@@ -655,6 +715,7 @@ const updateSheet = () =>
     updateSavesModifiers();
     updateCelestial();
     updateCelestialAbilityModifiers();
+    updateSpeed();
 }
 
 document.addEventListener('DOMContentLoaded', function ()
@@ -744,12 +805,31 @@ document.addEventListener('DOMContentLoaded', function ()
     summonCelestialRows.forEach(row => {
         observer.observe(row, { attributes: true, attributeFilter: ['style'] });
     });
-
-
 });
 
 window.onload = function() {
     updateSheet();
+    document.getElementById('exhaustion-level').addEventListener('change', () => {
+        updateHpMax();
+        updateSpeed();
+    })
+    document.getElementById('toggle-grappled').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-paralyzed').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-petrified').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-restrained').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-stunned').addEventListener('change', () => {
+        updateSpeed();
+    })
+    document.getElementById('toggle-unconscious').addEventListener('change', () => {
+        updateSpeed();
+    })
+
 };
-
-

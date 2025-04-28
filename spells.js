@@ -105,8 +105,10 @@ function applyNonDamageEffects(name){
     }
 
     if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
-        const advantage = document.getElementById('adv');
-        advantage.value = "🔲";
+        const guidingBoltTracker = document.getElementById('guidingbolt-tracker');
+        if (guidingBoltTracker.value == ""){
+            guidingBoltTracker.value = "🔲";
+        }
     }
 
     if (name=='greaterinvisibility'){
@@ -143,8 +145,8 @@ export function removeNonDamageEffects(name){
     }
 
     if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
-        const advantage = document.getElementById('adv');
-        advantage.value = "";
+        const guidingBoltTracker = document.getElementById('guidingbolt-tracker');
+        guidingBoltTracker.value = "";
     }
 
     if (name=='greaterinvisibility'){

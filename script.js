@@ -98,7 +98,6 @@ const magicalItems = [
     "abilities": 0,
     "skills": [] 
   },
-  
   // Cloaks
   { 
     "name": "Cloak of Protection", 
@@ -110,7 +109,6 @@ const magicalItems = [
     "abilities": 0,
     "skills": [] 
   },
-  
   // Rings
   { 
     "name": "Ring of Spell Storing", 
@@ -122,7 +120,6 @@ const magicalItems = [
     "abilities": 0,
     "skills": [] 
   },
-  
   // Headwear
   { 
     "name": "Helm of Brilliance", 
@@ -144,7 +141,6 @@ const magicalItems = [
     "abilities": 0,
     "skills": [] 
   },
-  
   // Weapons
   {
     "name": "Staff of Power", 

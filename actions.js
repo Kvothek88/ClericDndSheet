@@ -32,6 +32,24 @@ const DamageTypes = {
     13: "bludgeoning"
 }
 
+export function loadSavedConditions() {
+    const savedConditions = localStorage.getItem('conditions');
+    return savedConditions ? JSON.parse(savedConditions) : {};
+}
+
+export function saveConditions(condition, isActive) {
+    let savedConditions = loadSavedConditions();
+    savedConditions[condition] = isActive;
+    localStorage.setItem('conditions', JSON.stringify(savedConditions));
+}
+
+export function toggleCondition(conditionName) {
+    const checkbox = document.getElementById(`toggle-${conditionName}`);
+    const newState = !checkbox.checked;
+    checkbox.checked = newState;
+    saveConditions(conditionName, newState);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     function showToast(message, type = 'info', duration = 11000) {
@@ -66,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toast.remove();
         });
     }
-    
+
     const conditions = [
         'blinded',
         'charmed',
@@ -91,17 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     const container = document.getElementById('conditions-container');
-
-    function loadSavedConditions() {
-        const savedConditions = localStorage.getItem('conditions');
-        return savedConditions ? JSON.parse(savedConditions) : {};
-    }
-
-    function saveConditions(condition, isActive) {
-        let savedConditions = loadSavedConditions();
-        savedConditions[condition] = isActive;
-        localStorage.setItem('conditions', JSON.stringify(savedConditions));
-    }
 
     const savedConditions = loadSavedConditions();
         
@@ -230,13 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (value === 6)
             showToast('You are Dead!', 'error');
     });
-
-    function toggleCondition(conditionName) {
-        const checkbox = document.getElementById(`toggle-${conditionName}`);
-        const newState = !checkbox.checked;
-        checkbox.checked = newState;
-        saveConditions(conditionName, newState);
-    }
 
     function twilightSanctuary(){
         const charStats = JSON.parse(localStorage.getItem('dndCharacterStats'));

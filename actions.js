@@ -578,6 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const disadvantageInput = document.getElementById('dis');
         const blessTracker = document.getElementById('bless-tracker');
         const exhaustionInput = document.getElementById('exhaustion-level');
+        const guidingBoltTracker = document.getElementById('guidingbolt-tracker');
         let roll = "";
         let blessRoll = 0;
         let advString = "";
@@ -598,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (disadvantageInput.value != "" && advantageInput.value === ""){
             advantageStatus = advantageEnum.disadvantage;
         } else if (advantageInput.value === "" && disadvantageInput.value === ""){
-            if (conditionBoxesMap['invisible'].checked){
+            if (conditionBoxesMap['invisible'].checked || guidingBoltTracker.value != ""){
                 adv = true;
             }
             if (conditionBoxesMap['blinded'].checked || conditionBoxesMap['prone'].checked

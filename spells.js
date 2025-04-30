@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
             sound.play();
         }
 
-        showToast(`${name}${critString}: ${totalDice}d${diceType}${modifierString1}${blessedStrikesString} = ${rollsString}${blessedStrikesRollString}${modifierString2} = ${result}  `, 'success');
+        showToast(`${name}${critString}: ${totalDice}d${diceType}${modifierString1}${blessedStrikesString} = ${rollsString}${blessedStrikesRollString}${modifierString2} = ${result}  `, 'magic');
 
         if (spellAttack){
             spellAttackTracker.value = "";
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const fireRollsString = fireRolls.join(' + ');
         const radiantRollsString = radiantRolls.join(' + ');
-        showToast(`Flame Strike (Level ${level}): ${level*2}d6 = ${level}d6 Fire + ${level}d6 Radiant = ${fireRollsString} + ${radiantRollsString} = ${fireResult} Fire + ${radiantResult} Radiant = ${result}  `, 'success');
+        showToast(`Flame Strike (Level ${level}): ${level*2}d6 = ${level}d6 Fire + ${level}d6 Radiant = ${fireRollsString} + ${radiantRollsString} = ${fireResult} Fire + ${radiantResult} Radiant = ${result}  `, 'magic');
     }
 
     function buffEffects(spell){
@@ -385,30 +385,30 @@ document.addEventListener('DOMContentLoaded', function () {
         if (spell === "guidance"){
             if (guidanceTracker.value == ""){
                 guidanceTracker.value = "🔲";
-                showToast("Guidance: Active", 'success');
+                showToast("Guidance: Active", 'magic');
             } else {
                 guidanceTracker.value = "";
-                showToast("Guidance: Inactive", 'success');
+                showToast("Guidance: Inactive", 'magic');
             }
         }
 
         if (spell === "bless"){
             if (blessTracker.value == ""){
                 blessTracker.value = "🔲";
-                showToast("Bless: Active", 'success');
+                showToast("Bless: Active", 'magic');
             } else {
                 blessTracker.value = "";
-                showToast("Bless: Inactive", 'success');
+                showToast("Bless: Inactive", 'magic');
             }
         }
 
         if (spell === "deathward"){
             if (deathwardTracker.value == ""){
                 deathwardTracker.value = "🔲";
-                showToast("Death Ward: Active", 'success');
+                showToast("Death Ward: Active", 'magic');
             } else {
                 deathwardTracker.value = "";
-                showToast("Death Ward: Inactive", 'success');
+                showToast("Death Ward: Inactive", 'magic');
             }
         }
     }
@@ -505,51 +505,53 @@ document.addEventListener('DOMContentLoaded', function () {
     addEffectsEvents();
 
     const spellsStatus = [
-        {name: 'guidance', active: false, concentration: true, duration: true, level: 0},
-        {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0},
-        {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1},
-        {name: 'bless', active: false, concentration: true, duration: true, level: 1},
-        {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1},
-        {name: 'curewounds', active: false, concentration: false, duration: false, level: 1},
-        {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1},
-        {name: 'sleep', active: false, concentration: false, duration: true, level: 1},
-        {name: 'moonbeam', active: false, concentration: true, duration: true, level: 2},
-        {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2},
-        {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2},
-        {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2},
+        {name: 'guidance', active: false, concentration: true, duration: true, level: 0, verbal: true, somatic: true},
+        {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0, verbal: true, somatic: false},
+        {name: 'sacredflame', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true},
+        {name: 'tollthedead', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true},
+        {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true},
+        {name: 'bless', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true},
+        {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true},
+        {name: 'curewounds', active: false, concentration: false, duration: false, level: 1, verbal: true, somatic: true},
+        {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: false},
+        {name: 'sleep', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true},
+        {name: 'moonbeam', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true},
+        {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true},
+        {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true},
+        {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true},
         {name: 'guidingboltlevel2', active: false, concentration: false, duration: true, level: 2},
-        {name: 'auraofvitality', active: false, concentration: true, duration: true, level: 3},
-        {name: 'bestowcurse', active: false, concentration: true, duration: true, level: 3},
-        {name: 'dispelmagic', active: false, concentration: false, duration: false, level: 3},
-        {name: 'leomunds', active: false, concentration: false, duration: true, level: 3},
-        {name: 'spiritguardians', active: false, concentration: true, duration: true, level: 3},
-        {name: 'curewoundslevel3', active: false, concentration: false, duration: false, level: 3},
-        {name: 'guidingboltlevel3', active: false, concentration: false, duration: true, level: 3},
-        {name: 'moonbeamlevel3', active: false, concentration: true, duration: true, level: 3},
-        {name: 'spiritualweaponlevel3', active: false, concentration: true, duration: true, level: 3},
-        {name: 'auraoflife', active: false, concentration: true, duration: true, level: 4},
-        {name: 'auraofpurity', active: false, concentration: true, duration: true, level: 4},
-        {name: 'deathward', active: false, concentration: false, duration: true, level: 4},
-        {name: 'greaterinvisibility', active: false, concentration: true, duration: true, level: 4},
-        {name: 'guardianoffaith', active: false, concentration: false, duration: true, level: 4},
-        {name: 'dispelmagiclevel4', active: false, concentration: false, duration: false, level: 4},
-        {name: 'spiritguardianslevel4', active: false, concentration: true, duration: true, level: 4},
-        {name: 'curewoundslevel4', active: false, concentration: false, duration: false, level: 4},
-        {name: 'guidingboltlevel4', active: false, concentration: false, duration: true, level: 4},
-        {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4},
-        {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4},
-        {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5},
-        {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5},
-        {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5},
-        {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5},
-        {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5},
-        {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5},
-        {name: 'guidingboltlevel5', active: false, concentration: false, duration: true, level: 5},
-        {name: 'moonbeamlevel5', active: false, concentration: true, duration: true, level: 5},
-        {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5},
-        {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5},
-        {name: 'mislead', active: false, concentration: true, duration: true, level: 5},
-        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5},
+        {name: 'auraofvitality', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: false},
+        {name: 'bestowcurse', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'dispelmagic', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true},
+        {name: 'leomunds', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'spiritguardians', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'curewoundslevel3', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true},
+        {name: 'guidingboltlevel3', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'moonbeamlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'spiritualweaponlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
+        {name: 'auraoflife', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false},
+        {name: 'auraofpurity', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false},
+        {name: 'deathward', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'greaterinvisibility', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'guardianoffaith', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: false},
+        {name: 'dispelmagiclevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true},
+        {name: 'spiritguardianslevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'curewoundslevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true},
+        {name: 'guidingboltlevel4', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
+        {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: false},
+        {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
+        {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
+        {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
+        {name: 'guidingboltlevel5', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'moonbeamlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
+        {name: 'mislead', active: false, concentration: true, duration: true, level: 5, verbal: false, somatic: true},
+        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
     ];
     localStorage.getItem("spells") ?? localStorage.setItem("spells", JSON.stringify(spellsStatus));
 
@@ -681,10 +683,24 @@ document.addEventListener('DOMContentLoaded', function () {
         let storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
         const spellToUpdate = storedSpells.find(spell => spell.name === name);
         const incapacitatedBox = document.getElementById('toggle-incapacitated');
+        const handsRestrainedBox = document.getElementById('toggle-hands restrained');
+        const silencedBox = document.getElementById('toggle-silenced');
 
         if (incapacitatedBox.checked){
             showToast("You are incapacitated!",'info');
             return;
+        }
+        if (storedSpells.find(spell => spell.name === name).verbal === true){
+            if (silencedBox.checked){
+                showToast('You cannot cast spells with verbal components because you are silenced', 'tactics');
+                return;
+            }
+        }
+        if (storedSpells.find(spell => spell.name === name).somatic === true){
+            if (handsRestrainedBox.checked){
+                showToast('You cannot cast spells with somatic components because your hands are restrained', 'tactics');
+                return;
+            }
         }
 
         const level1slot1 = document.getElementById('level1slot1');

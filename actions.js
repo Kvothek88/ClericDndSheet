@@ -50,6 +50,24 @@ export function toggleCondition(conditionName) {
     saveConditions(conditionName, newState);
 }
 
+export function loadSavedSituations() {
+    const savedSituations = localStorage.getItem('situations');
+    return savedSituations ? JSON.parse(savedSituations) : {};
+}
+
+export function saveSituations(situation, isActive) {
+    let savedSituations = loadSavedSituations();
+    savedSituations[situation] = isActive;
+    localStorage.setItem('situations', JSON.stringify(savedSituations));
+}
+
+export function toggleSituation(situationName) {
+    const checkbox = document.getElementById(`toggle-${situationName}`);
+    const newState = !checkbox.checked;
+    checkbox.checked = newState;
+    saveSituations(situationName, newState);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     function showToast(message, type = 'info', duration = 11000) {
@@ -102,13 +120,34 @@ document.addEventListener('DOMContentLoaded', function() {
         'unconscious'
     ];
 
+    const situations = [
+        'flank',
+        'hidden',
+        '1/2 cover',
+        '3/4 cover',
+        'total cover',
+        'range attack 5ft',
+        'enemy blinded',
+        'enemy invisible',
+        'enemy paralyzed',
+        'enemy petrified',
+        'enemy prone 5ft',
+        'enemy prone >5ft',
+        'enemy restrained',
+        'enemy stunned',
+        'enemy unconscious',
+        'enemy hidden',
+        'hands restrained',
+        'silenced'
+    ]; 
+
     const advantageEnum = {
         'normal': 0,
         'advantage': 1,
         'disadvantage': 2
     }
     
-    const container = document.getElementById('conditions-container');
+    const conditionsContainer = document.getElementById('conditions-container');
 
     const savedConditions = loadSavedConditions();
         
@@ -140,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         conditionItem.appendChild(conditionName);
         conditionItem.appendChild(label);
         
-        container.appendChild(conditionItem);
+        conditionsContainer.appendChild(conditionItem);
     
         input.addEventListener('change', function(event) {
             const lowerName = this.id.replace('toggle-', '');
@@ -214,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
     exhaustionItem.appendChild(exhaustionName);
     exhaustionItem.appendChild(exhaustionControl);
     
-    container.appendChild(exhaustionItem);
+    conditionsContainer.appendChild(exhaustionItem);
     
     // Handle exhaustion level changes
     exhaustionInput.addEventListener('change', function() {
@@ -236,6 +275,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (value === 6)
             showToast('You are Dead!', 'error');
+    });
+
+    const situationsContainer = document.getElementById('situations-container');
+
+    const savedSituations = loadSavedSituations();
+        
+    situations.forEach(situation => {
+        const situationItem = document.createElement('div');
+        situationItem.className = 'situation-item';
+        
+        const situationName = document.createElement('span');
+        situationName.className = 'situation-name';
+        situationName.textContent = situation;
+        
+        const label = document.createElement('label');
+        label.className = 'switch';
+        
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.id = `toggle-${situation}`;
+        input.style = "margin-left:100px";
+
+        if (savedSituations[situation]) {
+            input.checked = true;
+        }
+        
+        const slider = document.createElement('span');
+        slider.className = 'slider';
+        
+        label.appendChild(input);
+        label.appendChild(slider);
+        
+        situationItem.appendChild(situationName);
+        situationItem.appendChild(label);
+        
+        situationsContainer.appendChild(situationItem);
+    
+        input.addEventListener('change', function(event) {
+            const lowerName = this.id.replace('toggle-', '');
+            const situationName = lowerName
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+            const critTracker = document.getElementById('crit');
+            const enemyParalyzedBox = document.getElementById('toggle-enemy paralyzed');
+            const enemyUnconsciousBox = document.getElementById('toggle-enemy unconscious');
+
+            saveSituations(lowerName, event.target.checked);
+
+            if (event.target.checked) {
+                showToast(`${situationName}`,'tactics');
+                if (situationName === "Enemy Paralyzed" || situationName === "Enemy Unconscious"){
+                    critTracker.value = "🔲";
+                }
+            } else {
+                showToast(`${situationName} Off`,'tactics');
+                if (situationName === "Enemy Paralyzed" || situationName === "Enemy Unconscious"){
+                    if (!enemyParalyzedBox.checked && !enemyUnconsciousBox.checked){
+                        critTracker.value = "";
+                    }
+                }
+            }
+        });
+
     });
 
     function twilightSanctuary(){
@@ -579,6 +682,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const blessTracker = document.getElementById('bless-tracker');
         const exhaustionInput = document.getElementById('exhaustion-level');
         const guidingBoltTracker = document.getElementById('guidingbolt-tracker');
+        const flankBox = document.getElementById('toggle-flank');
+        const range5ftBox = document.getElementById('toggle-range attack 5ft');
+        const hiddenBox = document.getElementById('toggle-hidden');
+        const enemyBlindedBox = document.getElementById('toggle-enemy blinded');
+        const enemyInvisibleBox = document.getElementById('toggle-enemy invisible');
+        const enemyParalyzedBox = document.getElementById('toggle-enemy paralyzed');
+        const enemyRetrifiedBox = document.getElementById('toggle-enemy petrified');
+        const enemyProne5ftBox = document.getElementById('toggle-enemy prone 5ft');
+        const enemyProneBeyond5ftBox = document.getElementById('toggle-enemy prone >5ft');
+        const enemyRestrainedBox = document.getElementById('toggle-enemy restrained');
+        const enemyStunnedBox = document.getElementById('toggle-enemy stunned');
+        const enemyUnconsciousBox = document.getElementById('toggle-enemy unconscious');
+        const enemyHiddenBox = document.getElementById('toggle-enemy hidden');
         let roll = "";
         let blessRoll = 0;
         let advString = "";
@@ -599,12 +715,17 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (disadvantageInput.value != "" && advantageInput.value === ""){
             advantageStatus = advantageEnum.disadvantage;
         } else if (advantageInput.value === "" && disadvantageInput.value === ""){
-            if (conditionBoxesMap['invisible'].checked || guidingBoltTracker.value != ""){
+            if (conditionBoxesMap['invisible'].checked || guidingBoltTracker.value != "" || flankBox.checked
+                || hiddenBox.checked || enemyBlindedBox.checked || enemyParalyzedBox.checked || enemyRetrifiedBox.checked
+                || enemyProne5ftBox.checked || enemyRestrainedBox.checked || enemyStunnedBox.checked || enemyUnconsciousBox.checked
+            ){
                 adv = true;
             }
             if (conditionBoxesMap['blinded'].checked || conditionBoxesMap['prone'].checked
                 || conditionBoxesMap['restrained'].checked || conditionBoxesMap['poisoned'].checked
-                || conditionBoxesMap['frightened'].checked || exhaustionInput.value >= 3){
+                || conditionBoxesMap['frightened'].checked || exhaustionInput.value >= 3
+                || range5ftBox.checked || enemyInvisibleBox.checked || enemyProneBeyond5ftBox.checked || enemyHiddenBox.checked
+            ){
                 dis = true;
             }
 
@@ -1075,6 +1196,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const advantageInput = document.getElementById('adv');
         const disadvantageInput = document.getElementById('dis');
         const exhaustionInput = document.getElementById('exhaustion-level');
+        const halfCoverBox = document.getElementById('toggle-1/2 cover');
+        const threeQuartersCoverBox = document.getElementById('toggle-3/4 cover');
+        let coverBonus = 0;
+        let coverString1 = "";
+        let coverString2 = "";
         let roll = "";
         let advString = ""
         let blessRoll = 0;
@@ -1143,8 +1269,20 @@ document.addEventListener('DOMContentLoaded', function() {
             blessString1 = "+1d4";
             blessString2 = ` + ${blessRoll}`;
         }
-            
-        const result = roll + abilityMod + blessRoll;
+
+        if (ability === "Dexterity"){
+            if (threeQuartersCoverBox.checked){
+                coverBonus += 5;
+                coverString1 = `+${coverBonus}(Three Quarters Cover Bonus)`;
+                coverString2 = ` + ${coverBonus}`;
+            } else if (halfCoverBox.checked){
+                coverBonus += 2;
+                coverString1 = `+${coverBonus}(Half Cover Bonus)`
+                coverString2 = ` + ${coverBonus}`;
+            }
+        }
+
+        const result = roll + abilityMod + blessRoll + coverBonus;
 
         let abilityModStr1 = "";
         if (abilityMod > 0)
@@ -1159,9 +1297,9 @@ document.addEventListener('DOMContentLoaded', function() {
             abilityModStr2 = ` - ${modifiedAbilityMod}`;
 
         if (abilityMod==0)
-            showToast(`${ability} Save Check${advString}: 1d20${abilityModStr1}${blessString1} = ${result}`, 'success');
+            showToast(`${ability} Save Check${advString}: 1d20${abilityModStr1}${blessString1}${coverString1} = ${result}`, 'success');
         else
-            showToast(`${ability} Save Check${advString}: 1d20${abilityModStr1}${blessString1} = ${roll}${abilityModStr2}${blessString2} = ${result}`, 'success');
+            showToast(`${ability} Save Check${advString}: 1d20${abilityModStr1}${blessString1}${coverString1} = ${roll}${abilityModStr2}${blessString2}${coverString2} = ${result}`, 'success');
 
         if (advantageStatus === advantageEnum.normal){
             const sound = new Audio('sounds/die.mp3');

@@ -435,6 +435,8 @@ const updateAttackModifiers = () =>
     attackTotalInput.value = parseInt(attackKeyInput.value) + parseInt(attackProfInput.value)  + parseInt(attackItemInput.value);
 };
 
+
+// TODO: Multiple sources of same type shouldn't stack. Only keep the biggest
 const calculateItemBonus = (characterStats, bonusType) => {
   let totalBonus = 0;
   
@@ -570,6 +572,9 @@ const updateArmorModifiers = () =>
     const dexModifier = document.getElementById("dexterity-modifier").value;
     const spells = JSON.parse(localStorage.getItem("spells"));
     const shieldOfFaith = spells.find(spell => spell.name == "shieldoffaith");
+    const halfCoverBox = document.getElementById('toggle-1/2 cover');
+    const threeQuartersCoverBox = document.getElementById('toggle-3/4 cover');
+    let acOther = 0;
 
     if (!acAbilityInput || !acArmorInput || !acShieldInput || !acItemInput)
     {
@@ -577,12 +582,16 @@ const updateArmorModifiers = () =>
         return;
     }
 
-    if (shieldOfFaith && shieldOfFaith.active == false)
-        acOtherInput.value = "0";
-    else
-        acOtherInput.value = "2";
+    if (shieldOfFaith && shieldOfFaith.active == true)
+        acOther += 2;
 
-    acItemInput.value = "0";
+    if (threeQuartersCoverBox.checked){
+        acOther += 5;
+    } else if (halfCoverBox.checked)
+        acOther += 2;
+
+    acOtherInput.value = acOther;
+    acItemInput.value = 0;
 
     if (savedStats["armor"] == "") {
         acArmorInput.value = 0;
@@ -831,5 +840,10 @@ window.onload = function() {
     document.getElementById('toggle-unconscious').addEventListener('change', () => {
         updateSpeed();
     })
-
+    document.getElementById('toggle-1/2 cover').addEventListener('change', () => {
+        updateArmorModifiers();
+    })
+    document.getElementById('toggle-3/4 cover').addEventListener('change', () => {
+        updateArmorModifiers();
+    })
 };

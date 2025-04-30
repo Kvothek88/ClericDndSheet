@@ -235,7 +235,43 @@
         </div>
     </div>
 
+    <div id="toastContainer2" class="toast-container"></div>
+
     <script>
+        function showToast(message, type = 'info', duration = 11000) {
+            const container = document.getElementById('toastContainer2');
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            // Create message text
+            const messageText = document.createElement('span');
+            messageText.textContent = message;
+            
+            // Create close button
+            const closeButton = document.createElement('button');
+            closeButton.className = 'toast-close';
+            closeButton.innerHTML = '×';
+            closeButton.onclick = () => removeToast(toast);
+            
+            // Assemble toast
+            toast.appendChild(messageText);
+            toast.appendChild(closeButton);
+            container.appendChild(toast);
+            
+            // Auto-remove after duration
+            setTimeout(() => removeToast(toast), duration);
+        }
+
+        function removeToast(toast) {
+            toast.style.animation = 'fadeOut 0.3s ease-in-out forwards';
+            toast.addEventListener('animationend', () => {
+                toast.remove();
+            });
+        }
+
+        
         const Inventory = [
             { name: "Warhammer", description: "A heavy melee weapon.", quantity: 1, category: "Weapon", attunement: "No" },
             { name: "Shield + 1", description: "A reinforced shield that increases AC.", quantity: 1, category: "Shield", attunement: "No" },
@@ -384,14 +420,14 @@
             // Check if the item is already equipped in charStats
             const isAlreadyEquipped = Object.values(charStats).includes(name);
             if (isAlreadyEquipped) {
-                alert("This item is already equipped.");
+                showToast("This item is already equipped", 'gear');
                 return; // Exit the function if the item is already equipped
             }
 
             // Check if the item is already attuned
             const isAlreadyAttuned = Object.values(attunedItems).includes(name);
             if (isAlreadyAttuned) {
-                alert("This item is already attuned.");
+                showToast("This item is already attuned", 'gear');
                 return; // Exit the function if the item is already attuned
             }
 
@@ -411,7 +447,7 @@
             
             // If there's an existing item in the slot, unequip it first
             if (slotToUpdate && charStats[slotToUpdate] !== "") {
-                alert("An item of this type already equiped. Unequip it first");
+                showToast("An item of this type already equiped. Unequip it first", 'gear');
                 return;
             }
             
@@ -432,8 +468,8 @@
                         }
                     }
                 } else {
-                    alert("You cannot attune to more than 3 items.");
-                    return; // Exit the function if attunement limit is reached
+                    showToast("You cannot attune to more than 3 items", 'gear');
+                    return;
                 }
             }
 

@@ -372,7 +372,6 @@ label {
   background-color: black;
   color: white;
 }
-
 .toast-container {
   position: fixed;
   top: 20px;
@@ -405,6 +404,18 @@ label {
 
 .toast.info {
   border-left: 4px solid #2196f3;
+}
+
+.toast.tactics {
+  border-left: 4px solid #a14d08;
+}
+
+.toast.gear {
+  border-left: 4px solid #17d8e6;
+}
+
+.toast.magic {
+  border-left: 4px solid #d348d3;
 }
 
 .toast-close {
@@ -465,6 +476,38 @@ label {
 }
 
 .condition-name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.situations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .situations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .situations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.situation-item {
+  background-color: rgba(231, 150, 11, 0.833);
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.situation-name {
   font-weight: bold;
   text-transform: capitalize;
 }

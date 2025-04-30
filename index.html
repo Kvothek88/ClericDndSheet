@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="input-row">
         <div class="container">
             <div class="input-row">
@@ -222,7 +223,7 @@
                     <div class="input-column">
                         <label for="classdc"
                             style="font-size: 26px; text-align: center; background-color: rgb(210, 118, 6);">AC</label>
-                        <div class="smaller-container" style="padding:10px">
+                        <div class="smaller-container" style="padding:12px">
                             <div class="input-with-text">
                                 <div class="mid-input-container">
                                     <label for="actotal" style="font-size: 20px; text-align: center;">TOTAL</label>
@@ -336,7 +337,7 @@
 
                     <div class="input-column">
 
-                        <div class="small-container" style="width:510px; align-items:center;">
+                        <div class="small-container" style="width:515px; align-items:center;">
                             <div class="input-row">
                                 <div class="hp-container" style="margin-bottom: 5px; margin-right:20px; margin-left:20px;">
                                     <div class="mid-box" style="width:100px; margin-bottom:10px; padding:0px;">
@@ -638,11 +639,20 @@
 
                         <div class="small-container" style="align-items:center;">
                             <div
-                                style="font-size: 26px; width:513px; text-align: center; font-weight: bold; background-color: rgb(210, 118, 6); margin-bottom: 15px;">
+                                style="font-size: 26px; width:100%; text-align: center; font-weight: bold; background-color: rgb(210, 118, 6); margin-bottom: 5px;">
                                 <span>CONDITIONS</span>
                             </div>
 
                             <div class="conditions-grid" id="conditions-container"> </div>
+                        </div>
+
+                        <div class="small-container" style="align-items:center; max-width:540px;">
+                            <div
+                                style="font-size: 26px; width:100%; text-align: center; font-weight: bold; background-color: rgb(210, 118, 6); margin-bottom: 5px;">
+                                <span>COMBAT SITUATIONS</span>
+                            </div>
+
+                            <div class="situations-grid" id="situations-container"> </div>
                         </div>
 
 
@@ -846,7 +856,7 @@
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">DEX <span class="saveDC"></span></td>
-                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sacredflame-cast">CAST</button></td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sacred-flame-effect">EFFECT</button></td>
                         </tr>
@@ -864,7 +874,7 @@
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
-                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="tollthedead-cast">CAST</button></td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="toll-the-dead-effect">EFFECT</button></td>
                         </tr>
@@ -912,7 +922,7 @@
                             <td class="bless-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td class="bless-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bless-cast">CAST</button></td>
                             <td class="bless-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bless-end">CEASE</button></td>
-                            <td class="bless-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bless-effect">EFFECT</button></td>
+                            <td class="bless-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="bless-effect">EFFECT </button></td>
                         </tr>
                         <tr>
                             <td class="shieldoffaith-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Shield of Faith</td>

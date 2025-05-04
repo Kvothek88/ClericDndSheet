@@ -782,11 +782,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const elementId = `${spell.id}-stored-effect`;
             const element = document.getElementById(elementId);
             const callback = spellCallbacks[spell.name];
-    
-            //if (element && callback && !attachedListeners.has(elementId)) {
-            element.addEventListener('click', callback);
-                //attachedListeners.add(elementId);
-            //}
+
+            const effect = spellsStatus.find(spl => spl.name === spell.name).effectType;
+            if (effect === "Effect"){
+                element.addEventListener('click', callback);
+            }
         });
     }
     

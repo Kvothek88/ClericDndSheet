@@ -794,6 +794,7 @@ document.addEventListener('DOMContentLoaded', function ()
     const holyweaponRows = document.querySelectorAll('.holyweapon-row');
     const shieldOfFaithRows = document.querySelectorAll('.shieldoffaith-row');
     const summonCelestialRows = document.querySelectorAll('.summoncelestial-row');
+    const spellTable = document.getElementById('spellTable');
 
     // Create a MutationObserver
     const observer = new MutationObserver((mutations) => {
@@ -802,6 +803,15 @@ document.addEventListener('DOMContentLoaded', function ()
                 updateSheet();
             }
         });
+    });
+
+    const observer2 = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'attributes' || mutation.type === 'childList') {
+                updateArmorModifiers();
+                break;
+            }
+        }
     });
 
     // Change Ring of Spell Storing visibility
@@ -824,6 +834,13 @@ document.addEventListener('DOMContentLoaded', function ()
 
     summonCelestialRows.forEach(row => {
         observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    observer2.observe(spellTable, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['style']
     });
 });
 

@@ -804,6 +804,15 @@ document.addEventListener('DOMContentLoaded', function ()
         });
     });
 
+    // Change Ring of Spell Storing visibility
+    const ring = savedStats.ring;
+    const ringSection = document.getElementById('ring-section');
+    if (ring === "Ring of Spell Storing"){
+        ringSection.style.display = 'block';
+    } else {
+        ringSection.style.display = 'none';
+    }
+
     // Configure and start observing each row
     holyweaponRows.forEach(row => {
         observer.observe(row, { attributes: true, attributeFilter: ['style'] });

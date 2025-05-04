@@ -372,6 +372,24 @@ label {
   background-color: black;
   color: white;
 }
+#spell-list {
+  font-size: 19px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #d27606;
+  background: rgba(237, 185, 14, 0.5);
+  color: #000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 240px;
+  margin-top:5px;
+  /* height:40px; */
+}
+#spell-list:hover,
+#spell-list:focus {
+  background: rgba(212, 160, 10, 0.7);
+  outline: none;
+  border-color: #a55c05;
+}
 .toast-container {
   position: fixed;
   top: 20px;

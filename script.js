@@ -572,6 +572,8 @@ const updateArmorModifiers = () =>
     const dexModifier = document.getElementById("dexterity-modifier").value;
     const spells = JSON.parse(localStorage.getItem("spells"));
     const shieldOfFaith = spells.find(spell => spell.name == "shieldoffaith");
+    const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+    const ringHasShieldOfFaith = ringSpellsStatus.some(item => item.name === 'shieldoffaith');
     const halfCoverBox = document.getElementById('toggle-1/2 cover');
     const threeQuartersCoverBox = document.getElementById('toggle-3/4 cover');
     let acOther = 0;
@@ -582,7 +584,7 @@ const updateArmorModifiers = () =>
         return;
     }
 
-    if (shieldOfFaith && shieldOfFaith.active == true)
+    if (shieldOfFaith && (shieldOfFaith.active == true || ringHasShieldOfFaith))
         acOther += 2;
 
     if (threeQuartersCoverBox.checked){
@@ -845,5 +847,20 @@ window.onload = function() {
     })
     document.getElementById('toggle-3/4 cover').addEventListener('change', () => {
         updateArmorModifiers();
+    })
+    document.getElementById('ringslot1').addEventListener('change', () => {
+        updateDC();
+    })
+    document.getElementById('ringslot2').addEventListener('change', () => {
+        updateDC();
+    })
+    document.getElementById('ringslot3').addEventListener('change', () => {
+        updateDC();
+    })
+    document.getElementById('ringslot4').addEventListener('change', () => {
+        updateDC();
+    })
+    document.getElementById('ringslot5').addEventListener('change', () => {
+        updateDC();
     })
 };

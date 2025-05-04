@@ -414,10 +414,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addEffectsEvents() {
-        const sacredFlameEffect = document.querySelector('.sacred-flame-effect');
+        const sacredFlameEffect = document.querySelector('.sacredflame-effect');
         sacredFlameEffect.addEventListener('click', () => diceThrow(2, 8, 'Sacred Flame', false, true));
 
-        const tollTheDeadEffect = document.querySelector('.toll-the-dead-effect');
+        const tollTheDeadEffect = document.querySelector('.tollthedead-effect');
         tollTheDeadEffect.addEventListener('click', () => tollTheDead());
 
         const guidanceEffect = document.querySelector('.guidance-effect');
@@ -426,132 +426,132 @@ document.addEventListener('DOMContentLoaded', function () {
         const blessEffect = document.querySelector('.bless-effect');
         blessEffect.addEventListener('click', () => buffEffects("bless"));
 
-        const guidingBoltEfect = document.querySelector('.guiding-bolt-effect');
+        const guidingBoltEfect = document.querySelector('.guidingbolt-effect');
         guidingBoltEfect.addEventListener('click', () => diceThrow(4, 6, 'Guiding Bolt', false, false, true));
 
-        const guidingBoltLevel2Effect = document.querySelector('.guiding-bolt-level2-effect');
+        const guidingBoltLevel2Effect = document.querySelector('.guidingboltlevel2-effect');
         guidingBoltLevel2Effect.addEventListener('click', () => diceThrow(5, 6, 'Guiding Bolt (Level2)', false, false, true));
 
-        const guidingBoltLevel3Effect = document.querySelector('.guiding-bolt-level3-effect');
+        const guidingBoltLevel3Effect = document.querySelector('.guidingboltlevel3-effect');
         guidingBoltLevel3Effect.addEventListener('click', () => diceThrow(6, 6, 'Guiding Bolt (Level3)', false, false, true));
 
-        const guidingBoltLevel4Effect = document.querySelector('.guiding-bolt-level4-effect');
+        const guidingBoltLevel4Effect = document.querySelector('.guidingboltlevel4-effect');
         guidingBoltLevel4Effect.addEventListener('click', () => diceThrow(7, 6, 'Guiding Bolt (Level4)', false, false, true));
 
-        const guidingBoltLevel5Effect = document.querySelector('.guiding-bolt-level5-effect');
+        const guidingBoltLevel5Effect = document.querySelector('.guidingboltlevel5-effect');
         guidingBoltLevel5Effect.addEventListener('click', () => diceThrow(8, 6, 'Guiding Bolt (Level5)', false, false, true));
 
-        const cureWoundsEffect = document.querySelector('.cure-wounds-effect');
+        const cureWoundsEffect = document.querySelector('.curewounds-effect');
         cureWoundsEffect.addEventListener('click', () => cureWounds(1));
 
-        const cureWoundsLevel2Effect = document.querySelector('.cure-wounds-level2-effect');
+        const cureWoundsLevel2Effect = document.querySelector('.curewoundslevel2-effect');
         cureWoundsLevel2Effect.addEventListener('click', () => cureWounds(2));
 
-        const cureWoundsLevel3Effect = document.querySelector('.cure-wounds-level3-effect');
+        const cureWoundsLevel3Effect = document.querySelector('.curewoundslevel3-effect');
         cureWoundsLevel3Effect.addEventListener('click', () => cureWounds(3));
 
-        const cureWoundsLevel4Effect = document.querySelector('.cure-wounds-level4-effect');
+        const cureWoundsLevel4Effect = document.querySelector('.curewoundslevel4-effect');
         cureWoundsLevel4Effect.addEventListener('click', () => cureWounds(4));
 
         const deathwardEffect = document.querySelector('.deathward-effect');
         deathwardEffect.addEventListener('click', () => buffEffects("deathward"));
 
-        const cureWoundsLevel5Effect = document.querySelector('.cure-wounds-level5-effect');
+        const cureWoundsLevel5Effect = document.querySelector('.curewoundslevel5-effect');
         cureWoundsLevel5Effect.addEventListener('click', () => cureWounds(5));
 
         const moonbeamEffect = document.querySelector('.moonbeam-effect');
         moonbeamEffect.addEventListener('click', () => diceThrow(2, 10, 'Moonbeam'));
 
-        const moonbeamLevel3Effect = document.querySelector('.moonbeam-level3-effect');
+        const moonbeamLevel3Effect = document.querySelector('.moonbeamlevel3-effect');
         moonbeamLevel3Effect.addEventListener('click', () => diceThrow(3, 10, 'Moonbeam(Level 3)'));
 
-        const moonbeamLevel4Effect = document.querySelector('.moonbeam-level4-effect');
+        const moonbeamLevel4Effect = document.querySelector('.moonbeamlevel4-effect');
         moonbeamLevel4Effect.addEventListener('click', () => diceThrow(4, 10, 'Moonbeam(Level 4)'));
 
-        const moonbeamLevel5Effect = document.querySelector('.moonbeam-level5-effect');
+        const moonbeamLevel5Effect = document.querySelector('.moonbeamlevel5-effect');
         moonbeamLevel5Effect.addEventListener('click', () => diceThrow(5, 10, 'Moonbeam(Level 5)'));
 
-        const spirituaWeaponEffect = document.querySelector('.spiritual-weapon-effect');
+        const spirituaWeaponEffect = document.querySelector('.spiritualweapon-effect');
         spirituaWeaponEffect.addEventListener('click', () => diceThrow(1, 8, 'Spiritual Weapon', true, false, true));
 
-        const spirituaWeaponLevel3Effect = document.querySelector('.spiritual-weapon-level3-effect');
+        const spirituaWeaponLevel3Effect = document.querySelector('.spiritualweaponlevel3-effect');
         spirituaWeaponLevel3Effect.addEventListener('click', () => diceThrow(2, 8, 'Spiritual Weapon(Level3)',true, false, true));
 
-        const spirituaWeaponLevel4Effect = document.querySelector('.spiritual-weapon-level4-effect');
+        const spirituaWeaponLevel4Effect = document.querySelector('.spiritualweaponlevel4-effect');
         spirituaWeaponLevel4Effect.addEventListener('click', () => diceThrow(3, 8, 'Spiritual Weapon(Level 4)',true, false, true));
 
-        const spirituaWeaponLevel5Effect = document.querySelector('.spiritual-weapon-level5-effect');
+        const spirituaWeaponLevel5Effect = document.querySelector('.spiritualweaponlevel5-effect');
         spirituaWeaponLevel5Effect.addEventListener('click', () => diceThrow(4, 8, 'Spiritual Weapon(Level 5)',true, false, true));
 
-        const auraOfVitalityEffect = document.querySelector('.aura-of-vitality-effect');
+        const auraOfVitalityEffect = document.querySelector('.auraofvitality-effect');
         auraOfVitalityEffect.addEventListener('click', () => auraOfVitality());
 
-        const spiritGuardiansEffect = document.querySelector('.spirit-guardians-effect');
+        const spiritGuardiansEffect = document.querySelector('.spiritguardians-effect');
         spiritGuardiansEffect.addEventListener('click', () => diceThrow(3, 8, 'Spirit Guardians'));
 
-        const spiritGuardiansLevel4Effect = document.querySelector('.spirit-guardians-level4-effect');
+        const spiritGuardiansLevel4Effect = document.querySelector('.spiritguardianslevel4-effect');
         spiritGuardiansLevel4Effect.addEventListener('click', () => diceThrow(4, 8, 'Spirit Guardians(Level 4)'));
 
-        const spiritGuardiansLevel5Effect = document.querySelector('.spirit-guardians-level5-effect');
+        const spiritGuardiansLevel5Effect = document.querySelector('.spiritguardianslevel5-effect');
         spiritGuardiansLevel5Effect.addEventListener('click', () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'));
 
-        const flamestrike = document.querySelector('.flamestrike');
+        const flamestrike = document.querySelector('.flamestrike-effect');
         flamestrike.addEventListener('click', () => flameStrike(5));
 
-        const massCureWoundsEffect = document.querySelector('.mass-cure-wounds-effect');
+        const massCureWoundsEffect = document.querySelector('.masscurewounds-effect');
         massCureWoundsEffect.addEventListener('click', () => massCureWounds(5));
     }
 
     addEffectsEvents();
 
     const spellsStatus = [
-        {name: 'guidance', active: false, concentration: true, duration: true, level: 0, verbal: true, somatic: true},
-        {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0, verbal: true, somatic: false},
-        {name: 'sacredflame', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true},
-        {name: 'tollthedead', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true},
-        {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true},
-        {name: 'bless', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true},
-        {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true},
-        {name: 'curewounds', active: false, concentration: false, duration: false, level: 1, verbal: true, somatic: true},
-        {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: false},
-        {name: 'sleep', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true},
-        {name: 'moonbeam', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true},
-        {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true},
-        {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true},
-        {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true},
-        {name: 'guidingboltlevel2', active: false, concentration: false, duration: true, level: 2},
-        {name: 'auraofvitality', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: false},
-        {name: 'bestowcurse', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'dispelmagic', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true},
-        {name: 'leomunds', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'spiritguardians', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'curewoundslevel3', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true},
-        {name: 'guidingboltlevel3', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'moonbeamlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'spiritualweaponlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true},
-        {name: 'auraoflife', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false},
-        {name: 'auraofpurity', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false},
-        {name: 'deathward', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'greaterinvisibility', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'guardianoffaith', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: false},
-        {name: 'dispelmagiclevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true},
-        {name: 'spiritguardianslevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'curewoundslevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true},
-        {name: 'guidingboltlevel4', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true},
-        {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: false},
-        {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
-        {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
-        {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
-        {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
-        {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
-        {name: 'guidingboltlevel5', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true},
-        {name: 'moonbeamlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
-        {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
-        {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true},
-        {name: 'mislead', active: false, concentration: true, duration: true, level: 5, verbal: false, somatic: true},
-        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true},
+        {name: 'guidance', active: false, concentration: true, duration: true, level: 0, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'thaumaturgy', active: false, concentration: false, duration: true, level: 0, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: '-',  effectType: 'Control'},
+        {name: 'sacredflame', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: 'DEX',  effectType: 'Effect'},
+        {name: 'tollthedead', active: false, concentration: false, duration: false, level: 0, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: 'WIS',  effectType: 'Effect'},
+        {name: 'guidingbolt', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack',  effectType: 'Effect'},
+        {name: 'bless', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-',  effectType: 'Effect'},
+        {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: '-',  effectType: '+2 AC'},
+        {name: 'curewounds', active: false, concentration: false, duration: false, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
+        {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: false, castingTime: '1 Action', range: '60 ft', saveDC: 'DEX',  effectType: 'Invisible'},
+        {name: 'sleep', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-',  effectType: 'Unconsious'},
+        {name: 'moonbeam', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
+        {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'guidingboltlevel2', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'auraofvitality', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'bestowcurse', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: 'WIS', effectType: 'Debuff'},
+        {name: 'dispelmagic', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
+        {name: 'leomunds', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Minute', range: 'Self', saveDC: '-', effectType: 'Utility'},
+        {name: 'spiritguardians', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
+        {name: 'curewoundslevel3', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'guidingboltlevel3', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'moonbeamlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'spiritualweaponlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'auraoflife', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Revive'},
+        {name: 'auraofpurity', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Buff'},
+        {name: 'deathward', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'greaterinvisibility', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Invisible'},
+        {name: 'guardianoffaith', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: 'DEX', effectType: '20 Damage'},
+        {name: 'dispelmagiclevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
+        {name: 'spiritguardianslevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
+        {name: 'curewoundslevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'guidingboltlevel4', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: false, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Buff'},
+        {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: 'DEX', effectType: 'Effect'},
+        {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: 'Touch', saveDC: 'CON', effectType: '2d8'},
+        {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
+        {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'guidingboltlevel5', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'moonbeamlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
+        {name: 'mislead', active: false, concentration: true, duration: true, level: 5, verbal: false, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Deception'},
+        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-', effectType: 'Summoning'}
     ];
     localStorage.getItem("spells") ?? localStorage.setItem("spells", JSON.stringify(spellsStatus));
 
@@ -573,7 +573,404 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     localStorage.getItem("spellSlots") ?? localStorage.setItem("spellSlots", JSON.stringify(spellSlots));
 
+    const spellNames = [
+        "Guidance", "Thaumaturgy", "Sacred Flame", "Toll The Dead", "Guiding Bolt",
+        "Bless", "Shield Of Faith", "Cure Wounds", "Fairie Fire", "Sleep",
+        "Moonbeam", "See Invisibility", "Cure Wounds (Level 2)", "Spiritual Weapon",
+        "Guiding Bolt (Level 2)", "Aura Of Vitality", "Bestow Curse", "Dispel Magic",
+        "Leomunds", "Spirit Guardians", "Cure Wounds (Level 3)", "Guiding Bolt (Level 3)",
+        "Moonbeam (Level 3)", "Spiritual Weapon (Level 3)", "Aura Of Life", "Aura Of Purity",
+        "Death Ward", "Greater Invisibility", "Guardian Of Faith", "Dispel Magic Level 4",
+        "Spirit Guardians (Level 4)", "Cure Wounds (Level 4)", "Guiding Bolt (Level 4)",
+        "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
+        "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
+        "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)",
+        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial"
+    ];
+
+    const spellNameMap = {};
+
+    spellNames.forEach(name => {
+        const key = name.replace(/[\s()]/g, '').toLowerCase();
+        spellNameMap[key] = name;
+    });
+
+    const ringSlots = {
+        ringslot1:"",
+        ringslot2:"",
+        ringslot3:"",
+        ringslot4:"",
+        ringslot5:""
+    }
+    localStorage.getItem("ringSlots") ?? localStorage.setItem("ringSlots", JSON.stringify(ringSlots));
+
+    function populateSpellListDropdown(){
+        const spellListDropdown = document.getElementById('spell-list');
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '-Select a spell to store';
+        spellListDropdown.appendChild(defaultOption);
+
+        spellNames.forEach(spellName => {
+            const option = document.createElement('option');
+            option.value = spellName;
+            option.textContent = spellName;
+            spellListDropdown.appendChild(option);
+        });
+    }
+
+    populateSpellListDropdown();
+
+    document.getElementById('storespell').addEventListener('click', function() {
+        const selectedSpellName = document.getElementById('spell-list').value;
+        if (!selectedSpellName || selectedSpellName === "-Select a spell to store"){
+            showToast("Select a spell to add", 'error');
+            return;
+        }
     
+        storeSpell(selectedSpellName);
+    });
+
+    function storeSpell(name){
+        const formattedName = name.trim().replace(/[\s()]/g, '').toLowerCase();
+        let totalLevelsStored = 0;
+        const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+  
+        // Calculate the current total levels stored
+        if (ringSpellsStatus.length !== 0){
+            ringSpellsStatus.forEach((storedSpell) => {
+                let level = spellsStatus.find(spell => spell.name === storedSpell.name).level;
+                totalLevelsStored += level;
+            })
+        }
+        const spellToAddLevel = spellsStatus.find(spell => spell.name === formattedName).level;
+        if (totalLevelsStored + spellToAddLevel > 5){
+            showToast("Ring capacity exceeded", 'error');
+            return;
+        }
+        if (spellToAddLevel === 0){
+            showToast("You cannot store cantrips in the Ring", 'error');
+            return;     
+        }
+
+        // Update ringSpellStatus
+        const count = ringSpellsStatus.filter(spell => spell.name === formattedName).length;
+        const id = count === 0 ? formattedName : `${formattedName}${count + 1}`;
+        ringSpellsStatus.push({
+            name: formattedName,
+            id: id,
+            active: false
+        });
+        localStorage.setItem("ringSpellsStatus", JSON.stringify(ringSpellsStatus));
+
+        // Update ringSlots
+        const ringSlots = JSON.parse(localStorage.getItem("ringSlots"));
+        let slotsFilled = 0;
+        for (let i = 1; i <= 5 && slotsFilled < spellToAddLevel; i++) {
+            const key = `ringslot${i}`;
+            if (ringSlots[key] === "") {
+                ringSlots[key] = "🔲";
+                slotsFilled++;
+            }
+        }
+        localStorage.setItem("ringSlots", JSON.stringify(ringSlots));
+        renderRingTable();
+        const effect = spellsStatus.find(spell => spell.name === formattedName).effectType;
+        if (effect === "Effect"){
+            addRingEffectsEvents();
+        } 
+        addRingCastEvents();
+    }
+
+    function renderRingTable(){
+        const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+        const ringSlots = JSON.parse(localStorage.getItem("ringSlots"));
+        const tbody = document.querySelector('#spellTable tbody');
+        tbody.innerHTML = '';
+        let ringSlotElement = null;
+
+        ringSpellsStatus.forEach((storedSpell) => {
+            const spellObj = spellsStatus.find(spell => spell.name === storedSpell.name);
+            const spellName = spellNameMap[storedSpell.name];
+
+            let saveDCCell = "";
+            if (spellObj.saveDC === '-') {
+                saveDCCell = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>`;
+            } else if (spellObj.saveDC.toLowerCase() === 'spellattack') {
+                saveDCCell = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>`;
+            } else {
+                saveDCCell = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">${spellObj.saveDC} <span class="saveDC"></span></td>`;
+            }
+    
+            let ceaseCell = '';
+            if (spellObj.duration) {
+                ceaseCell = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button id="${storedSpell.id}-stored-end">CEASE</button></td>`;
+            } else {
+                ceaseCell = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>`;
+            }
+
+            let effectType = '';
+            if (spellObj.effectType === "Effect") {
+                effectType = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button id="${storedSpell.id}-stored-effect">EFFECT</button></td>`;
+            } else {
+                effectType = `<td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">${spellObj.effectType}</td>`;
+            }
+    
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">${spellName}</td>
+                <td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">${spellObj.castingTime}</td>
+                <td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">${spellObj.range}</td>
+                ${saveDCCell}
+                <td class="${storedSpell.id}-stored-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button id="${storedSpell.id}-stored-cast">CAST</button></td>
+                ${ceaseCell}
+                ${effectType}
+            `;
+            tbody.appendChild(row);
+        });
+
+        Object.entries(ringSlots).forEach(([key, value]) => {
+            if (value === "🔲") {
+                ringSlotElement = document.getElementById(key);
+                if (ringSlotElement){
+                    ringSlotElement.value = "🔲";
+                    ringSlotElement.dispatchEvent(new Event('change'));
+                }
+            }
+        });
+    }
+
+    const attachedListeners = new Set();
+
+    function addRingEffectsEvents() {
+        const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+    
+        const spellCallbacks = {
+            sacredflame: () => diceThrow(2, 8, 'Sacred Flame', false, true),
+            tollthedead: () => tollTheDead(),
+            guidance: () => buffEffects("guidance"),
+            bless: () => buffEffects("bless"),
+            guidingbolt: () => diceThrow(4, 6, 'Guiding Bolt', false, false, true),
+            guidingboltlevel2: () => diceThrow(5, 6, 'Guiding Bolt (Level2)', false, false, true),
+            guidingboltlevel3: () => diceThrow(6, 6, 'Guiding Bolt (Level3)', false, false, true),
+            guidingboltlevel4: () => diceThrow(7, 6, 'Guiding Bolt (Level4)', false, false, true),
+            guidingboltlevel5: () => diceThrow(8, 6, 'Guiding Bolt (Level5)', false, false, true),
+            curewounds: () => cureWounds(1),
+            curewoundslevel2: () => cureWounds(2),
+            curewoundslevel3: () => cureWounds(3),
+            curewoundslevel4: () => cureWounds(4),
+            curewoundslevel5: () => cureWounds(5),
+            deathward: () => buffEffects("deathward"),
+            moonbeam: () => diceThrow(2, 10, 'Moonbeam'),
+            moonbeamlevel3: () => diceThrow(3, 10, 'Moonbeam(Level 3)'),
+            moonbeamlevel4: () => diceThrow(4, 10, 'Moonbeam(Level 4)'),
+            moonbeamlevel5: () => diceThrow(5, 10, 'Moonbeam(Level 5)'),
+            spiritualweapon: () => diceThrow(1, 8, 'Spiritual Weapon', true, false, true),
+            spiritualweaponlevel3: () => diceThrow(2, 8, 'Spiritual Weapon(Level 3)', true, false, true),
+            spiritualweaponlevel4: () => diceThrow(3, 8, 'Spiritual Weapon(Level 4)', true, false, true),
+            spiritualweaponlevel5: () => diceThrow(4, 8, 'Spiritual Weapon(Level 5)', true, false, true),
+            auraofvitality: () => auraOfVitality(),
+            spiritguardians: () => diceThrow(3, 8, 'Spirit Guardians'),
+            spiritguardianslevel4: () => diceThrow(4, 8, 'Spirit Guardians(Level 4)'),
+            spiritguardianslevel5: () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'),
+            flamestrike: () => flameStrike(5),
+            masscurewounds: () => massCureWounds(5)
+        };
+
+        ringSpellsStatus.forEach(spell => {
+            const elementId = `${spell.id}-stored-effect`;
+            const element = document.getElementById(elementId);
+            const callback = spellCallbacks[spell.name];
+    
+            //if (element && callback && !attachedListeners.has(elementId)) {
+            element.addEventListener('click', callback);
+                //attachedListeners.add(elementId);
+            //}
+        });
+    }
+    
+    function ringSpellCast(name, id) {
+        let ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+        let spells = JSON.parse(localStorage.getItem("spells")) || [];
+        const spellToUpdate = spells.find(spell => spell.name === name);
+        const isConcentration = spellToUpdate?.concentration;
+        const isDuration = spellToUpdate?.duration;
+        const ringSlots = JSON.parse(localStorage.getItem("ringSlots"));
+    
+        const incapacitatedBox = document.getElementById('toggle-incapacitated');
+        const handsRestrainedBox = document.getElementById('toggle-hands restrained');
+        const silencedBox = document.getElementById('toggle-silenced');
+    
+        if (incapacitatedBox.checked) {
+            showToast("You are incapacitated!", 'info');
+            return;
+        }
+    
+        if (spellToUpdate?.verbal && silencedBox.checked) {
+            showToast('You cannot cast spells with verbal components because you are silenced', 'tactics');
+            return;
+        }
+    
+        if (spellToUpdate?.somatic && handsRestrainedBox.checked) {
+            showToast('You cannot cast spells with somatic components because your hands are restrained', 'tactics');
+            return;
+        }
+    
+        // Handle concentration logic
+        if (isConcentration) {
+            const guidanceTracker = document.getElementById('guidance-tracker');
+            const blessTracker = document.getElementById('bless-tracker');
+            guidanceTracker.value = "";
+            blessTracker.value = "";
+    
+            removeNonDamageEffects('greaterinvisibility');
+            removeNonDamageEffects('summoncelestial');
+    
+            spells = spells.map(spell => {
+                if (spell.concentration && spell.active) {
+                    return { ...spell, active: false };
+                }
+                return spell;
+            });
+        }
+    
+        // Handle non-damage effects
+        applyNonDamageEffects(name);
+    
+        if (name === "guidance") {
+            const guidanceTracker = document.getElementById('guidance-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice === 1) guidanceTracker.value = "🔲";
+        }
+    
+        if (name === "bless") {
+            const blessTracker = document.getElementById('bless-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice === 1) blessTracker.value = "🔲";
+        }
+    
+        if (name === "deathward") {
+            const deathwardTracker = document.getElementById('deathward-tracker');
+            const choice = parseInt(prompt("Enter 1 if self or 2 if other"));
+            if (choice === 1) deathwardTracker.value = "🔲";
+        }
+
+        // If it's not a duration spell, remove immediately
+        if (!isDuration) {
+            const cell = document.querySelector(`.${id}-stored-row`);
+            if (cell) {
+                const row = cell.closest('tr');
+                if (row) row.remove();
+            }
+            const updatedRingSpellsStatus = ringSpellsStatus.filter(spell => spell.id !== id);
+            localStorage.setItem("ringSpellsStatus", JSON.stringify(updatedRingSpellsStatus));
+
+            let spells = JSON.parse(localStorage.getItem("spells")) || {};
+            let removeSlots = spells.find(spell => spell.name === name).level;
+            let countdown = 5;
+
+            while (removeSlots > 0){
+                if (ringSlots[`ringslot${countdown}`] !== ""){
+                    ringSlots[`ringslot${countdown}`] = "";
+                    removeSlots--;
+                    countdown--;
+                } else {
+                    countdown--;
+                }
+            }
+            localStorage.setItem("ringSlots", JSON.stringify(ringSlots));
+        } else {
+            // Otherwise mark it as active
+            ringSpellsStatus = ringSpellsStatus.map(spell => {
+                if (spell.id === id) {
+                    return { ...spell, active: true };
+                }
+                return spell;
+            });
+            localStorage.setItem("ringSpellsStatus", JSON.stringify(ringSpellsStatus));
+        }
+
+        updateRingSpellStatus(ringSpellsStatus);
+    }
+
+    function ringSpellCease(name,id) {
+        let ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+        let ringSlots = JSON.parse(localStorage.getItem("ringSlots")) || {};
+        let spells = JSON.parse(localStorage.getItem("spells")) || {};
+        
+        let removeSlots = spells.find(spell => spell.name === name).level;
+        let countdown = 5;
+
+        while (removeSlots > 0){
+            if (ringSlots[`ringslot${countdown}`] !== ""){
+                ringSlots[`ringslot${countdown}`] = "";
+                removeSlots--;
+                countdown--;
+            } else {
+                countdown--;
+            }
+        }
+        localStorage.setItem("ringSlots", JSON.stringify(ringSlots));
+
+        const updatedRingSpellsStatus = ringSpellsStatus.filter(spell => spell.id !== id);
+        localStorage.setItem("ringSpellsStatus", JSON.stringify(updatedRingSpellsStatus));
+  
+        const rowToRemove = document.querySelector(`.${id}-stored-row`);
+        if (rowToRemove) {
+            const row = rowToRemove.closest('tr');
+            if (row) row.remove();
+        }
+        
+        updateRingSpellStatus(ringSpellsStatus);
+    }
+    function updateRingSpellStatus(ringSpellStatus) {
+        const rowsList = [];
+    
+        // Collect all matching row elements for each spell by class
+        ringSpellStatus.forEach(spell => {
+            const spellRows = document.querySelectorAll(`.${spell.id}-stored-row`);
+            rowsList.push(spellRows);
+        });
+    
+        const spells = JSON.parse(localStorage.getItem("spells")) || [];
+    
+        for (let i = 0; i < rowsList.length; i++) {
+            const rowNodes = rowsList[i];
+            const ringSpell = ringSpellStatus[i];
+            const spellInfo = spells.find(s => s.name === ringSpell.name);
+            
+            if (rowNodes.length > 0 && spellInfo) {
+                let color = '';
+    
+                if (spellInfo.concentration && ringSpell.active) {
+                    color = '#B266FF'; // Purple for concentration
+                } else if (spellInfo.duration && ringSpell.active) {
+                    color = '#66FFB2'; // Green for duration
+                }
+    
+                rowNodes.forEach(cell => {
+                    cell.style.backgroundColor = color;
+                });
+            }
+        }
+        updateRingSlotStatus();
+    }
+    
+    function updateRingSlotStatus(){
+        const slots = JSON.parse(localStorage.getItem('ringSlots'));
+        const slot1 = document.getElementById("ringslot1");
+        const slot2 = document.getElementById("ringslot2");
+        const slot3 = document.getElementById("ringslot3");
+        const slot4 = document.getElementById("ringslot4");
+        const slot5 = document.getElementById("ringslot5");
+
+        slot1.value = slots.ringslot1;
+        slot2.value = slots.ringslot2;
+        slot3.value = slots.ringslot3;
+        slot4.value = slots.ringslot4;
+        slot5.value = slots.ringslot5;
+    }
 
     function emptySlot(level) {
         let storedSlots = JSON.parse(localStorage.getItem("spellSlots"));
@@ -862,8 +1259,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSpellStatus(storedSpells);
     }
     
-
-    
     function ceaseAllConcentrationSpells() {
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         storedSpells = storedSpells.map(spell => {
@@ -889,6 +1284,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function addRingCastEvents() {
+        const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
+
+        ringSpellsStatus.forEach(spell => {
+            const castButton = document.getElementById(`${spell.id}-stored-cast`);
+            const endButton = document.getElementById(`${spell.id}-stored-end`);
+            if (castButton && !castButton.dataset.listenerAttached) {
+                castButton.addEventListener('click', () => ringSpellCast(spell.name, spell.id));
+                castButton.dataset.listenerAttached = "true";
+            }
+            if (endButton && !endButton.dataset.listenerAttached) {
+                endButton.addEventListener('click', () => ringSpellCease(spell.name, spell.id));
+                endButton.dataset.listenerAttached = "true";
+            }
+        });
+    }
+
     function addFreeSlotsEvents() {
         const freeLevel1Slot = document.querySelector('#freeslotlevel1');
         const freeLevel2Slot = document.querySelector('#freeslotlevel2');
@@ -904,8 +1316,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const storedSpellsStatus = JSON.parse(localStorage.getItem("spells"));
+    const ringSpellsStatus = JSON.parse(localStorage.getItem("ringSpellsStatus")) ?? [];
     updateSpellStatus(storedSpellsStatus);
     addFreeSlotsEvents()
     addCastEvents();
-
+    renderRingTable();
+    addRingEffectsEvents();
+    addRingCastEvents();
+    updateRingSpellStatus(ringSpellsStatus);
 });

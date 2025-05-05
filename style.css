@@ -436,6 +436,10 @@ label {
   border-left: 4px solid #d348d3;
 }
 
+.toast.twilight {
+  border-left: 4px solid #687ab5;
+}
+
 .toast-close {
   background: none;
   border: none;

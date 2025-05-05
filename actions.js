@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (choice == 1){
             const roll = Math.floor(Math.random() * 6) + 1;
             const result = roll + level;
-            showToast(`Temporary HP gained: ${result}`,'success');
+            showToast(`Temporary HP gained: ${result}`,'twilight');
             if (result > tempHP){
                 tempHP = result;
                 tempHPInput.value = tempHP;
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             const roll = Math.floor(Math.random() * 6) + 1;
             const result = roll + level;
-            showToast(`Temporary HP gained: ${result}`,'success');
+            showToast(`Temporary HP gained: ${result}`,'twilight');
         }
     }
 
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const rollResult = Math.max(d20Roll1, d20Roll2);
         const result = rollResult + initMod;
         const initString = initMod == 0 ? "" : ` + ${initMod}`;
-        showToast(`Initiative: 1d20(Adv)${initString} = ${result}`,'success');
+        showToast(`Initiative: 1d20(Adv)${initString} = ${result}`,'twilight');
         const sound = new Audio('sounds/die.mp3');
         sound.play();
     }

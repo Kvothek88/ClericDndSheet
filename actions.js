@@ -1515,13 +1515,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById("diceCanvas");
     const ctx = canvas.getContext("2d");
     const diceImages = [
-      { name: "d4", src: "/images/d4.png", value: 4},
-      { name: "d6", src: "/images/d6.png", value: 6},
-      { name: "d8", src: "/images/d8.png", value: 8},
-      { name: "d10", src: "/images/d10.png", value: 10 },
-      { name: "d12", src: "/images/d12.png", value: 12 },
-      { name: "d20", src: "/images/d20.png", value: 20 },
-      { name: "d100", src: "/images/d100.png", value: 100 },
+      { name: "d4", src: "images/d4.png", value: 4},
+      { name: "d6", src: "images/d6.png", value: 6},
+      { name: "d8", src: "images/d8.png", value: 8},
+      { name: "d10", src: "images/d10.png", value: 10 },
+      { name: "d12", src: "images/d12.png", value: 12 },
+      { name: "d20", src: "images/d20.png", value: 20 },
+      { name: "d100", src: "images/d100.png", value: 100 },
     ];
     const dice = [];
     const spacing = 10;

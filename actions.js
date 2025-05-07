@@ -1511,4 +1511,224 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addActionEvents();
     addSkillEvents();
+
+    const canvas = document.getElementById("diceCanvas");
+    const ctx = canvas.getContext("2d");
+    const diceImages = [
+      { name: "d4", src: "/images/d4.png", value: 4},
+      { name: "d6", src: "/images/d6.png", value: 6},
+      { name: "d8", src: "/images/d8.png", value: 8},
+      { name: "d10", src: "/images/d10.png", value: 10 },
+      { name: "d12", src: "/images/d12.png", value: 12 },
+      { name: "d20", src: "/images/d20.png", value: 20 },
+      { name: "d100", src: "/images/d100.png", value: 100 },
+    ];
+    const dice = [];
+    const spacing = 10;
+    const dicePerRow = 2;
+    // Using the original size of 55x55 instead of stretching to 85x85
+    const dieSize = 55;
+    // Amount to grow when hovering
+    const hoverGrowth = 7;
+    // Tracking which die is being hovered
+    let hoveredDieIndex = -1;
+    let loaded = 0;
+    
+    diceImages.forEach((dieInfo, i) => {
+      const img = new Image();
+      img.src = dieInfo.src;
+      img.onload = () => {
+        const col = i % dicePerRow;
+        const row = Math.floor(i / dicePerRow);
+        const x = col * (dieSize + spacing) + spacing;
+        const y = row * (dieSize + spacing) + spacing;
+        dice.push({
+          name: dieInfo.name,
+          img,
+          x,
+          y,
+          w: dieSize,
+          h: dieSize,
+        });
+        loaded++;
+        if (loaded === diceImages.length) {
+          const totalRows = Math.ceil(dice.length / dicePerRow);
+          canvas.width = dicePerRow * (dieSize + spacing) + spacing;
+          canvas.height = totalRows * (dieSize + spacing) + spacing;
+          drawDice();
+        }
+      };
+      img.onerror = () => {
+        console.error("Failed to load image:", dieInfo.src);
+      };
+    });
+    
+    function drawDice() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      dice.forEach((die, index) => {
+        ctx.save();
+        
+        // If this die is hovered, make it bigger and add a glow effect
+        if (index === hoveredDieIndex) {
+          // Add a glow effect
+          ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+          ctx.shadowBlur = 15;
+          
+          // Draw the die slightly larger
+          const growAmount = hoverGrowth;
+          ctx.drawImage(
+            die.img, 
+            die.x - growAmount/2, 
+            die.y - growAmount/2, 
+            die.w + growAmount, 
+            die.h + growAmount
+          );
+        } else {
+          // Draw normal size
+          ctx.drawImage(die.img, die.x, die.y, die.w, die.h);
+        }
+        
+        ctx.restore();
+      });
+    }
+    
+    // Function to get canvas coordinates from mouse position
+    function getCanvasCoordinates(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      
+      return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY
+      };
+    }
+    
+    // Check if a point is inside a die
+    function isPointInDie(x, y, die) {
+      return (
+        x >= die.x &&
+        x < die.x + die.w &&
+        y >= die.y &&
+        y < die.y + die.h
+      );
+    }
+    
+    // Handle mouse movement for hover effects
+    canvas.addEventListener("mousemove", (e) => {
+      const coords = getCanvasCoordinates(e);
+      let foundHover = false;
+      
+      for (let i = 0; i < dice.length; i++) {
+        if (isPointInDie(coords.x, coords.y, dice[i])) {
+          if (hoveredDieIndex !== i) {
+            hoveredDieIndex = i;
+            canvas.style.cursor = "pointer";
+            drawDice();
+          }
+          foundHover = true;
+          break;
+        }
+      }
+      
+      // If we're not hovering over any die anymore
+      if (!foundHover && hoveredDieIndex !== -1) {
+        hoveredDieIndex = -1;
+        canvas.style.cursor = "default";
+        drawDice();
+      }
+    });
+    
+    // Handle mouse leaving the canvas
+    canvas.addEventListener("mouseleave", () => {
+      if (hoveredDieIndex !== -1) {
+        hoveredDieIndex = -1;
+        canvas.style.cursor = "default";
+        drawDice();
+      }
+    });
+    
+    // Handle clicks
+    canvas.addEventListener("click", (e) => {
+      const coords = getCanvasCoordinates(e);
+      
+      for (let i = 0; i < dice.length; i++) {
+        if (isPointInDie(coords.x, coords.y, dice[i])) {
+            const diceValue = parseInt(diceImages.find(x => x.name == dice[i].name).value);
+            const count = parseInt(document.getElementById('countInput').value);
+            let result = 0;
+            const rolls = [];
+
+            if (diceValue === 100 && count != 1){
+                showToast("You can only throw one die for percentage", 'error');
+                return;
+            }
+
+            if (diceValue === 20 && count > 2){
+                showToast("You cannot throw more than two d20 dice", 'error');
+                return;
+            }
+
+            if (diceValue === 20 && count == 2){
+                let choice = prompt("Choose 1 to throw with Advantage or 2 to throw with Disadvantage");
+                const roll1 = Math.floor(Math.random() * diceValue) + 1;
+                const roll2 = Math.floor(Math.random() * diceValue) + 1;
+                const sound = new Audio('sounds/2dice.mp3');
+                switch (choice){
+                    case "1":
+                        const maxValue = Math.max(roll1,roll2);
+                        showToast(`2d20(Adv) = Max(${roll1},${roll2}) = ${maxValue}`, 'dice');
+                        sound.play();
+                        break;
+                    case "2":
+                        const minValue = Math.min(roll1,roll2);
+                        showToast(`2d20(Dis) = Min(${roll1},${roll2}) = ${minValue}`, 'dice');
+                        sound.play();
+                        break;
+                    default:
+                        showToast('Wrong choice', 'error');
+                        break;
+                }
+                return;
+            }
+
+            if (count == 1){
+                const roll = Math.floor(Math.random() * diceValue) + 1;
+                showToast(`${count}d${diceValue} = ${roll}`, 'dice');
+                const sound = new Audio('sounds/die.mp3');
+                sound.play();
+            } else {
+                for (let i = 0; i < count; i++) {
+                    const roll = Math.floor(Math.random() * diceValue) + 1;
+                    result += roll;
+                    rolls.push(roll);
+                }
+                const rollsString = rolls.join(' + ');
+                showToast(`${count}d${diceValue} = ${rollsString} = ${result}`, 'dice');
+                if (count == 2){
+                    const sound = new Audio('sounds/2dice.mp3');
+                    sound.play();
+                } else {
+                    const sound = new Audio('sounds/dice.mp3');
+                    sound.play();
+                }
+            }
+            
+          return;
+        }
+      }
+    });
+
+    const input = document.getElementById("countInput");
+    const btnPlus = document.getElementById("increase");
+    const btnMinus = document.getElementById("decrease");
+
+    btnPlus.addEventListener("click", () => {
+    input.value = parseInt(input.value) + 1;
+    });
+
+    btnMinus.addEventListener("click", () => {
+    input.value = Math.max(1, parseInt(input.value) - 1);
+    });
 });

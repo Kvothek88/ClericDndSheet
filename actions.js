@@ -1626,6 +1626,9 @@ document.addEventListener('DOMContentLoaded', function() {
             hoveredDieIndex = i;
             canvas.style.cursor = "pointer";
             drawDice();
+            const sound = new Audio('sounds/whoosh.mp3');
+            sound.volume = 0.9;
+            sound.play();
           }
           foundHover = true;
           break;

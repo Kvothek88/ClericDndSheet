@@ -1564,33 +1564,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function drawDice() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      dice.forEach((die, index) => {
-        ctx.save();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // If this die is hovered, make it bigger and add a glow effect
-        if (index === hoveredDieIndex) {
-          // Add a glow effect
-          ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
-          ctx.shadowBlur = 15;
+        // Set high quality rendering
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        
+        dice.forEach((die, index) => {
+          ctx.save();
           
-          // Draw the die slightly larger
-          const growAmount = hoverGrowth;
-          ctx.drawImage(
-            die.img, 
-            die.x - growAmount/2, 
-            die.y - growAmount/2, 
-            die.w + growAmount, 
-            die.h + growAmount
-          );
-        } else {
-          // Draw normal size
-          ctx.drawImage(die.img, die.x, die.y, die.w, die.h);
-        }
-        
-        ctx.restore();
-      });
+          // If this die is hovered, make it bigger and add the shadow effect
+          if (index === hoveredDieIndex) {
+            // Add the shadow effect
+            ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+            ctx.shadowBlur = 15;
+            
+            const growAmount = hoverGrowth;
+            const newWidth = die.w + growAmount;
+            const newHeight = die.h + growAmount;
+            
+            // Draw directly with better scaling
+            ctx.drawImage(
+              die.img, 
+              die.x - growAmount/2, 
+              die.y - growAmount/2,
+              newWidth,
+              newHeight
+            );
+          } else {
+            // Draw normal size
+            ctx.drawImage(die.img, die.x, die.y, die.w, die.h);
+          }
+          
+          ctx.restore();
+        });
     }
     
     // Function to get canvas coordinates from mouse position

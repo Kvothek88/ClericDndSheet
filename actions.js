@@ -1666,9 +1666,17 @@ document.addEventListener('DOMContentLoaded', function() {
       for (let i = 0; i < dice.length; i++) {
         if (isPointInDie(coords.x, coords.y, dice[i])) {
             const diceValue = parseInt(diceImages.find(x => x.name == dice[i].name).value);
-            const count = parseInt(document.getElementById('countInput').value);
+            let inputValue = document.getElementById('countInput').value;
+            let count;
             let result = 0;
             const rolls = [];
+
+            if (!isNaN(inputValue) && inputValue !== null && inputValue.trim() !== "" && inputValue != 0){
+                count = parseInt(inputValue);
+            } else {
+                showToast("Invalid data in dice count",'error');
+                return;
+            }
 
             if (diceValue === 100 && count != 1){
                 showToast("You can only throw one die for percentage", 'error');

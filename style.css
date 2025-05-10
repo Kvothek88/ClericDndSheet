@@ -409,7 +409,7 @@ label {
   justify-content: space-between;
   align-items: center;
   animation: slideIn 0.3s ease-in-out;
-  white-space: pre;
+  white-space: normal;
 }
 
 .toast.success {

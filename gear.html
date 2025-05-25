@@ -348,7 +348,7 @@
                     <td>${item.attunement}</td>
                     <td>
                         ${["Weapon", "Armor", "Shield", "Ring", "Amulet", "Cloak", "Headwear", "Armsgear"].includes(item.category) ? 
-                        `<button class="wear-btn" onclick="equipItem('${item.name.replace(/'/g, "\\'")}', '${item.category}', '${item.attunement}')">WEAR</button> : ""}
+                        `<button class="wear-btn" onclick="equipItem('${item.name}', '${item.category}', '${item.attunement}')">WEAR</button> : ""}
                     </td>
                     <td>
                         <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">REMOVE</button>

@@ -351,7 +351,7 @@
                         `<button class="wear-btn" onclick="equipItem('${item.name}', '${item.category}', '${item.attunement}')">WEAR</button>` : ""}
                     </td>
                     <td>
-                        <button class="remove-btn" onclick="removeItem('${item.name}')">REMOVE</button>
+                        <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">REMOVE</button>
                     </td>
                 `;
                 tableBody.appendChild(row);

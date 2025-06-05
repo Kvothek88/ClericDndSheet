@@ -21,6 +21,7 @@ const skillsWithKeyAbilities = [
     { name: "Nature", keyAbility: "INT" },
     { name: "Perception", keyAbility: "WIS" },
     { name: "Performance", keyAbility: "CHA" },
+    { name: "Persuasion", keyAbility: "WIS" },
     { name: "Religion", keyAbility: "INT" },
     { name: "Sleight Of Hand", keyAbility: "DEX" },
     { name: "Stealth", keyAbility: "DEX" },

@@ -579,8 +579,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const spellNames = [
         "Guidance", "Thaumaturgy", "Sacred Flame", "Toll The Dead", "Guiding Bolt",
-        "Bless", "Shield Of Faith", "Cure Wounds", "Fairie Fire", "Sleep",
-        "Moonbeam", "See Invisibility", "Cure Wounds (Level 2)", "Spiritual Weapon",
+        "Bless", "Shield Of Faith", "Cure Wounds", "Fairie Fire", "Detect Magic", "Detect Evil and Good", 
+        "Sleep", "Moonbeam", "See Invisibility", "Cure Wounds (Level 2)", "Spiritual Weapon",
         "Guiding Bolt (Level 2)", "Aura Of Vitality", "Bestow Curse", "Dispel Magic",
         "Leomunds", "Spirit Guardians", "Cure Wounds (Level 3)", "Guiding Bolt (Level 3)",
         "Moonbeam (Level 3)", "Spiritual Weapon (Level 3)", "Aura Of Life", "Aura Of Purity",

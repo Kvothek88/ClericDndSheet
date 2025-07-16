@@ -555,7 +555,8 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
         {name: 'mislead', active: false, concentration: true, duration: true, level: 5, verbal: false, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Deception'},
-        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-', effectType: 'Summoning'}
+        {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-', effectType: 'Summoning'},
+        {name: 'raisedead', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Hour', range: 'Touch', saveDC: '-', effectType: 'Resurrect'}
     ];
     localStorage.getItem("spells") ?? localStorage.setItem("spells", JSON.stringify(spellsStatus));
 
@@ -589,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
         "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
         "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)",
-        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial"
+        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead"
     ];
 
     const spellNameMap = {};

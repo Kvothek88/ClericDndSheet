@@ -1071,13 +1071,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
         } else if (level == 5){
-            if (level5slot1.value !== ""){
-                level5slot1.value = "";
-                storedSlots.level5slot1 = "";
-            }
-            else if (level5slot2.value !== ""){
+            if (level5slot2.value !== ""){
                 level5slot2.value = "";
                 storedSlots.level5slot2 = "";
+            }
+            else if (level5slot1.value !== ""){
+                level5slot1.value = "";
+                storedSlots.level5slot1 = "";
             }  
             else {
                 showToast('All Level 5 spell slots are already empty', 'error');
@@ -1207,13 +1207,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         else if (level == 5){
-            if (level5slot1.value === ""){
-                level5slot1.value = "🔲";
-                storedSlots.level5slot1 = "🔲";
-            }
-            else if (level5slot2.value === ""){
+            if (level5slot2.value === ""){
                 level5slot2.value = "🔲";
                 storedSlots.level5slot2 = "🔲";
+            }
+            else if (level5slot1.value === ""){
+                level5slot1.value = "🔲";
+                storedSlots.level5slot1 = "🔲";
             }
             else {
                 showToast('All Level 5 spell slots are depleted', 'error');

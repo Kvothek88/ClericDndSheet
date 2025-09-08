@@ -76,6 +76,7 @@ function updateSpellSlotsStatus(){
     const level4slot2 = document.getElementById('level4slot2');
     const level4slot3 = document.getElementById('level4slot3');
     const level5slot1 = document.getElementById('level5slot1');
+    const level5slot2 = document.getElementById('level5slot2');
 
     level1slot1.value = storedSlots.level1slot1;
     level1slot2.value = storedSlots.level1slot2;
@@ -91,6 +92,7 @@ function updateSpellSlotsStatus(){
     level4slot2.value = storedSlots.level4slot2;
     level4slot3.value = storedSlots.level4slot3;
     level5slot1.value = storedSlots.level5slot1;
+    level5slot2.value = storedSlots.level5slot2;
 }
 
 
@@ -574,7 +576,8 @@ document.addEventListener('DOMContentLoaded', function () {
         level4slot1:"",
         level4slot2:"",
         level4slot3:"",
-        level5slot1:""
+        level5slot1:"",
+        level5slot2:"".
     }
     localStorage.getItem("spellSlots") ?? localStorage.setItem("spellSlots", JSON.stringify(spellSlots));
 
@@ -993,6 +996,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const level4slot2 = document.getElementById('level4slot2');
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
+        const level5slot2 = document.getElementById('level5slot2');
 
         if (level == 1){
             if (level1slot4.value !== ""){
@@ -1071,6 +1075,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 level5slot1.value = "";
                 storedSlots.level5slot1 = "";
             }
+            else if (level5slot2.value !== ""){
+                level5slot2.value = "";
+                storedSlots.level5slot2 = "";
+            }  
             else {
                 showToast('All Level 5 spell slots are already empty', 'error');
                 return;
@@ -1119,6 +1127,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const level4slot2 = document.getElementById('level4slot2');
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
+        const level5slot2 = document.getElementById('level5slot2');
 
 
         if (level == 1){
@@ -1201,6 +1210,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (level5slot1.value === ""){
                 level5slot1.value = "🔲";
                 storedSlots.level5slot1 = "🔲";
+            }
+            else if (level5slot2.value === ""){
+                level5slot2.value = "🔲";
+                storedSlots.level5slot2 = "🔲";
             }
             else {
                 showToast('All Level 5 spell slots are depleted', 'error');

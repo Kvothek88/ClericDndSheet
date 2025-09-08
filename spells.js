@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
         level4slot2:"",
         level4slot3:"",
         level5slot1:"",
-        level5slot2:"".
+        level5slot2:"",
     }
     localStorage.getItem("spellSlots") ?? localStorage.setItem("spellSlots", JSON.stringify(spellSlots));
 

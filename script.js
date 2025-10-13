@@ -626,7 +626,7 @@ const updateHpMax = () =>
     let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
 
     if (exhaustionInput.value >= 4){
-        maxHP /= 2;
+        maxHP = Math.floor(maxHp / 2);
     }
 
     if (level === "" || level === null || conModifier === "" || conModifier === null)

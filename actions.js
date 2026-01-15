@@ -9,18 +9,20 @@ style.textContent = `
     .tooltip {
         visibility: hidden;
         position: absolute;
-        background-color: #333;
-        color: #fff;
-        padding: 8px 12px;
-        border-radius: 6px;
+        background-color: #f5e6d3;
+        color: #3a2a1a;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 2px solid #c17a3a;
         font-size: 13px;
-        line-height: 1.4;
-        max-width: 250px;
+        line-height: 1.6;
+        max-width: 280px;
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.2s, visibility 0.2s;
         pointer-events: none;
         white-space: normal;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         
         /* Position below the element */
         top: 100%;
@@ -28,38 +30,46 @@ style.textContent = `
         margin-top: 8px;
     }
     
+    .tooltip p {
+        margin: 0 0 8px 0;
+    }
+    
+    .tooltip p:last-child {
+        margin-bottom: 0;
+    }
+    
     .tooltip.show {
         visibility: visible;
         opacity: 1;
     }
     
-    /* Optional: Add arrow */
+    /* Arrow */
     .tooltip::before {
         content: '';
         position: absolute;
         bottom: 100%;
         left: 20px;
         border: 6px solid transparent;
-        border-bottom-color: #333;
+        border-bottom-color: #c17a3a;
     }
 `;
 document.head.appendChild(style);
 
 const conditionDescriptions = {
-    blinded: "Can't see and automatically fails any ability check that requires sight. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.",
-    charmed: "Can't attack the charmer or target the charmer with harmful abilities or magical effects. The charmer has advantage on any ability check to interact socially with the creature.",
-    deafened: "Can't hear and automatically fails any ability check that requires hearing.",
-    frightened: "Has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight. The creature can't willingly move closer to the source of its fear.",
-    grappled: "Speed becomes 0, and can't benefit from any bonus to speed. The condition ends if the grappler is incapacitated.",
-    incapacitated: "Can't take actions or reactions.",
-    invisible: "Impossible to see without magic or special sense. Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.",
-    paralyzed: "Is incapacitated and can't move or speak. Automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage. Any attack that hits is a critical hit if the attacker is within 5 feet.",
-    petrified: "Transformed into stone. Is incapacitated, can't move or speak, and is unaware of surroundings. Has resistance to all damage and is immune to poison and disease.",
-    poisoned: "Has disadvantage on attack rolls and ability checks.",
-    prone: "Only movement option is to crawl. Has disadvantage on attack rolls. Attack rolls against the creature have advantage if attacker is within 5 feet.",
-    restrained: "Speed becomes 0. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage. Has disadvantage on Dexterity saving throws.",
-    stunned: "Is incapacitated, can't move, and can speak only falteringly. Automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage.",
-    unconscious: "Is incapacitated, can't move or speak, and is unaware of surroundings. Drops whatever it's holding and falls prone. Automatically fails Strength and Dexterity saving throws. Any attack that hits is a critical hit if attacker is within 5 feet."
+    blinded: "<p>Can't see and automatically fails any ability check that requires sight.</p><p>Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.</p>",
+    charmed: "<p>Can't attack the charmer or target the charmer with harmful abilities or magical effects.</p><p>The charmer has advantage on any ability check to interact socially with the creature.</p>",
+    deafened: "<p>Can't hear and automatically fails any ability check that requires hearing.</p>",
+    frightened: "<p>Has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</p><p>The creature can't willingly move closer to the source of its fear.</p>",
+    grappled: "<p>Speed becomes 0, and can't benefit from any bonus to speed.</p><p>The condition ends if the grappler is incapacitated.</p>",
+    incapacitated: "<p>Can't take actions or reactions.</p>",
+    invisible: "<p>Impossible to see without magic or special sense.</p><p>Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.</p>",
+    paralyzed: "<p>Is incapacitated and can't move or speak. Automatically fails Strength and Dexterity saving throws.</p><p>Attack rolls against the creature have advantage.</p><p>Any attack that hits is a critical hit if the attacker is within 5 feet.</p>",
+    petrified: "<p>Transformed into stone. Is incapacitated, can't move or speak, and is unaware of surroundings.</p><p>Has resistance to all damage and is immune to poison and disease.</p>",
+    poisoned: "<p>Has disadvantage on attack rolls and ability checks.</p>",
+    prone: "<p>Only movement option is to crawl. Has disadvantage on attack rolls.</p><p>Attack rolls against the creature have advantage if attacker is within 5 feet.</p>",
+    restrained: "<p>Speed becomes 0. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.</p><p>Has disadvantage on Dexterity saving throws.</p>",
+    stunned: "<p>Is incapacitated, can't move, and can speak only falteringly.</p><p>Automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage.</p>",
+    unconscious: "<p>Is incapacitated, can't move or speak, and is unaware of surroundings. Drops whatever it's holding and falls prone.</p><p>Automatically fails Strength and Dexterity saving throws.</p><p>Any attack that hits is a critical hit if attacker is within 5 feet.</p>"
 };
 
 const resilience = [
@@ -235,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const tooltip = document.createElement('div');
         tooltip.className = 'tooltip';
-        tooltip.textContent = conditionDescriptions[condition];
+        tooltip.innerHTML = conditionDescriptions[condition];
         
         // Add event listeners
         conditionName.addEventListener('mouseenter', () => {

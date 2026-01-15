@@ -15,10 +15,10 @@ style.textContent = `
         padding: 12px 16px;
         border-radius: 8px;
         border: 2px solid #c17a3a;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.6;
-        max-width: 337px;
-        min-width: 337px;
+        max-width: 320px;
+        min-width: 320px;
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.2s, visibility 0.2s;

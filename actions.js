@@ -1,5 +1,67 @@
 import { spellCease, removeNonDamageEffects, updateSpellStatus } from './spells.js';
 
+const style = document.createElement('style');
+style.textContent = `
+    .condition-item {
+        position: relative;
+    }
+    
+    .tooltip {
+        visibility: hidden;
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        line-height: 1.4;
+        max-width: 250px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.2s, visibility 0.2s;
+        pointer-events: none;
+        white-space: normal;
+        
+        /* Position below the element */
+        top: 100%;
+        left: 0;
+        margin-top: 8px;
+    }
+    
+    .tooltip.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    /* Optional: Add arrow */
+    .tooltip::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 20px;
+        border: 6px solid transparent;
+        border-bottom-color: #333;
+    }
+`;
+document.head.appendChild(style);
+
+const conditionDescriptions = {
+    blinded: "Can't see and automatically fails any ability check that requires sight. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.",
+    charmed: "Can't attack the charmer or target the charmer with harmful abilities or magical effects. The charmer has advantage on any ability check to interact socially with the creature.",
+    deafened: "Can't hear and automatically fails any ability check that requires hearing.",
+    frightened: "Has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight. The creature can't willingly move closer to the source of its fear.",
+    grappled: "Speed becomes 0, and can't benefit from any bonus to speed. The condition ends if the grappler is incapacitated.",
+    incapacitated: "Can't take actions or reactions.",
+    invisible: "Impossible to see without magic or special sense. Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.",
+    paralyzed: "Is incapacitated and can't move or speak. Automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage. Any attack that hits is a critical hit if the attacker is within 5 feet.",
+    petrified: "Transformed into stone. Is incapacitated, can't move or speak, and is unaware of surroundings. Has resistance to all damage and is immune to poison and disease.",
+    poisoned: "Has disadvantage on attack rolls and ability checks.",
+    prone: "Only movement option is to crawl. Has disadvantage on attack rolls. Attack rolls against the creature have advantage if attacker is within 5 feet.",
+    restrained: "Speed becomes 0. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage. Has disadvantage on Dexterity saving throws.",
+    stunned: "Is incapacitated, can't move, and can speak only falteringly. Automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage.",
+    unconscious: "Is incapacitated, can't move or speak, and is unaware of surroundings. Drops whatever it's holding and falls prone. Automatically fails Strength and Dexterity saving throws. Any attack that hits is a critical hit if attacker is within 5 feet."
+};
+
 const resilience = [
     { name: "fire", resistance: false, vulnerability: false },
     { name: "cold", resistance: false, vulnerability: false },
@@ -158,18 +220,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const conditionName = document.createElement('span');
         conditionName.className = 'condition-name';
         conditionName.textContent = condition;
+        conditionName.setAttribute('data-tooltip', conditionDescriptions[condition]);
         
         const label = document.createElement('label');
         label.className = 'switch';
         
         const input = document.createElement('input');
         input.type = 'checkbox';
-        input.title = 'This is a tooltip';
         input.id = `toggle-${condition}`;
 
         if (savedConditions[condition]) {
             input.checked = true;
         }
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = conditionDescriptions[condition];
+        
+        // Add event listeners
+        conditionName.addEventListener('mouseenter', () => {
+            tooltip.classList.add('show');
+        });
+        
+        conditionName.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('show');
+        });
         
         const slider = document.createElement('span');
         slider.className = 'slider';
@@ -178,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         label.appendChild(slider);
         
         conditionItem.appendChild(conditionName);
+        conditionItem.appendChild(tooltip);
         conditionItem.appendChild(label);
         
         conditionsContainer.appendChild(conditionItem);

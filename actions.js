@@ -248,13 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const tooltip = document.createElement('div');
         tooltip.className = 'tooltip';
         tooltip.innerHTML = conditionDescriptions[condition];
-        document.body.appendChild(tooltip);
         
         // Add event listeners
-        conditionName.addEventListener('mouseenter', (e) => {
-            const rect = e.target.getBoundingClientRect();
-            tooltip.style.left = rect.left + 'px';
-            tooltip.style.top = (rect.bottom + 8) + 'px';
+        conditionName.addEventListener('mouseenter', () => {
             tooltip.classList.add('show');
         });
         
@@ -269,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
         label.appendChild(slider);
         
         conditionItem.appendChild(conditionName);
+        conditionItem.appendChild(tooltip);
         conditionItem.appendChild(label);
         
         conditionsContainer.appendChild(conditionItem);

@@ -16,7 +16,7 @@ style.textContent = `
         border: 2px solid #c17a3a;
         font-size: 13px;
         line-height: 1.6;
-        max-width: 280px;
+        max-width: 370px;
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.2s, visibility 0.2s;

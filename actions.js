@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const input = document.createElement('input');
         input.type = 'checkbox';
-        input.type = 'This is a tooltip';
+        input.title = 'This is a tooltip';
         input.id = `toggle-${condition}`;
 
         if (savedConditions[condition]) {

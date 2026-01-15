@@ -58,7 +58,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 const conditionDescriptions = {
-    blinded: "<p>Can't see and automatically fails any ability check that requires sight.</p><p>Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.</p>",
+    blinded: "<p><strong>Blinded</strong></p><p>Can't see and automatically fails any <strong>ability check</strong> that requires sight.</p><p><strong>Attack rolls</strong> against the creature have <strong>advantage</strong>, and the creature's attack rolls have <strong>disadvantage</strong>.</p>",
     charmed: "<p>Can't attack the charmer or target the charmer with harmful abilities or magical effects.</p><p>The charmer has advantage on any ability check to interact socially with the creature.</p>",
     deafened: "<p>Can't hear and automatically fails any ability check that requires hearing.</p>",
     frightened: "<p>Has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.</p><p>The creature can't willingly move closer to the source of its fear.</p>",

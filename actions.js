@@ -12,7 +12,7 @@ style.textContent = `
         position: absolute;
         background-color: #f5e6d3;
         color: #3a2a1a;
-        padding: 10px 15px;
+        padding: 7px 7px;
         border-radius: 8px;
         border: 2px solid #c17a3a;
         font-size: 15px;

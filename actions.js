@@ -596,6 +596,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const level4slot2 = document.getElementById('level4slot2');
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
+        const level5slot2 = document.getElementById('level5slot2');
+        const level6slot1 = document.getElementById('level6slot1');
         const charStats = JSON.parse(localStorage.getItem('dndCharacterStats'));
         const spellSlots = JSON.parse(localStorage.getItem('spellSlots'));
         let hitDice = charStats.hitDice;
@@ -623,6 +625,8 @@ document.addEventListener('DOMContentLoaded', function() {
         level4slot2.value = "";
         level4slot3.value = "";
         level5slot1.value = "";
+        level5slot2.value = "";
+        level6slot1.value = "";
 
         spellSlots.level1slot1 = "";
         spellSlots.level1slot2 = "";
@@ -638,6 +642,8 @@ document.addEventListener('DOMContentLoaded', function() {
         spellSlots.level4slot2 = "";
         spellSlots.level4slot3 = "";
         spellSlots.level5slot1 = "";
+        spellSlots.level5slot2 = "";
+        spellSlots.level6slot1 = "";
 
         ceaseAllSpells()
 

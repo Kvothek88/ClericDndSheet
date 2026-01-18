@@ -285,15 +285,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
         const maxHP = parseInt(document.getElementById('max-hp').value);
         const currentHPInput = document.getElementById('cur-hp');
-        const blindedInput = document.getElementById('toggle-blinded');
-        const deafenedInput = document.getElementById('toggle-deafened');
-        const poisonedInput = document.getElementById('toggle-poisoned');
         let currentHP = parseInt(currentHPInput.value);
         let healedHP = 0;
-
-        blindedInput.checked = false;
-        deafenedInput.checked = false;
-        poisonedInput.checked = false;
 
         healedHP = diceThrow(diceNumber, diceType, name, true);
 
@@ -406,10 +399,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function healSpell(level) {
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
+        const blindedInput = document.getElementById('toggle-blinded');
+        const deafenedInput = document.getElementById('toggle-deafened');
+        const poisonedInput = document.getElementById('toggle-poisoned');
         let hpGained = 70 + (10*(level-6))
         if (choice == 1) {
             healSpecific(hpGained)
             showToast(`You gained ${hpGained} HP`, 'magic');
+            blindedInput.checked = false;
+            deafenedInput.checked = false;
+            poisonedInput.checked = false;
         }
         else if (choice == 2) {
             showToast(`${hpGained} HP gained`, 'magic');

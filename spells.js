@@ -1160,7 +1160,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 showToast('All Level 5 spell slots are already empty', 'error');
                 return;
             }
-        }
         } else if (level == 6){
             if (level6slot1.value !== ""){
                 level6slot1.value = "";

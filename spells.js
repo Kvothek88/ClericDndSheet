@@ -407,7 +407,6 @@ document.addEventListener('DOMContentLoaded', function () {
         else if (choice == 2) {
             showToast(`${hpGained} HP gained`, 'magic');
         }
-        } 
         else 
         {
             showToast('Wrong Choice', 'error');

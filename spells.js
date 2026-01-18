@@ -1048,14 +1048,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const slot3 = document.getElementById("ringslot3");
         const slot4 = document.getElementById("ringslot4");
         const slot5 = document.getElementById("ringslot5");
-        const slot6 = document.getElementById("ringslot6");
 
         slot1.value = slots.ringslot1;
         slot2.value = slots.ringslot2;
         slot3.value = slots.ringslot3;
         slot4.value = slots.ringslot4;
         slot5.value = slots.ringslot5;
-        slot6.value = slots.ringslot6;
     }
 
     function emptySlot(level) {

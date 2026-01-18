@@ -1308,6 +1308,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 level6slot1.value = "🔲";
                 storedSlots.level6slot1 = "🔲";
             }
+            else {
+                showToast('All Level 6 spell slots are depleted', 'error');
+                return;
+            }
         }
 
         if (spellToUpdate.concentration === true) {

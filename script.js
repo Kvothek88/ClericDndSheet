@@ -217,9 +217,9 @@ const characterStats = {
     cloak: "",
     headwear: "Headband of Intellect",
     armsgear: "",
-    curHP: "84",
+    curHP: "93",
     tempHP: null,
-    level: "9",
+    level: "11",
     speed: "25",
     hitDice: 9,
     celestialCurHP: 40,
@@ -626,7 +626,7 @@ const updateHpMax = () =>
     let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
 
     if (exhaustionInput.value >= 4){
-        maxHP /= 2;
+        maxHP = Math.floor(maxHP / 2);
     }
 
     if (level === "" || level === null || conModifier === "" || conModifier === null)

@@ -402,6 +402,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const blindedInput = document.getElementById('toggle-blinded');
         const deafenedInput = document.getElementById('toggle-deafened');
         const poisonedInput = document.getElementById('toggle-poisoned');
+        const conditions = JSON.parse(localStorage.getItem("conditions"));
         let hpGained = 70 + (10*(level-6))
         if (choice == 1) {
             healSpecific(hpGained)
@@ -409,6 +410,9 @@ document.addEventListener('DOMContentLoaded', function () {
             blindedInput.checked = false;
             deafenedInput.checked = false;
             poisonedInput.checked = false;
+            conditions.blinded = false;
+            conditions.deafened = false;
+            conditions.poisoned = false;
         }
         else if (choice == 2) {
             showToast(`${hpGained} HP gained`, 'magic');

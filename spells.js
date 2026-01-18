@@ -77,7 +77,7 @@ function updateSpellSlotsStatus(){
     const level4slot3 = document.getElementById('level4slot3');
     const level5slot1 = document.getElementById('level5slot1');
     const level5slot2 = document.getElementById('level5slot2');
-    const level5slot2 = document.getElementById('level6slot1');
+    const level6slot1 = document.getElementById('level6slot1');
 
     level1slot1.value = storedSlots.level1slot1;
     level1slot2.value = storedSlots.level1slot2;

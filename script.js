@@ -219,7 +219,7 @@ const characterStats = {
     armsgear: "",
     curHP: "93",
     tempHP: null,
-    level: "10",
+    level: "11",
     speed: "25",
     hitDice: 9,
     celestialCurHP: 40,

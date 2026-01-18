@@ -1,5 +1,79 @@
 import { spellCease, removeNonDamageEffects, updateSpellStatus } from './spells.js';
 
+const style = document.createElement('style');
+style.textContent = `
+    .condition-item {
+        position: relative;
+        overflow: visible;
+    }
+    
+    .tooltip {
+        visibility: hidden;
+        position: absolute;
+        background-color: #f5e6d3;
+        color: #3a2a1a;
+        padding: 7px 7px;
+        border-radius: 8px;
+        border: 2px solid #c17a3a;
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 320px;
+        min-width: 320px;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.2s, visibility 0.2s;
+        pointer-events: none;
+        white-space: normal;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        /* Position below the element */
+        top: 100%;
+        left: 0;
+        margin-top: 8px;
+    }
+    
+    .tooltip p {
+        margin: 0 0 8px 0;
+    }
+    
+    .tooltip p:last-child {
+        margin-bottom: 0;
+    }
+    
+    .tooltip.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    /* Arrow */
+    .tooltip::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 20px;
+        border: 6px solid transparent;
+        border-bottom-color: #c17a3a;
+    }
+`;
+document.head.appendChild(style);
+
+const conditionDescriptions = {
+    blinded: "<p><strong>BLINDED</strong></p><p>Can't see and automatically fails any <strong>ability check</strong> that requires sight.</p><p><strong>Attack rolls</strong> against the creature have <strong>advantage</strong>, and the creature's attack rolls have <strong>disadvantage</strong>.</p>",
+    charmed: "<p><strong>CHARMED</strong></p><p>Can't <strong>attack</strong> the charmer or target the charmer with harmful abilities or magical effects.</p><p>The charmer has <strong>advantage</strong> on any <strong>ability check</strong> to interact socially with the creature.</p>",
+    deafened: "<p><strong>DEAFENED</strong></p><p>Can't hear and automatically fails any <strong>ability check</strong> that requires hearing.</p>",
+    frightened: "<p><strong>FRIGHTENED</strong></p><p>Has <strong>disadvantage</strong> on <strong>ability checks</strong> and <strong>attack rolls</strong> while the source of its fear is within line of sight.</p><p>The creature can't willingly <strong>move</strong> closer to the source of its fear.</p>",
+    grappled: "<p><strong>GRAPPLED</strong></p><p><strong>Speed</strong> becomes 0, and can't benefit from any bonus to speed.</p><p>The condition ends if the grappler is <strong>incapacitated</strong>.</p>",
+    incapacitated: "<p><strong>INCAPACITATED</strong></p><p>Can't take <strong>actions</strong> or <strong>reactions</strong>.</p>",
+    invisible: "<p><strong>INVISIBLE</strong></p><p>Impossible to see without magic or special sense.</p><p><strong>Attack rolls</strong> against the creature have <strong>disadvantage</strong>, and the creature's <strong>attack rolls</strong> have <strong>advantage</strong>.</p>",
+    paralyzed: "<p><strong>PARALYZED</strong></p><p>The creature is <strong>incapacitated</strong> and can't move or speak. Automatically fails <strong>Strength</strong> and <strong>Dexterity saving throws</strong>.</p><p><strong>Attack rolls</strong> against the creature have <strong>advantage</strong>.</p><p>Any <strong>attack</strong> that hits is a <strong>critical hit</strong> if the attacker is within 5 feet.</p>",
+    petrified: "<p><strong>PETRIFIED</strong></p><p>Transformed into stone. Is <strong>incapacitated</strong>, can't move or speak, and is unaware of surroundings.</p><p>Automatically fails <strong>Strength</strong> and <strong>Dexterity saving throws</strong>.</p><p><strong>Attack rolls</strong> have <strong>advantage</strong>.</p><p>Has <strong>resistance</strong> to all <strong>damage</strong> and is immune to <strong>poison</strong> and <strong>disease</strong>.</p>",
+    poisoned: "<p><strong>POISONED</strong></p><p>Has <strong>disadvantage</strong> on <strong>attack rolls</strong> and <strong>ability checks</strong>.</p>",
+    prone: "<p><strong>PRONE</strong></p><p>Only <strong>movement</strong> option is to <strong>crawl</strong>. Has <strong>disadvantage</strong> on <strong>attack rolls</strong>.</p><p><strong>Attack rolls</strong> against the creature have <strong>advantage</strong> if attacker is within 5 feet. Otherwise, the <strong>attack rolls</strong> have <strong>disadvantage</strong></p>",
+    restrained: "<p><strong>RESTRAINED</strong></p><p><strong>Speed</strong> becomes 0. <strong>Attack rolls</strong> against the creature have <strong>advantage</strong>, and the creature's <strong>attack rolls</strong> have <strong>disadvantage</strong>.</p><p>Has <strong>disadvantage</strong> on <strong>Dexterity saving throws</strong>.</p>",
+    stunned: "<p><strong>STUNNED</strong></p><p>Is <strong>incapacitated</strong>, can't <strong>move</strong>, and can speak only falteringly.</p><p>Automatically fails <strong>Strength</strong> and <strong>Dexterity saving throws</strong>. <strong>Attack rolls</strong> against the creature have <strong>advantage</strong>.</p>",
+    unconscious: "<p><strong>UNCONCSIOUS</strong></p><p>Is <strong>incapacitated</strong>, can't <strong>move</strong> or speak, and is unaware of surroundings. Drops whatever it's holding and falls <strong>prone</strong>.</p><p>Automatically fails <strong>Strength</strong> and <strong>Dexterity saving throws</strong>.</p><p>Any <strong>attack</strong> that hits is a <strong>critical hit</strong> if attacker is within 5 feet.</p>"
+};
+
 const resilience = [
     { name: "fire", resistance: false, vulnerability: false },
     { name: "cold", resistance: false, vulnerability: false },
@@ -158,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const conditionName = document.createElement('span');
         conditionName.className = 'condition-name';
         conditionName.textContent = condition;
+        conditionName.setAttribute('data-tooltip', conditionDescriptions[condition]);
         
         const label = document.createElement('label');
         label.className = 'switch';
@@ -169,6 +244,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (savedConditions[condition]) {
             input.checked = true;
         }
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.innerHTML = conditionDescriptions[condition];
+        
+        // Add event listeners
+        conditionName.addEventListener('mouseenter', () => {
+            tooltip.classList.add('show');
+        });
+        
+        conditionName.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('show');
+        });
         
         const slider = document.createElement('span');
         slider.className = 'slider';
@@ -177,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
         label.appendChild(slider);
         
         conditionItem.appendChild(conditionName);
+        conditionItem.appendChild(tooltip);
         conditionItem.appendChild(label);
         
         conditionsContainer.appendChild(conditionItem);
@@ -507,6 +596,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const level4slot2 = document.getElementById('level4slot2');
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
+        const level5slot2 = document.getElementById('level5slot2');
+        const level6slot1 = document.getElementById('level6slot1');
         const charStats = JSON.parse(localStorage.getItem('dndCharacterStats'));
         const spellSlots = JSON.parse(localStorage.getItem('spellSlots'));
         let hitDice = charStats.hitDice;
@@ -534,6 +625,8 @@ document.addEventListener('DOMContentLoaded', function() {
         level4slot2.value = "";
         level4slot3.value = "";
         level5slot1.value = "";
+        level5slot2.value = "";
+        level6slot1.value = "";
 
         spellSlots.level1slot1 = "";
         spellSlots.level1slot2 = "";
@@ -549,6 +642,8 @@ document.addEventListener('DOMContentLoaded', function() {
         spellSlots.level4slot2 = "";
         spellSlots.level4slot3 = "";
         spellSlots.level5slot1 = "";
+        spellSlots.level5slot2 = "";
+        spellSlots.level6slot1 = "";
 
         ceaseAllSpells()
 

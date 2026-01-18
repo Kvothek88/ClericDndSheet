@@ -77,6 +77,7 @@ function updateSpellSlotsStatus(){
     const level4slot3 = document.getElementById('level4slot3');
     const level5slot1 = document.getElementById('level5slot1');
     const level5slot2 = document.getElementById('level5slot2');
+    const level5slot2 = document.getElementById('level6slot1');
 
     level1slot1.value = storedSlots.level1slot1;
     level1slot2.value = storedSlots.level1slot2;
@@ -93,6 +94,7 @@ function updateSpellSlotsStatus(){
     level4slot3.value = storedSlots.level4slot3;
     level5slot1.value = storedSlots.level5slot1;
     level5slot2.value = storedSlots.level5slot2;
+    level6slot1.value = storedSlots.level6slot1;
 }
 
 
@@ -298,6 +300,22 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
     }
 
+    function healSpecific(gainedHP) {
+        const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
+        const maxHP = parseInt(document.getElementById('max-hp').value);
+        const currentHPInput = document.getElementById('cur-hp');
+        let currentHP = parseInt(currentHPInput.value);
+
+        currentHP += gainedHP;
+
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
+        currentHPInput.value = currentHP;
+        savedStats['curHp'] = currentHP;
+        localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
+    }
+
     function tollTheDead() {
         let choice = prompt("Choose: 1 if damaged, 2 if unscathed");
         if (choice == 1) {
@@ -379,6 +397,30 @@ document.addEventListener('DOMContentLoaded', function () {
         showToast(`Flame Strike (Level ${level}): ${level*2}d6 = ${level}d6 Fire + ${level}d6 Radiant = ${fireRollsString} + ${radiantRollsString} = ${fireResult} Fire + ${radiantResult} Radiant = ${result}  `, 'magic');
     }
 
+    function healSpell(level) {
+        let choice = prompt("Choose: 1 if you include yourself, 2 if not");
+        let hpGained = 70 + (10*(level-6))
+        if (choice == 1) {
+            healSpecific(hpGained)
+            showToast(`You gained ${hpGained} HP`, 'magic');
+        }
+        else if (choice == 2) {
+            showToast(`${hpGained} HP gained`, 'magic');
+        }
+        } 
+        else 
+        {
+            showToast('Wrong Choice', 'error');
+        }
+    }
+
+    function harmSpell(level) {
+        if (level == 6)
+            diceThrow(14,6,'Harm');
+        else
+            diceThrow(14,6,`Harm(Level ${level})`);
+    }
+
     function buffEffects(spell){
         const guidanceTracker = document.getElementById('guidance-tracker');
         const blessTracker = document.getElementById('bless-tracker');
@@ -443,6 +485,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const guidingBoltLevel5Effect = document.querySelector('.guidingboltlevel5-effect');
         guidingBoltLevel5Effect.addEventListener('click', () => diceThrow(8, 6, 'Guiding Bolt (Level5)', false, false, true));
 
+        const guidingBoltLevel6Effect = document.querySelector('.guidingboltlevel6-effect');
+        guidingBoltLevel6Effect.addEventListener('click', () => diceThrow(9, 6, 'Guiding Bolt (Level6)', false, false, true));
+
         const cureWoundsEffect = document.querySelector('.curewounds-effect');
         cureWoundsEffect.addEventListener('click', () => cureWounds(1));
 
@@ -461,6 +506,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const cureWoundsLevel5Effect = document.querySelector('.curewoundslevel5-effect');
         cureWoundsLevel5Effect.addEventListener('click', () => cureWounds(5));
 
+        const cureWoundsLevel6Effect = document.querySelector('.curewoundslevel6-effect');
+        cureWoundsLevel6Effect.addEventListener('click', () => cureWounds(6));
+
         const moonbeamEffect = document.querySelector('.moonbeam-effect');
         moonbeamEffect.addEventListener('click', () => diceThrow(2, 10, 'Moonbeam'));
 
@@ -472,6 +520,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const moonbeamLevel5Effect = document.querySelector('.moonbeamlevel5-effect');
         moonbeamLevel5Effect.addEventListener('click', () => diceThrow(5, 10, 'Moonbeam(Level 5)'));
+
+        const moonbeamLevel6Effect = document.querySelector('.moonbeamlevel6-effect');
+        moonbeamLevel5Effect.addEventListener('click', () => diceThrow(5, 10, 'Moonbeam(Level 6)'));
 
         const spirituaWeaponEffect = document.querySelector('.spiritualweapon-effect');
         spirituaWeaponEffect.addEventListener('click', () => diceThrow(1, 8, 'Spiritual Weapon', true, false, true));
@@ -485,6 +536,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const spirituaWeaponLevel5Effect = document.querySelector('.spiritualweaponlevel5-effect');
         spirituaWeaponLevel5Effect.addEventListener('click', () => diceThrow(4, 8, 'Spiritual Weapon(Level 5)',true, false, true));
 
+        const spirituaWeaponLevel6Effect = document.querySelector('.spiritualweaponlevel6-effect');
+        spirituaWeaponLevel6Effect.addEventListener('click', () => diceThrow(5, 8, 'Spiritual Weapon(Level 6)',true, false, true));
+
         const auraOfVitalityEffect = document.querySelector('.auraofvitality-effect');
         auraOfVitalityEffect.addEventListener('click', () => auraOfVitality());
 
@@ -497,11 +551,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const spiritGuardiansLevel5Effect = document.querySelector('.spiritguardianslevel5-effect');
         spiritGuardiansLevel5Effect.addEventListener('click', () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'));
 
+        const spiritGuardiansLevel6Effect = document.querySelector('.spiritguardianslevel6-effect');
+        spiritGuardiansLevel6Effect.addEventListener('click', () => diceThrow(6, 8, 'Spirit Guardians(Level 6)'));
+
         const flamestrike = document.querySelector('.flamestrike-effect');
         flamestrike.addEventListener('click', () => flameStrike(5));
 
         const massCureWoundsEffect = document.querySelector('.masscurewounds-effect');
         massCureWoundsEffect.addEventListener('click', () => massCureWounds(5));
+
+        const massCureWoundsEffectLevel6Effect = document.querySelector('.masscurewoundslevel6-effect');
+        massCureWoundsEffectLevel6Effect.addEventListener('click', () => massCureWounds(6));
+
+        const healEffect = document.querySelector('.heal-effect');
+        healEffect.addEventListener('click', () => healSpell(6));
+
+        const harmEffect = document.querySelector('.harm-effect');
+        harmEffect.addEventListener('click', () => harmSpell(6));
     }
 
     addEffectsEvents();
@@ -558,7 +624,17 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'dispelmagiclevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
         {name: 'mislead', active: false, concentration: true, duration: true, level: 5, verbal: false, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Deception'},
         {name: 'summoncelestial', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-', effectType: 'Summoning'},
-        {name: 'raisedead', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Hour', range: 'Touch', saveDC: '-', effectType: 'Resurrect'}
+        {name: 'raisedead', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Hour', range: 'Touch', saveDC: '-', effectType: 'Resurrect'},
+        {name: 'heal', active: false, concentration: false, duration: false, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Heal'},
+        {name: 'harm', active: false, concentration: false, duration: false, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: 'CON', effectType: 'Damage'},
+        {name: 'herowsfeast', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true, castingTime: '10 minutes', range: 'Touch', saveDC: '-', effectType: 'Buff'},
+        {name: 'masscurewoundslevel6', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'spiritguardianslevel6', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
+        {name: 'curewoundslevel6', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'guidingboltlevel6', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'moonbeamlevel6', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'spiritualweaponlevel6', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
+        {name: 'dispelmagiclevel6', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
     ];
     localStorage.getItem("spells") ?? localStorage.setItem("spells", JSON.stringify(spellsStatus));
 
@@ -578,6 +654,7 @@ document.addEventListener('DOMContentLoaded', function () {
         level4slot3:"",
         level5slot1:"",
         level5slot2:"",
+        level6slot1:"",
     }
     localStorage.getItem("spellSlots") ?? localStorage.setItem("spellSlots", JSON.stringify(spellSlots));
 
@@ -588,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Guiding Bolt (Level 2)", "Aura Of Vitality", "Bestow Curse", "Dispel Magic",
         "Leomunds", "Spirit Guardians", "Cure Wounds (Level 3)", "Guiding Bolt (Level 3)",
         "Moonbeam (Level 3)", "Spiritual Weapon (Level 3)", "Aura Of Life", "Control Water", "Banishment",
-        "Aura Of Purity", "Death Ward", "Greater Invisibility", "Guardian Of Faith", "Dispel Magic Level 4",
+        "Aura Of Purity", "Death Ward", "Greater Invisibility", "Guardian Of Faith", "Dispel Magic (Level 4)",
         "Spirit Guardians (Level 4)", "Cure Wounds (Level 4)", "Guiding Bolt (Level 4)",
         "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
         "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
@@ -997,6 +1074,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
         const level5slot2 = document.getElementById('level5slot2');
+        const level6slot1 = document.getElementById('level6slot1');
 
         if (level == 1){
             if (level1slot4.value !== ""){
@@ -1084,6 +1162,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
         }
+        } else if (level == 6){
+            if (level6slot1.value !== ""){
+                level6slot1.value = "";
+                storedSlots.level6slot1 = "";
+            }
+        }
 
         localStorage.setItem("spellSlots", JSON.stringify(storedSlots)); 
     }
@@ -1128,6 +1212,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const level4slot3 = document.getElementById('level4slot3');
         const level5slot1 = document.getElementById('level5slot1');
         const level5slot2 = document.getElementById('level5slot2');
+        const level6slot1 = document.getElementById('level6slot1');
 
 
         if (level == 1){
@@ -1218,6 +1303,12 @@ document.addEventListener('DOMContentLoaded', function () {
             else {
                 showToast('All Level 5 spell slots are depleted', 'error');
                 return;
+            }
+        }
+        else if (level == 6){
+            if (level6slot1.value === ""){
+                level6slot1.value = "🔲";
+                storedSlots.level6slot1 = "🔲";
             }
         }
 
@@ -1325,12 +1416,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const freeLevel3Slot = document.querySelector('#freeslotlevel3');
         const freeLevel4Slot = document.querySelector('#freeslotlevel4');
         const freeLevel5Slot = document.querySelector('#freeslotlevel5');
+        const freeLevel6Slot = document.querySelector('#freeslotlevel6');
 
         freeLevel1Slot.addEventListener('click', () => emptySlot(1));
         freeLevel2Slot.addEventListener('click', () => emptySlot(2));
         freeLevel3Slot.addEventListener('click', () => emptySlot(3));
         freeLevel4Slot.addEventListener('click', () => emptySlot(4));
         freeLevel5Slot.addEventListener('click', () => emptySlot(5));
+        freeLevel6Slot.addEventListener('click', () => emptySlot(6));
     }
 
     const storedSpellsStatus = JSON.parse(localStorage.getItem("spells"));

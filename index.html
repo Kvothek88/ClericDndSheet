@@ -897,6 +897,15 @@
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="tollthedead-effect">EFFECT</button></td>
                         </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spare the Dying</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">50 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="sparethedying-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -1365,7 +1374,7 @@
                             <td class="flamestrike-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
                             <td class="flamestrike-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="flamestrike-effect">EFFECT</button></td>
                         </tr>
-                        <tr>
+                        <tr style="color: grey">
                             <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Holy Weapon</td>
                             <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
                             <td class="holyweapon-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
@@ -1465,6 +1474,114 @@
                             <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel5-effect">EFFECT</button></td>
                         </tr>
 
+                    </tbody>
+                </table>
+            </div>
+
+
+                <!-- Level 6 Section -->
+            <div class="spell-section">
+                <h3 style="background-color: rgba(231, 150, 11, 0.833); padding: 5px; margin: 10px 0;  text-align:center;">LEVEL 5</h3>
+                <div style="margin-bottom: 10px;">
+                    <span style="margin-right: 5px; font-weight:bold;">Slots:</span>
+                    <input id="level5slot1" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <input id="level5slot2" type="text" readonly style="width: 30px; height: 30px; margin: 0 2px; text-align: center;" value="">
+                    <button id="freeslotlevel5">FREE</button>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Name</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Time</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Range</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Hit/DC</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cast</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cease</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Heal</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="heal-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="heal-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Harm</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="harm-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="harm-effect">EFFECT</button></td>
+                        </tr>
+                        <tr style="color: grey">
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Heroes' Feast</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">10 minutes</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="heroesfeast-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="herowsfeast-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Dispel Magic (Level 6)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="dispelmagiclevel5-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Control</td>
+                        </tr>
+                        <tr>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spirit Guardians (Level 6)</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Self/15 ft</td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">WIS <span class="saveDC"></span></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel5-cast">CAST</button></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel5-end">CEASE</button></td>
+                            <td class="spiritguardianslevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritguardianslevel5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Cure Wounds (Level 6)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Touch</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel5-cast">CAST</button></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">-</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="curewoundslevel5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Guiding Bolt (Level 6)</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel5-cast">CAST</button></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel5-end">CEASE</button></td>
+                            <td class="guidingboltlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="guidingboltlevel5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Spiritual Weapon (Level 6)</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Bonus Action</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">60 ft</td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><span class="spellattack"></span></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel5-cast">CAST</button></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel5-end">CEASE</button></td>
+                            <td class="spiritualweaponlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="spiritualweaponlevel5-effect">EFFECT</button></td>
+                        </tr>
+                        <tr>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">Moonbeam (Level 6)</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">1 Action</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">120 ft</td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;">CON <span class="saveDC"></span></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button  class="moonbeamlevel5-cast">CAST</button></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button  class="moonbeamlevel5-end">CEASE</button></td>
+                            <td class="moonbeamlevel5-row" style="border: 1px solid #ddd; padding: 8px; text-align: center;"><button class="moonbeamlevel5-effect">EFFECT</button></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

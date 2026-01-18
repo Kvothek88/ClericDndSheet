@@ -285,8 +285,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
         const maxHP = parseInt(document.getElementById('max-hp').value);
         const currentHPInput = document.getElementById('cur-hp');
+        const blindedInput = document.getElementById('toggle-blinded');
+        const deafenedInput = document.getElementById('toggle-deafened');
+        const poisonedInput = document.getElementById('toggle-poisoned');
         let currentHP = parseInt(currentHPInput.value);
         let healedHP = 0;
+
+        blindedInput.checked = false;
+        deafenedInput.checked = false;
+        poisonedInput.checked = false;
 
         healedHP = diceThrow(diceNumber, diceType, name, true);
 

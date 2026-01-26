@@ -123,6 +123,14 @@ function applyNonDamageEffects(name){
 
     if (name=='summoncelestial' || name=='summoncelestiallevel6'){
         const celestial = document.getElementById('celestial');
+        const celestiallevel = document.getElementById('celestial-level');
+
+        let level = 5;
+        if (name=='summoncelestiallevel6') {
+            level = 6;
+        }
+        celestiallevel.value = level;
+        
         let stats = savedStats ? JSON.parse(savedStats) : {};
         celestial.style.display = 'block';
         const choice = parseInt(prompt("Enter 1 if Avenger or 2 if Defender"));

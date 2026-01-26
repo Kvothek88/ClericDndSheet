@@ -121,7 +121,7 @@ function applyNonDamageEffects(name){
             toggleCondition('invisible');
     }
 
-    if (name=='summoncelestial'){
+    if (name=='summoncelestial' || name=='summoncelestiallevel6'){
         const celestial = document.getElementById('celestial');
         let stats = savedStats ? JSON.parse(savedStats) : {};
         celestial.style.display = 'block';

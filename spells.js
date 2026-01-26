@@ -566,6 +566,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const flamestrike = document.querySelector('.flamestrike-effect');
         flamestrike.addEventListener('click', () => flameStrike(5));
 
+        const flamestrikelevel6 = document.querySelector('.flamestrike-effect');
+        flamestrike.addEventListener('click', () => flameStrike(6));
+
         const massCureWoundsEffect = document.querySelector('.masscurewounds-effect');
         massCureWoundsEffect.addEventListener('click', () => massCureWounds(5));
 
@@ -644,6 +647,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'moonbeamlevel6', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
         {name: 'spiritualweaponlevel6', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'dispelmagiclevel6', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
+        {name: 'summoncelestiallevel6', active: false, concentration: true, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-', effectType: 'Summoning'},
     ];
     localStorage.getItem("spells") ?? localStorage.setItem("spells", JSON.stringify(spellsStatus));
 
@@ -679,7 +683,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
         "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
         "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)",
-        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead"
+        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead", "Dispel Magic (Level 6)",
+        "Spirit Guardians (Level 6)", "Cure Wounds (Level 6)", "Guiding Bolt (Level 6)", "Spiritual Weapon (Level 6)",
+        "Moonbeam (Level 6)", "Mass Cure Wounds (Level 6)", "Summon Celestial (Level 6)"
     ];
 
     const spellNameMap = {};

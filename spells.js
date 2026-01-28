@@ -602,6 +602,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const spiritGuardiansLevel5Effect = document.querySelector('.spiritguardianslevel5-effect');
         spiritGuardiansLevel5Effect.addEventListener('click', () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'));
 
+        const contagionEffect = document.querySelector('.contagion-effect');
+        contagionEffect.addEventListener('click', () => diceThrow(11, 8, 'Contagion'));
+
         const spiritGuardiansLevel6Effect = document.querySelector('.spiritguardianslevel6-effect');
         spiritGuardiansLevel6Effect.addEventListener('click', () => diceThrow(6, 8, 'Spirit Guardians(Level 6)'));
 
@@ -674,6 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'circleofpower', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: false, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Buff'},
         {name: 'flamestrike', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: 'DEX', effectType: 'Effect'},
         {name: 'holyweapon', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: 'Touch', saveDC: 'CON', effectType: '2d8'},
+        {name: 'contagion', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: 'CON', effectType: 'Effect'},
         {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Effect'},
         {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
         {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
@@ -729,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Spirit Guardians (Level 4)", "Cure Wounds (Level 4)", "Guiding Bolt (Level 4)",
         "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
         "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
-        "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)",
+        "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)", "Contagion",
         "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead", "Dispel Magic (Level 6)",
         "Spirit Guardians (Level 6)", "Cure Wounds (Level 6)", "Guiding Bolt (Level 6)", "Spiritual Weapon (Level 6)",
         "Moonbeam (Level 6)", "Mass Cure Wounds (Level 6)", "Summon Celestial (Level 6)", "Aid", "Aid (Level 3)",
@@ -923,6 +927,7 @@ document.addEventListener('DOMContentLoaded', function () {
             spiritguardianslevel4: () => diceThrow(4, 8, 'Spirit Guardians(Level 4)'),
             spiritguardianslevel5: () => diceThrow(5, 8, 'Spirit Guardians(Level 5)'),
             flamestrike: () => flameStrike(5),
+            contagion: () => diceThrow(11, 8, 'Contagion'),
             masscurewounds: () => massCureWounds(5)
         };
 

@@ -380,6 +380,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function aid(level){
+        const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
+        
+        let choice = prompt("Choose: 1 if you include yourself, 2 if not");
+        const maxHP = document.getElementById('max-hp').value;
+        const curHP = document.getElementById('cur-hp').value;
+        const gained = (level-1)*5;
+        
+        if (choice == 1) {
+            maxHp += gained;
+            curHP += gained;
+            savedStats['maxHp'] += gained;
+            savedStats['curHp'] += gained;
+        } else if (choice == 2) {
+            continue;
+        } else {
+            showToast('Wrong Choice', 'error');
+        }
+
+        showToast(`Max HP increased by ${gained} and gained ${gained} HP`, 'success');
+    }
+
     function flameStrike(level) {
         let result = 0;
         let fireResult = 0;
@@ -528,6 +550,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const moonbeamEffect = document.querySelector('.moonbeam-effect');
         moonbeamEffect.addEventListener('click', () => diceThrow(2, 10, 'Moonbeam'));
+
+        const aidEffect = document.querySelector('.aid-effect');
+        aidEffect.addEventListener('click', () => aid(2));
+
+        const aidLevel3Effect = document.querySelector('.aidlevel3-effect');
+        aidLevel3Effect.addEventListener('click', () => aid(2));
+
+        const aidLevel4Effect = document.querySelector('.aidlevel4-effect');
+        aidLevel4Effect.addEventListener('click', () => aid(2));
+
+        const aidLevel5Effect = document.querySelector('.aidlevel5-effect');
+        aidLevel5Effect.addEventListener('click', () => aid(2));
+
+        const aidLevel6Effect = document.querySelector('.aidlevel6-effect');
+        aidLevel6Effect.addEventListener('click', () => aid(2));
 
         const moonbeamLevel3Effect = document.querySelector('.moonbeamlevel3-effect');
         moonbeamLevel3Effect.addEventListener('click', () => diceThrow(3, 10, 'Moonbeam(Level 3)'));

@@ -18,6 +18,9 @@ export function spellCease(name,level) {
     const deathwardTracker = document.getElementById('deathward-tracker');
     deathwardTracker.value = "";
 
+    const aidTracker = document.getElementById('aid-tracker');
+    aidTracker.value = "";
+
     removeNonDamageEffects(name);
     localStorage.setItem("spells", JSON.stringify(storedSpells));
     updateSpellStatus(storedSpells);
@@ -159,6 +162,21 @@ export function removeNonDamageEffects(name){
     if (['guidingbolt', 'guidingboltlevel2', 'guidingboltlevel3', 'guidingboltlevel4', 'guidingboltlevel5'].includes(name)){
         const guidingBoltTracker = document.getElementById('guidingbolt-tracker');
         guidingBoltTracker.value = "";
+    }
+
+    if (['aid', 'aidlevel3', 'aidlevel3', 'aidlevel3', 'aidlevel3'].includes(name)) {
+        const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
+        const aidTracker = document.getElementById('aid-tracker');
+        const curHpInput = document.getElementById('cur-hp');
+        let curHp = curHpInput.value;
+
+        let aidTrackerValue = Number(aidTracker.value) || 0;
+        if (aidTrackerValue > 0) {
+            aidTracker.value = 0;
+            const maxHp = Number(document.getElementById('max-hp').value);
+            curHpInput.value = Math.min(curHp, maxHp);
+            savedStats['curHP'] = Math.min(curHp, maxHp);
+        }
     }
 
     if (name=='greaterinvisibility'){
@@ -385,11 +403,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const aidTracker = document.getElementById('aid-tracker');
         
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
-        let curHP = Number(document.getElementById('cur-hp').value);
+        let curHPInput = document.getElementById('cur-hp');
         const gained = (level-1)*5;
         
         if (choice == 1) {
-            curHP += gained;
+            curHPInput.value += gained;
             savedStats['curHp'] += gained;
             aidTracker.value = gained;
         } else if (choice != 2) {

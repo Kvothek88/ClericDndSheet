@@ -800,6 +800,12 @@ document.addEventListener('DOMContentLoaded', function ()
     const holyweaponRows = document.querySelectorAll('.holyweapon-row');
     const shieldOfFaithRows = document.querySelectorAll('.shieldoffaith-row');
     const summonCelestialRows = document.querySelectorAll('.summoncelestial-row');
+    const summonCelestialLevel6Rows = document.querySelectorAll('.summoncelestiallevel6-row');
+    const aidRows = document.querySelectorAll('.aid-row');
+    const aidLevel3Rows = document.querySelectorAll('.aidlevel3-row');
+    const aidLevel4Rows = document.querySelectorAll('.aidlevel4-row');
+    const aidLevel5Rows = document.querySelectorAll('.aidlevel5-row');
+    const aidLevel6Rows = document.querySelectorAll('.aidlevel6-row');
     const spellTable = document.getElementById('spellTable');
 
     // Create a MutationObserver
@@ -842,6 +848,30 @@ document.addEventListener('DOMContentLoaded', function ()
         observer.observe(row, { attributes: true, attributeFilter: ['style'] });
     });
 
+    summonCelestialLevel6Rows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    aidRows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    aidLevel3Rows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    aidLevel4Rows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    aidLevel5Rows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
+    aidLevel6Rows.forEach(row => {
+        observer.observe(row, { attributes: true, attributeFilter: ['style'] });
+    });
+
     observer2.observe(spellTable, {
         childList: true,
         subtree: true,
@@ -856,9 +886,9 @@ window.onload = function() {
         updateHpMax();
         updateSpeed();
     })
-    document.getElementById('aid-tracker').addEventListener('input', () => {
-        updateHpMax();
-    })
+    // document.getElementById('aid-tracker').addEventListener('input', () => {
+    //     updateHpMax();
+    // })
     document.getElementById('toggle-grappled').addEventListener('change', () => {
         updateSpeed();
     })

@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
             currentHP = maxHP;
 
         currentHPInput.value = currentHP;
-        savedStats['curHp'] = currentHP;
+        savedStats['curHP'] = currentHP;
         localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
     }
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
             currentHP = maxHP;
 
         currentHPInput.value = currentHP;
-        savedStats['curHp'] = currentHP;
+        savedStats['curHP'] = currentHP;
         localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
     }
 

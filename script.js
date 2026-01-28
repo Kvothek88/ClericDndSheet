@@ -856,6 +856,9 @@ window.onload = function() {
         updateHpMax();
         updateSpeed();
     })
+    document.getElementById('aid-tracker').addEventListener('change', () => {
+        updateHpMax();
+    })
     document.getElementById('toggle-grappled').addEventListener('change', () => {
         updateSpeed();
     })

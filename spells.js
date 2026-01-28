@@ -643,6 +643,11 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'detectevilandgood', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
         {name: 'sleep', active: false, concentration: false, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: '90 ft', saveDC: '-',  effectType: 'Unconsious'},
         {name: 'moonbeam', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
+        {name: 'aid', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'aidlevel3', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'aidlevel4', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'aidlevel5', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
+        {name: 'aidlevel6', active: false, concentration: false, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
         {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
         {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
         {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
@@ -730,7 +735,8 @@ document.addEventListener('DOMContentLoaded', function () {
         "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)",
         "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead", "Dispel Magic (Level 6)",
         "Spirit Guardians (Level 6)", "Cure Wounds (Level 6)", "Guiding Bolt (Level 6)", "Spiritual Weapon (Level 6)",
-        "Moonbeam (Level 6)", "Mass Cure Wounds (Level 6)", "Summon Celestial (Level 6)"
+        "Moonbeam (Level 6)", "Mass Cure Wounds (Level 6)", "Summon Celestial (Level 6)", "Aid", "Aid (Level 3)",
+        "Aid", "Aid (Level 4)", "Aid", "Aid (Level 5)", "Aid", "Aid (Level 6)"
     ];
 
     const spellNameMap = {};

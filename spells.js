@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function aid(level){
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
         const aidTracker = document.getElementById('aid-tracker');
+        let storedSpells = JSON.parse(localStorage.getItem("spells"));
         
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
         let curHPInput = document.getElementById('cur-hp');
@@ -411,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
             savedStats['curHp'] += gained;
             aidTracker.value = gained;
             localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
+            updateSpellStatus(storedSpells);
         } else if (choice != 2) {
             showToast('Wrong Choice', 'error');
         }

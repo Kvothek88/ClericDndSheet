@@ -856,7 +856,7 @@ window.onload = function() {
         updateHpMax();
         updateSpeed();
     })
-    document.getElementById('aid-tracker').addEventListener('change', () => {
+    document.getElementById('aid-tracker').addEventListener('input', () => {
         updateHpMax();
     })
     document.getElementById('toggle-grappled').addEventListener('change', () => {

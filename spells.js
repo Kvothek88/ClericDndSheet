@@ -407,9 +407,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const gained = Number((level-1)*5);
         
         if (choice == 1) {
-            curHPInput.value = Number(curHPInput.value) + gained;
+            curHPInput.value = parseInt(curHPInput.value) + gained;
             savedStats['curHp'] += gained;
             aidTracker.value = gained;
+            localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
         } else if (choice != 2) {
             showToast('Wrong Choice', 'error');
         }

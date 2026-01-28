@@ -384,8 +384,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
         
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
-        let maxHP = document.getElementById('max-hp').value;
-        let curHP = document.getElementById('cur-hp').value;
+        let maxHP = Number(document.getElementById('max-hp').value);
+        let curHP = Number(document.getElementById('cur-hp').value);
         const gained = (level-1)*5;
         
         if (choice == 1) {
@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function () {
             curHP += gained;
             savedStats['maxHp'] += gained;
             savedStats['curHp'] += gained;
-        } else if (choice == 3) {
+        } else if (choice != 2) {
             showToast('Wrong Choice', 'error');
         }
 

@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         if (choice == 1) {
             curHPInput.value = parseInt(curHPInput.value) + gained;
-            savedStats['curHp'] = parseInt(curHPInput.value) + gained;
+            savedStats['curHP'] = parseInt(curHPInput.value) + gained;
             aidTracker.value = gained;
             localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
             updateSpellStatus(storedSpells);

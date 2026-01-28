@@ -553,16 +553,16 @@ document.addEventListener('DOMContentLoaded', function () {
         aidEffect.addEventListener('click', () => aid(2));
 
         const aidLevel3Effect = document.querySelector('.aidlevel3-effect');
-        aidLevel3Effect.addEventListener('click', () => aid(2));
+        aidLevel3Effect.addEventListener('click', () => aid(3));
 
         const aidLevel4Effect = document.querySelector('.aidlevel4-effect');
-        aidLevel4Effect.addEventListener('click', () => aid(2));
+        aidLevel4Effect.addEventListener('click', () => aid(4));
 
         const aidLevel5Effect = document.querySelector('.aidlevel5-effect');
-        aidLevel5Effect.addEventListener('click', () => aid(2));
+        aidLevel5Effect.addEventListener('click', () => aid(5));
 
         const aidLevel6Effect = document.querySelector('.aidlevel6-effect');
-        aidLevel6Effect.addEventListener('click', () => aid(2));
+        aidLevel6Effect.addEventListener('click', () => aid(6));
 
         const moonbeamLevel3Effect = document.querySelector('.moonbeamlevel3-effect');
         moonbeamLevel3Effect.addEventListener('click', () => diceThrow(3, 10, 'Moonbeam(Level 3)'));

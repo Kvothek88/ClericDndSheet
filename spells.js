@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
         let curHPInput = document.getElementById('cur-hp');
-        const gained = (level-1)*5;
+        const gained = Number((level-1)*5);
         
         if (choice == 1) {
             curHPInput.value = Number(curHPInput.value) + gained;

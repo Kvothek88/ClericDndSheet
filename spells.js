@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const gained = (level-1)*5;
         
         if (choice == 1) {
-            curHPInput.value += gained;
+            curHPInput.value = Number(curHPInput.value) + gained;
             savedStats['curHp'] += gained;
             aidTracker.value = gained;
         } else if (choice != 2) {

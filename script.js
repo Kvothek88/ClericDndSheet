@@ -638,11 +638,11 @@ const updateHpMax = () =>
         maxHPInput.value = "";
     else{
         maxHPInput.value = maxHP;
-        if (curHPInput.value > maxHPInput.value){
-            curHPInput.value = maxHP;
-            savedStats.curHP = maxHP;
-            localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
-        }
+        // if (curHPInput.value > maxHPInput.value){
+        //     curHPInput.value = maxHP;
+        //     savedStats.curHP = maxHP;
+        //     localStorage.setItem('dndCharacterStats', JSON.stringify(savedStats));
+        // }
     }
 };
 

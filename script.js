@@ -623,11 +623,16 @@ const updateHpMax = () =>
     const maxHPInput = document.getElementById("max-hp");
     const curHPInput = document.getElementById("cur-hp");
     const exhaustionInput = document.getElementById('exhaustion-level');
-    let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1;
+    const aidTracker = document.getElementById("aid-tracker");
+    let aidValue = Number(aidTracker.value) || 0;
+    
+    let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1 + aidValue;
 
     if (exhaustionInput.value >= 4){
         maxHP = Math.floor(maxHP / 2);
     }
+
+    
 
     if (level === "" || level === null || conModifier === "" || conModifier === null)
         maxHPInput.value = "";

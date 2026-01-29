@@ -557,22 +557,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const cureWoundsLevel4Effect = document.querySelector('.curewoundslevel4-effect');
         cureWoundsLevel4Effect.addEventListener('click', () => cureWounds(4));
 
-        const inflictWoundsEffect = document.querySelector('.inflictWounds-effect');
+        const inflictWoundsEffect = document.querySelector('.inflictwounds-effect');
         inflictWoundsEffect.addEventListener('click', () => diceThrow(2, 10, 'Inflict Wounds'));
 
-        const inflictWoundsLevel2Effect = document.querySelector('.inflictWoundslevel2-effect');
+        const inflictWoundsLevel2Effect = document.querySelector('.inflictwoundslevel2-effect');
         inflictWoundsLevel2Effect.addEventListener('click', () => diceThrow(3, 10, 'Inflict Wounds (Level 2)'));
 
-        const inflictWoundsLevel3Effect = document.querySelector('.inflictWoundslevel3-effect');
+        const inflictWoundsLevel3Effect = document.querySelector('.inflictwoundslevel3-effect');
         inflictWoundsLevel3Effect.addEventListener('click', () => diceThrow(4, 10, 'Inflict Wounds (Level 3)'));
 
-        const inflictWoundsLevel4Effect = document.querySelector('.inflictWoundslevel4-effect');
+        const inflictWoundsLevel4Effect = document.querySelector('.inflictwoundslevel4-effect');
         inflictWoundsLevel4Effect.addEventListener('click', () => diceThrow(5, 10, 'Inflict Wounds (Level 4)'));
 
-        const inflictWoundsLevel5Effect = document.querySelector('.inflictWoundslevel5-effect');
+        const inflictWoundsLevel5Effect = document.querySelector('.inflictwoundslevel5-effect');
         inflictWoundsLevel5Effect.addEventListener('click', () => diceThrow(6, 10, 'Inflict Wounds (Level 5)'));
 
-        const inflictWoundsLevel6Effect = document.querySelector('.inflictWoundslevel6-effect');
+        const inflictWoundsLevel6Effect = document.querySelector('.inflictwoundslevel6-effect');
         inflictWoundsLevel6Effect.addEventListener('click', () => diceThrow(7, 10, 'Inflict Wounds (Level 6)'));
 
         const deathwardEffect = document.querySelector('.deathward-effect');

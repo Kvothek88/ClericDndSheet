@@ -557,6 +557,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const cureWoundsLevel4Effect = document.querySelector('.curewoundslevel4-effect');
         cureWoundsLevel4Effect.addEventListener('click', () => cureWounds(4));
 
+        const inflictWoundsEffect = document.querySelector('.inflictWounds-effect');
+        inflictWoundsEffect.addEventListener('click', () => cureWounds(1));
+
+        const inflictWoundsLevel2Effect = document.querySelector('.inflictWoundslevel2-effect');
+        inflictWoundsLevel2Effect.addEventListener('click', () => cureWounds(1));
+
+        const inflictWoundsLevel3Effect = document.querySelector('.inflictWoundslevel3-effect');
+        inflictWoundsLevel3Effect.addEventListener('click', () => cureWounds(1));
+
+        const inflictWoundsLevel4Effect = document.querySelector('.inflictWoundslevel4-effect');
+        inflictWoundsLevel4Effect.addEventListener('click', () => cureWounds(1));
+
+        const inflictWoundsLevel5Effect = document.querySelector('.inflictWoundslevel5-effect');
+        inflictWoundsLevel5Effect.addEventListener('click', () => cureWounds(1));
+
+        const inflictWoundsLevel6Effect = document.querySelector('.inflictWoundslevel6-effect');
+        inflictWoundsLevel6Effect.addEventListener('click', () => cureWounds(1));
+
         const deathwardEffect = document.querySelector('.deathward-effect');
         deathwardEffect.addEventListener('click', () => buffEffects("deathward"));
 
@@ -659,6 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'bless', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-',  effectType: 'Effect'},
         {name: 'shieldoffaith', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: '-',  effectType: '+2 AC'},
         {name: 'curewounds', active: false, concentration: false, duration: false, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
+        {name: 'inflictwounds', active: false, concentration: false, duration: false, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'fairiefire', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: false, castingTime: '1 Action', range: '60 ft', saveDC: 'DEX',  effectType: 'Invisible'},
         {name: 'detectmagic', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
         {name: 'detectevilandgood', active: false, concentration: true, duration: true, level: 1, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
@@ -671,6 +690,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'aidlevel6', active: false, concentration: false, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
         {name: 'seeinvisibility', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: '-', effectType: 'Detection'},
         {name: 'curewoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'inflictwoundslevel2', active: false, concentration: false, duration: false, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'spiritualweapon', active: false, concentration: true, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'guidingboltlevel2', active: false, concentration: false, duration: true, level: 2, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'auraofvitality', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: false, castingTime: '1 Action', range: '30 ft', saveDC: '-', effectType: 'Effect'},
@@ -679,6 +699,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'leomunds', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Minute', range: 'Self', saveDC: '-', effectType: 'Utility'},
         {name: 'spiritguardians', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
         {name: 'curewoundslevel3', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'inflictwoundslevel3', active: false, concentration: false, duration: false, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'guidingboltlevel3', active: false, concentration: false, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'moonbeamlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
         {name: 'spiritualweaponlevel3', active: false, concentration: true, duration: true, level: 3, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
@@ -692,6 +713,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'dispelmagiclevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Control'},
         {name: 'spiritguardianslevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
         {name: 'curewoundslevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'inflictwoundslevel4', active: false, concentration: false, duration: false, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'guidingboltlevel4', active: false, concentration: false, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'moonbeamlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
         {name: 'spiritualweaponlevel4', active: false, concentration: true, duration: true, level: 4, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
@@ -702,6 +724,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'masscurewounds', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Effect'},
         {name: 'spiritguardianslevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
         {name: 'curewoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'inflictwoundslevel5', active: false, concentration: false, duration: false, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'guidingboltlevel5', active: false, concentration: false, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'moonbeamlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
         {name: 'spiritualweaponlevel5', active: false, concentration: true, duration: true, level: 5, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
@@ -715,6 +738,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {name: 'masscurewoundslevel6', active: false, concentration: false, duration: false, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '60 ft', saveDC: '-', effectType: 'Effect'},
         {name: 'spiritguardianslevel6', active: false, concentration: true, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: 'Self', saveDC: 'WIS', effectType: 'Effect'},
         {name: 'curewoundslevel6', active: false, concentration: false, duration: false, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-', effectType: 'Effect'},
+        {name: 'inflictwoundslevel6', active: false, concentration: false, duration: false, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: 'Touch', saveDC: '-',  effectType: 'Effect'},
         {name: 'guidingboltlevel6', active: false, concentration: false, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'spellattack', effectType: 'Effect'},
         {name: 'moonbeamlevel6', active: false, concentration: true, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Action', range: '120 ft', saveDC: 'CON', effectType: 'Effect'},
         {name: 'spiritualweaponlevel6', active: false, concentration: true, duration: true, level: 6, verbal: true, somatic: true, castingTime: '1 Bonus Action', range: '60 ft', saveDC: 'spellattack', effectType: 'Effect'},
@@ -755,10 +779,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "Moonbeam (Level 4)", "Spiritual Weapon (Level 4)", "Circle Of Power", "Flame Strike",
         "Holy Weapon", "Mass Cure Wounds", "Spirit Guardians (Level 5)", "Cure Wounds (Level 5)",
         "Guiding Bolt (Level 5)", "Moonbeam (Level 5)", "Spiritual Weapon (Level 5)", "Contagion",
-        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead", "Dispel Magic (Level 6)",
-        "Spirit Guardians (Level 6)", "Cure Wounds (Level 6)", "Guiding Bolt (Level 6)", "Spiritual Weapon (Level 6)",
-        "Moonbeam (Level 6)", "Mass Cure Wounds (Level 6)", "Summon Celestial (Level 6)", "Aid", "Aid (Level 3)",
-        "Aid", "Aid (Level 4)", "Aid", "Aid (Level 5)", "Aid", "Aid (Level 6)"
+        "Dispel Magic (Level 5)", "Mislead", "Summon Celestial", "Raise Dead","Aid", "Aid (Level 3)",
+        "Aid", "Aid (Level 4)", "Aid", "Aid (Level 5)", "Aid", "Inflict Wounds", "Inflict Wounds (Level 2)",
+        "Inflict Wounds (Level 3)", "Inflict Wounds (Level 4)", "Inflict Wounds (Level 5)"
     ];
 
     const spellNameMap = {};

@@ -167,16 +167,17 @@ export function removeNonDamageEffects(name){
 
     if (['aid', 'aidlevel3', 'aidlevel3', 'aidlevel3', 'aidlevel3'].includes(name)) {
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
-        const aidTracker = document.getElementById('aid-tracker');
+        let trackers = JSON.parse(localStorage.getItem("trackers"));
         const curHpInput = document.getElementById('cur-hp');
         let curHp = curHpInput.value;
 
-        let aidTrackerValue = Number(aidTracker.value) || 0;
+        let aidTrackerValue = Number(trackers['aidTracker']) || 0;
         if (aidTrackerValue > 0) {
-            aidTracker.value = 0;
+            trackers['aidTracker'] = 0;
             const maxHp = Number(document.getElementById('max-hp').value);
             curHpInput.value = Math.min(curHp, maxHp);
             savedStats['curHP'] = Math.min(curHp, maxHp);
+            localStorage.setItem('trackers', JSON.stringify(trackers));
         }
     }
 

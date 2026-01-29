@@ -169,6 +169,7 @@ export function removeNonDamageEffects(name){
 
         let aidTrackerValue = parseInt(trackers['aidTracker']) || 0;
         if (aidTrackerValue > 0) {
+            curHp -= aidTrackerValue
             trackers['aidTracker'] = 0;
             const maxHp = Number(document.getElementById('max-hp').value);
             curHpInput.value = Math.min(curHp, maxHp);

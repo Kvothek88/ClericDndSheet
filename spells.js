@@ -171,10 +171,10 @@ export function removeNonDamageEffects(name){
         const exhaustionInput = document.getElementById('exhaustion-level');
 
         let curHp = curHpInput.value;
-        let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1
+        let maxHp = 8 + (level - 1) * 5 + level * conModifier + level * 1
 
         if (exhaustionInput.value >= 4){
-            maxHP = Math.floor(maxHP / 2);
+            maxHp = Math.floor(maxHp / 2);
         }
 
         let aidTrackerValue = parseInt(trackers['aidTracker']) || 0;

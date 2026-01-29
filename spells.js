@@ -345,9 +345,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function tollTheDead() {
         let choice = prompt("Choose: 1 if damaged, 2 if unscathed");
         if (choice == 1) {
-            diceThrow(2, 12, 'Toll the Dead', false, true);
+            diceThrow(3, 12, 'Toll the Dead', true);
         } else if (choice == 2) {
-            diceThrow(2, 8, 'Toll the Dead', false, true);
+            diceThrow(3, 8, 'Toll the Dead', true);
         } else {
             showToast('Wrong Choice', 'error');
         }

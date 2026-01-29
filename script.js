@@ -241,7 +241,7 @@ if (!localStorage.getItem("dndCharacterStats")) {
 }
 
 const trackers = {
-    aidTracker: ""
+    aidTracker: 0
 }
 
 if (!localStorage.getItem("trackers")) {

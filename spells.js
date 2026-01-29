@@ -165,13 +165,22 @@ export function removeNonDamageEffects(name){
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
         let trackers = JSON.parse(localStorage.getItem("trackers"));
         const curHpInput = document.getElementById('cur-hp');
+        const level = document.getElementById("level").value;
+        const conModifier = document.getElementById("constitution-modifier").value;
+        const maxHPInput = document.getElementById("max-hp");
+        const exhaustionInput = document.getElementById('exhaustion-level');
+
         let curHp = curHpInput.value;
+        let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1
+
+        if (exhaustionInput.value >= 4){
+            maxHP = Math.floor(maxHP / 2);
+        }
 
         let aidTrackerValue = parseInt(trackers['aidTracker']) || 0;
         if (aidTrackerValue > 0) {
             curHp -= aidTrackerValue
             trackers['aidTracker'] = 0;
-            const maxHp = Number(document.getElementById('max-hp').value);
             curHpInput.value = Math.min(curHp, maxHp);
             savedStats['curHP'] = Math.min(curHp, maxHp);
             localStorage.setItem('trackers', JSON.stringify(trackers));

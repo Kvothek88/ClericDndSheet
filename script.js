@@ -240,6 +240,14 @@ if (!localStorage.getItem("dndCharacterStats")) {
     localStorage.setItem("dndCharacterStats", JSON.stringify(characterStats));
 }
 
+const trackers = {
+    aidTracker: ""
+}
+
+if (!localStorage.getItem("trackers")) {
+    localStorage.setItem("trackers", JSON.stringify(trackers));
+}
+
 let isUpdatingProgrammatically = false;
 
 function attachInputListener(inputElementId, statKey) {
@@ -623,16 +631,14 @@ const updateHpMax = () =>
     const maxHPInput = document.getElementById("max-hp");
     const curHPInput = document.getElementById("cur-hp");
     const exhaustionInput = document.getElementById('exhaustion-level');
-    const aidTracker = document.getElementById("aid-tracker");
-    let aidValue = Number(aidTracker.value) || 0;
+    const trackers = JSON.parse(localStorage.getItem("trackers"));
+    let aidValue = Number(trackers['aidTracker']) || 0;
     
     let maxHP = 8 + (level - 1) * 5 + level * conModifier + level * 1 + aidValue;
 
     if (exhaustionInput.value >= 4){
         maxHP = Math.floor(maxHP / 2);
     }
-
-    
 
     if (level === "" || level === null || conModifier === "" || conModifier === null)
         maxHPInput.value = "";

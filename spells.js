@@ -2,6 +2,7 @@ import { loadSavedConditions, saveConditions, toggleCondition } from './actions.
 
 export function spellCease(name,level) {
     let storedSpells = JSON.parse(localStorage.getItem("spells"));
+    let trackers = JSON.parse(localStorage.getItem("trackers"));
     storedSpells = storedSpells.map(spell => {
         if (spell.name === name) {
             return { ...spell, active: false };
@@ -17,12 +18,12 @@ export function spellCease(name,level) {
 
     const deathwardTracker = document.getElementById('deathward-tracker');
     deathwardTracker.value = "";
-
-    const aidTracker = document.getElementById('aid-tracker');
-    aidTracker.value = "";
+    
+    trackers['aidTracker'] = "";
 
     removeNonDamageEffects(name);
     localStorage.setItem("spells", JSON.stringify(storedSpells));
+    localStorage.setItem("trackers", JSON.stringify(trackers));
     updateSpellStatus(storedSpells);
 }
 
@@ -400,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function aid(level){
         const savedStats = JSON.parse(localStorage.getItem("dndCharacterStats"))
-        const aidTracker = document.getElementById('aid-tracker');
+        const trackers = JSON.parse(localStorage.getItem("trackers"));
         let storedSpells = JSON.parse(localStorage.getItem("spells"));
         
         let choice = prompt("Choose: 1 if you include yourself, 2 if not");
@@ -410,8 +411,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (choice == 1) {
             savedStats['curHP'] = parseInt(curHPInput.value) + gained;
             curHPInput.value = parseInt(curHPInput.value) + gained;
-            aidTracker.value = gained;
-            localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats)); 
+            trackers['aidTracker'] = gained;
+            localStorage.setItem("dndCharacterStats", JSON.stringify(savedStats));
+            localStorage.setItem("trackers", JSON.stringify(trackers)); 
             updateSpellStatus(storedSpells);
         } else if (choice != 2) {
             showToast('Wrong Choice', 'error');

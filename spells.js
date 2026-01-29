@@ -179,10 +179,9 @@ export function removeNonDamageEffects(name){
 
         let aidTrackerValue = parseInt(trackers['aidTracker']) || 0;
         if (aidTrackerValue > 0) {
-            curHp -= aidTrackerValue
-            trackers['aidTracker'] = 0;
             curHpInput.value = Math.min(curHp, maxHp);
             savedStats['curHP'] = Math.min(curHp, maxHp);
+            trackers['aidTracker'] = 0;
             localStorage.setItem('trackers', JSON.stringify(trackers));
             console.log('Removed Aid');
         }

@@ -2,7 +2,6 @@ import { loadSavedConditions, saveConditions, toggleCondition } from './actions.
 
 export function spellCease(name,level) {
     let storedSpells = JSON.parse(localStorage.getItem("spells"));
-    let trackers = JSON.parse(localStorage.getItem("trackers"));
     storedSpells = storedSpells.map(spell => {
         if (spell.name === name) {
             return { ...spell, active: false };
@@ -19,11 +18,8 @@ export function spellCease(name,level) {
     const deathwardTracker = document.getElementById('deathward-tracker');
     deathwardTracker.value = "";
     
-    trackers['aidTracker'] = "";
-
     removeNonDamageEffects(name);
     localStorage.setItem("spells", JSON.stringify(storedSpells));
-    localStorage.setItem("trackers", JSON.stringify(trackers));
     updateSpellStatus(storedSpells);
 }
 
@@ -171,13 +167,14 @@ export function removeNonDamageEffects(name){
         const curHpInput = document.getElementById('cur-hp');
         let curHp = curHpInput.value;
 
-        let aidTrackerValue = Number(trackers['aidTracker']) || 0;
+        let aidTrackerValue = parseInt(trackers['aidTracker']) || 0;
         if (aidTrackerValue > 0) {
             trackers['aidTracker'] = 0;
             const maxHp = Number(document.getElementById('max-hp').value);
             curHpInput.value = Math.min(curHp, maxHp);
             savedStats['curHP'] = Math.min(curHp, maxHp);
             localStorage.setItem('trackers', JSON.stringify(trackers));
+            console.log('Removed Aid');
         }
     }
 
